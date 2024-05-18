@@ -1,0 +1,10 @@
+/* css styles */
+
+    .image-left {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      float: right;
+    }
+
+

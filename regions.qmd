@@ -1,0 +1,14 @@
+---
+title: "Fisheries regions in Alaska"
+format: 
+  html:
+    code-fold: true
+---
+
+<img src="img/nbering.png" alt="Northern Bering" style="float: right; width: 200px;"/>
+
+
+The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), 
+northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). 
+Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands.
+No federal fisheries currently occur in the Alaskan Arctic.

@@ -1,0 +1,94 @@
+---
+title: "Untitled"
+author: "Sunny Hospital"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: 'hide'
+
+
+ 
+library(chartjs)
+library(RColorBrewer)
+library(dplyr)
+library(gt)
+library(downloadthis)
+library(ggplot2)
+library(reshape2)
+
+
+yearly_df = read.csv("data/alaskan_arctic_yearly.csv")
+baseline_df = read.csv("data/alaskan_arctic_baseline.csv")
+abb_months <- c("Jan","Feb","Mar",
+              "Apr","May","Jun",
+              "Jul","Aug","Sep",
+              "Oct","Nov","Dec")
+
+lastyear <- as.numeric(format(Sys.Date(), '%Y'))-1
+
+# Format month and order for plotting
+baseline_df$month <- format(as.Date(paste0(baseline_df$month, "/01/2001"), "%m/%d/%Y"), "%b")
+baseline_df$month <- factor(baseline_df$month, levels = abb_months)
+
+# Get upper and lower bound of sea ice extent using standard dev
+baseline_df$upper_extent <- baseline_df$ext_baseline + baseline_df$ext_std
+baseline_df$lower_extent <- baseline_df$ext_baseline - baseline_df$ext_std
+
+# Subset yearly data for this and last years 
+recent_df <- yearly_df[yearly_df$year >= lastyear ,]
+recent_df$month <- format(as.Date(paste0(recent_df$month, "/01/2001"), "%m/%d/%Y"), "%b")
+recent_df$month <- factor(recent_df$month, levels = abb_months)
+
+```
+ 
+
+
+```{r}
+# for chartjs
+
+    var_orders = c(as.character(lastyear+1), as.character(lastyear),"Mean (1985-2015)", "1985-2022")
+    plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc")
+    color_map <- setNames(plot_colors, var_orders)
+ 
+    customColors = list(border = plot_colors,
+                        background = plot_colors)
+
+region_title <- "Northern Bering"
+
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+     # Chart
+
+
+  chartjs(palette = customColors) %>%
+    cjsOptions(responsive = TRUE, maintainAspectRatio = FALSE,
+                interaction = list(intersect = FALSE, axis= "index"),
+                plugins = list(legend=list(labels=list(font=list(size=15))), title = list(font=list(size=15), display = TRUE, text = paste0('Monthly Sea Ice Extent: ', region_title))),
+                scales = list(y = list(display = TRUE, title = list(font=list(size=15),display = TRUE, text = 'Million square km')),
+                              x = list(display = TRUE, title = list(font=list(size=15),display = TRUE, text = 'Month')))
+    )%>%
+    cjsLine(labels = month.abb) %>%
+    cjsSeries(data = recent_df[recent_df$year > lastyear, ]$seaice_extent  ,  label = var_orders[1]) %>%
+    cjsSeries(data = recent_df[recent_df$year == lastyear, ]$seaice_extent  , label = var_orders[2]) %>%
+    cjsSeries(data = baseline_df$ext_baseline  , label = var_orders[3]) %>%
+    cjsSeries(data = baseline_df$lower_extent ,  label = sprintf("Lower (Stdev) : (1985-%4d)", lastyear)) %>%
+    cjsSeries(data = baseline_df$upper_extent ,  label = sprintf("Upper (Stdev): (1985-%4d)", lastyear))
+
+```

@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "Sea Ice in Alaska"
+  navbar:
+    left:
+      - text: "Alaskan Arctic"
+        file: arctic.qmd
+      - text: "Eastern Bering"
+        file: ebering.qmd
+      - text: "Northern Bering"
+        file: nbering.qmd
+      - text: "ShinyFIN (SST)"
+        href: https://shinyfin.psmfc.org/ak-sst-mhw/
+
+      - text: "PolarWatch"
+        href: https://polarwatch.noaa.gov
+
+    right:
+      - icon: github
+        href: https://github.com/shospital/alaska-seaice
+format:
+  html:
+    grid:
+      sidebar-width: 100px
+      body-width: 1000px
+    theme: flatly
+    css: styles.css
+    toc: true
+
+
+exclude:
+  - "_scripts/"
+
+editor: visual
+
