@@ -1,0 +1,11 @@
+dependencies:
+  - name: chartjs
+    version: 0.3.3
+    src: htmlwidgets
+    stylesheet:
+      - chartjs.css
+  - name: Chart.js
+    version: 4.4.1
+    src: htmlwidgets/lib/Chart.js-4.4.1/
+    script:
+      - dist/chart.umd.min.js
