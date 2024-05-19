@@ -30,8 +30,8 @@ cjsSeries.cjs_bar <- function(cjs, data, type = "bar",label = NULL, scale = NULL
 #' @describeIn cjsSeries Add series to a line chart
 #' @keywords internal
 #' @export
-cjsSeries.cjs_line <- function(cjs, data, type = "line",   label = NULL, scale = NULL){
-  cjsSeries.cjs_bar(cjs, data,  type, fill, label, scale)
+cjsSeries.cjs_line <- function(cjs, data, type = "line", label = NULL, scale = NULL){
+  cjsSeries.cjs_bar(cjs, data,  type,  label, scale)
 }
 
 #' @describeIn cjsSeries Add series to a horizontal bar chart
