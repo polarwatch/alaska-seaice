@@ -65,7 +65,7 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
  
-
+## Sea ice extent monthly time series
 ```{r}
 #| echo: false
 
@@ -104,7 +104,7 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
 
-
+## Sea ice extent anomalies
 
 ```{r}
 #| echo: false
@@ -130,3 +130,18 @@ anom = (recent_df[recent_df$year == lastyear, ]$seaice_extent - baseline_df$ext_
     cjsLegend()
 
 ```
+Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
+Statistics/Figure Source : NOAA CoastWatch PolarWatch 
+
+
+### Contributions and Citations
+
+* [Contributions and citations](citations.html)
+
+### Additional Resources
+
+NOAA's Annual Arctic Report Card
+
+  * [Official Arctic Report Card Page](https://arctic.noaa.gov/report-card/report-card-2023/videos-and-animations-2023/)
+  * [2-Pager Fact sheet](https://docs.google.com/presentation/d/1TaKzJqPx-OeYcCZZLVqcPx0n4ilq7NKBaG1Qfwp-anE/edit#slide=id.g192e9543f73_0_16)
+

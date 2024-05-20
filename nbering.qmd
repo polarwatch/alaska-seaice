@@ -61,7 +61,7 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
  
-
+## Sea ice extent monthly time series
 ```{r}
 #| echo: false
 
@@ -100,7 +100,7 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
 
-
+## Sea ice extent anomalies
 
 ```{r}
 #| echo: false

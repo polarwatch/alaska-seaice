@@ -16,16 +16,14 @@ NOAA/NSIDC. (n.d.). Climate Data Record of Passive Microwave Sea Ice Concentrati
 
 Callahan, M. (2023/12/1). AKmarineareas: Management relevent spatial data for Alaska marine areas. Retrieved from https://github.com/MattCallahan-NOAA/AKmarineareas/
 
-
-
-**Data Access/Visualization**
+**Data Access**
 
 NOAA/CoastWatch PolarWatch. (n.d.). Data Access and Visualization of Climate Data Record of Passive Microwave Sea Ice Concentration, Version 2 and 4 DATA SET ID: (nsidcG02202v4nhmday
-, nsidcG10016v2nhmday). Retrieved from https://polarwatch.noaa.gov/catalog/
+, nsidcG10016v2nhmday).  https://polarwatch.noaa.gov/catalog/
 
 **Statistics and Plots**
 
-NOAA/CoastWatch PolarWatch. (n.d.). Sea ice extent time series for Alaska region. Retrieved from https://polarwatch.github.com/polarwatch/alaska-seaice  [github]()
+NOAA/CoastWatch PolarWatch. (n.d.). Sea ice extent time series for Alaska region. 
 
 **Software**
 
@@ -37,8 +35,5 @@ Quarto Authors (n.d). Quarto: An Open-Source Scientific and Technical Publishing
 
 Chart.js Downie N. et al. (2023). Chart.js (v4.4.1): Simple yet flexible JavaScript charting for designers & developers. Retrieved from https://www.chartjs.org/
 
-:::{.callout-info}
-to-do: add chartjs htmlwidget
-
-:::
+Formont P (2016). chartjs: R htmlwidget to integrate ChartJS into R. Retrieved from https://github.com/Tutuchan/chartjs
 

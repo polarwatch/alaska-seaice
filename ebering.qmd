@@ -23,6 +23,7 @@ The Alaska region is made up of distinct large marine ecosystems across: the Gul
 More information about the data and sea ice extent calculation can be found on [Sea Ice Extent page](extent.html).
 
 
+## Sea ice extent monthly time series
 
 ```{r}
 #| echo: false
@@ -62,12 +63,11 @@ recent_df$month <- format(as.Date(paste0(recent_df$month, "/01/2001"), "%m/%d/%Y
 recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
- 
-
 ```{r}
 #| echo: false
 
     var_orders = c(as.character(lastyear+1), as.character(lastyear),"Mean (1985-2015)", "1985-2022")
+    # blue (1), red (2), green (3), grey (4, 5)
     plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc")
     color_map <- setNames(plot_colors, var_orders)
  
@@ -77,6 +77,38 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 
 ```
+
+```{r}
+#| echo: false
+#| results: 'hide'
+# Example plot_colors and color_map
+
+color_map <- c("Lastyear" = plot_colors[2], "Recent Years" = plot_colors[1], "Baseline" = plot_colors[3])
+
+# Assuming baseline_df and recent_df are already loaded data frames
+# And lastyear is a predefined variable
+
+# Create the ggplot with both lines and points
+ice_ext_plot <- baseline_df %>%
+  ggplot(aes(x = month, y = ext_baseline)) +
+  geom_line(color = plot_colors[3], group = 1) +
+  geom_line(aes(y = lower_extent), color = plot_colors[4], group = 1) +
+  geom_line(aes(y = upper_extent), color = plot_colors[4], group = 1) +
+  geom_point(color = plot_colors[3]) +
+  geom_line(data = recent_df %>% filter(year > lastyear), aes(y = seaice_extent), color = plot_colors[1], group = 1) +
+  geom_point(data = recent_df %>% filter(year > lastyear), aes(y = seaice_extent), color = plot_colors[1]) +
+  geom_line(data = recent_df %>% filter(year == lastyear), aes(y = seaice_extent), color = plot_colors[2], group = 1) +
+  geom_point(data = recent_df %>% filter(year == lastyear), aes(y = seaice_extent), color = plot_colors[2]) +
+  labs(title = "Sea Ice Extent",
+       x = "Month",
+       y = "Millions in km squared",
+       color = "") +
+  theme_light() +
+  theme(plot.title = element_text(hjust = 0.5), legend.position = "top")
+
+```
+
+
 
 ```{r}
 #| echo: false
@@ -132,6 +164,38 @@ anom = (recent_df[recent_df$year == lastyear, ]$seaice_extent - baseline_df$ext_
 
 Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 
+
+
+## Data and plot downloads
+:::{layout-ncol="4"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+download_this(
+  ice_ext_plot,
+  button_label = "Download Plot",
+  button_type = "success",
+  )
+  ```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+download_this(
+  yearly_df,
+  output_name = "yearly_seaice_extent",
+  output_extension = ".csv",
+  button_label = "Download Data",
+  delimiter = ",",   
+  quote = TRUE,
+  button_type = "success"
+)
+  ```
+:::
+
 
 ## More resources
 
