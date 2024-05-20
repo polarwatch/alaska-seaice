@@ -168,6 +168,7 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 
 ## Data and plot downloads
 :::{layout-ncol="4"}
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -177,7 +178,7 @@ download_this(
   button_label = "Download Plot",
   button_type = "success",
   )
-  ```
+```
 
 ```{r}
 #| echo: false
