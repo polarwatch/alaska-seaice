@@ -55,7 +55,7 @@ baseline_df$month <- factor(baseline_df$month, levels = abb_months)
 
 # Get upper and lower bound of sea ice extent using standard dev
 baseline_df$upper_extent <- baseline_df$ext_baseline + baseline_df$ext_std
-baseline_df$lower_extent <- baseline_df$ext_baseline - baseline_df$ext_std
+baseline_df$lower_extent <- ifelse(baseline_df$ext_baseline - baseline_df$ext_std >= 0, baseline_df$ext_baseline - baseline_df$ext_std, 0)
 
 # Subset yearly data for this and last years 
 recent_df <- yearly_df[yearly_df$year >= lastyear ,]
@@ -63,6 +63,7 @@ recent_df$month <- format(as.Date(paste0(recent_df$month, "/01/2001"), "%m/%d/%Y
 recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
+
 ```{r}
 #| echo: false
 
@@ -73,39 +74,6 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
  
     customColors = list(border = plot_colors,
                         background = plot_colors)
-
-
-
-```
-
-```{r}
-#| echo: false
-#| results: 'hide'
-# Example plot_colors and color_map
-
-color_map <- c("Lastyear" = plot_colors[2], "Recent Years" = plot_colors[1], "Baseline" = plot_colors[3])
-
-# Assuming baseline_df and recent_df are already loaded data frames
-# And lastyear is a predefined variable
-
-# Create the ggplot with both lines and points
-ice_ext_plot <- baseline_df %>%
-  ggplot(aes(x = month, y = ext_baseline)) +
-  geom_line(color = plot_colors[3], group = 1) +
-  geom_line(aes(y = lower_extent), color = plot_colors[4], group = 1) +
-  geom_line(aes(y = upper_extent), color = plot_colors[4], group = 1) +
-  geom_point(color = plot_colors[3]) +
-  geom_line(data = recent_df %>% filter(year > lastyear), aes(y = seaice_extent), color = plot_colors[1], group = 1) +
-  geom_point(data = recent_df %>% filter(year > lastyear), aes(y = seaice_extent), color = plot_colors[1]) +
-  geom_line(data = recent_df %>% filter(year == lastyear), aes(y = seaice_extent), color = plot_colors[2], group = 1) +
-  geom_point(data = recent_df %>% filter(year == lastyear), aes(y = seaice_extent), color = plot_colors[2]) +
-  labs(title = "Sea Ice Extent",
-       x = "Month",
-       y = "Millions in km squared",
-       color = "") +
-  theme_light() +
-  theme(plot.title = element_text(hjust = 0.5), legend.position = "top")
-
 ```
 
 
@@ -114,26 +82,34 @@ ice_ext_plot <- baseline_df %>%
 #| echo: false
 #| warning: false
 #| message: false
-     # Chart
 
+# Plot
+# https://plotly.com/r/hover-text-and-formatting/
 
+library(plotly)
 
-  chartjs(palette = customColors) %>%
-    cjsOptions(responsive = TRUE, maintainAspectRatio = FALSE,
-                interaction = list(intersect = FALSE, axis= "index"),
-                plugins = list(legend=list(labels=list(font=list(size=15))), title = list(font=list(size=15), display = TRUE, text = paste0('Monthly Sea Ice Extent: ', region_title))),
-                scales = list(y = list(display = TRUE, title = list(font=list(size=15),display = TRUE, text = 'Million square km')),
-                              x = list(display = TRUE, title = list(font=list(size=15),display = TRUE, text = 'Month')))
-    )%>%
-    cjsLine(labels = month.abb) %>%
-    cjsSeries(data = recent_df[recent_df$year > lastyear, ]$seaice_extent  , label = var_orders[1]) %>%
-    cjsSeries(data = recent_df[recent_df$year == lastyear, ]$seaice_extent  , label = var_orders[2]) %>%
-    cjsSeries(data = baseline_df$ext_baseline  , label = var_orders[3]) %>%
-    cjsSeries(data = baseline_df$lower_extent ,  label = "Lower Error Bound : (1985-2015)") %>%
-    cjsSeries(data = baseline_df$upper_extent ,  label = "Upper Error Bound: (1985-2015)")
+fig <- plot_ly(baseline_df, x = ~month, y = ~upper_extent, type = 'scatter', mode = 'lines',line = list(color = 'transparent'),showlegend = FALSE, name = 'Upper bound') 
+fig <- fig %>% add_trace(y = ~lower_extent, type = 'scatter', mode = 'lines',
+            fill = 'tonexty', fillcolor='rgba(0,100,80,0.2)', line = list(color = 'transparent'),
+          showlegend = FALSE, name = 'Lower bound') 
+fig <- fig %>% add_trace(x = ~month, y = ~ext_baseline, type = 'scatter', mode = 'lines+markers',
+            line = list(color=plot_colors[3], width  = 2),
+            marker = list(color=plot_colors[3]),name = 'Baseline')    
 
+fig <- fig %>% add_trace(data = recent_df[recent_df$year > lastyear, ], x = ~month, y = ~seaice_extent, type = 'scatter', mode = 'lines+markers',
+            line = list(color=plot_colors[1], width  = 2),
+            marker = list(color=plot_colors[1]), name = lastyear + 1) 
+fig <- fig %>% add_trace(data = recent_df[recent_df$year == lastyear, ], x = ~month, y = ~seaice_extent, type = 'scatter', mode = 'lines+markers',
+            marker = list(
+            color = plot_colors[2]),
+            line = list(
+            color = plot_colors[2], width = 2), name = lastyear) 
+
+fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified",
+         xaxis = list(title = "Months"),
+         yaxis = list (title = "Million square km"))
+fig
 ```
-
 
 ## Sea ice extent anomalies
 
@@ -165,38 +141,9 @@ anom = (recent_df[recent_df$year == lastyear, ]$seaice_extent - baseline_df$ext_
 Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 
 
+## Monthly sea ice extent data downloads
 
-## Data and plot downloads
-:::{layout-ncol="4"}
-
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-download_this(
-  ice_ext_plot,
-  button_label = "Download Plot",
-  button_type = "success",
-  )
-```
-
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-
-download_this(
-  yearly_df,
-  output_name = "yearly_seaice_extent",
-  output_extension = ".csv",
-  button_label = "Download Data",
-  delimiter = ",",   
-  quote = TRUE,
-  button_type = "success"
-)
-```
-:::
-
+[Monthly sea ice extent data (1985-most recent year)](data/ebering_yearly.csv) are available to download.
 
 ## More resources
 
