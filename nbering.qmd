@@ -140,15 +140,19 @@ anom = (recent_df[recent_df$year == lastyear, ]$seaice_extent - baseline_df$ext_
 Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 
 
-### Contributions and Citations
+## Monthly sea ice extent data downloads
 
-* [Contributions and citations](citations.html)
+[Monthly sea ice extent data (1985-most recent year)](data/nbering_yearly.csv) are available to download.
 
-### Additional Resources
+## More resources
 
 NOAA's Annual Arctic Report Card
 
   * [Official Arctic Report Card Page](https://arctic.noaa.gov/report-card/report-card-2023/videos-and-animations-2023/)
   * [2-Pager Fact sheet](https://docs.google.com/presentation/d/1TaKzJqPx-OeYcCZZLVqcPx0n4ilq7NKBaG1Qfwp-anE/edit#slide=id.g192e9543f73_0_16)
 
+
+## Contributions and Citations
+
+* [Contributions and citations](citations.html)
 
