@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -131,10 +160,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contributions-and-citations" id="toc-contributions-and-citations" class="nav-link active" data-scroll-target="#contributions-and-citations">Contributions and Citations</a>
+  <li><a href="#sea-ice-extent-in-alaska-region" id="toc-sea-ice-extent-in-alaska-region" class="nav-link active" data-scroll-target="#sea-ice-extent-in-alaska-region">Sea ice Extent in Alaska region</a>
   <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#methods-and-workflow" id="toc-methods-and-workflow" class="nav-link" data-scroll-target="#methods-and-workflow">Methods and Workflow</a>
+  <ul class="collapse">
+  <li><a href="#monthly-sea-ice-extent" id="toc-monthly-sea-ice-extent" class="nav-link" data-scroll-target="#monthly-sea-ice-extent">Monthly Sea ice extent</a></li>
+  <li><a href="#monthly-sea-ice-extent-baseline" id="toc-monthly-sea-ice-extent-baseline" class="nav-link" data-scroll-target="#monthly-sea-ice-extent-baseline">Monthly sea ice extent baseline</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
+  </ul></li>
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#intended-use" id="toc-intended-use" class="nav-link" data-scroll-target="#intended-use">Intended Use</a></li>
+  <li><a href="#contact-us" id="toc-contact-us" class="nav-link" data-scroll-target="#contact-us">Contact us</a></li>
   <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
-  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -145,10 +184,82 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="contributions-and-citations" class="level2">
-<h2 class="anchored" data-anchor-id="contributions-and-citations">Contributions and Citations</h2>
-<section id="contributors" class="level3">
-<h3 class="anchored" data-anchor-id="contributors">Contributors</h3>
+<section id="sea-ice-extent-in-alaska-region" class="level1">
+<h1>Sea ice Extent in Alaska region</h1>
+<p>This page presents monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.</p>
+<p>The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region</p>
+<p>Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.</p>
+<p>Documentation for the calculation of sea ice extent is available on the <a href="">Polarwatch github repository</a>.</p>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>To compute the baseline sea ice extent, Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 monthly data were pulled from <a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">PolarWatch</a>.</p>
+<p>To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration</p>
+<p><strong>Climate Data Record (CDR) Sea Ice Concentration NSIDC Climate Data Record V4, Arctic</strong></p>
+<p>25-km science quality sea ice concentration data for the Arctic from the NOAA/NSIDC Climate Data Record, Version 4 (G02202). This data set provides a Climate Data Record (CDR) of sea ice concentration from passive microwave data. Daily and monthly versions are available from 1978 to the most recent annual processing.</p>
+<p><strong>Near-real-time Sea Ice Concentration</strong></p>
+<p>25-km sea ice concentration data for the Arctic from the Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record (G10016_v2). Daily and monthly versions are available with data beginning Jan 2021. The NRT CDR fills the temporal gap between annual updates of the final CDR providing the most recent data available.</p>
+<p><strong>Polar Stereographic Grid Cell Area Values</strong></p>
+<p>This dataset includes grid cell area values of 25-km polar stereographic projected map as ancillary data to the 25-km sea ice concentration data.</p>
+</section>
+<section id="methods-and-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-workflow">Methods and Workflow</h2>
+<p>Sea ice extent is the sum of the areas where sea ice concentration in each grid indicates sea ice.</p>
+<section id="monthly-sea-ice-extent" class="level3">
+<h3 class="anchored" data-anchor-id="monthly-sea-ice-extent">Monthly Sea ice extent</h3>
+<p>Let <span class="math inline">\(sic_{ij}\)</span> be the sea ice concentration fraction of the <span class="math inline">\(ij^{th}\)</span> cell from the satellite data.</p>
+<p>Sea ice extent of a <span class="math inline">\({region}\)</span> is defined as folows:</p>
+<p><span class="math display">\[
+\text{Sea Ice Extent}_{\text{region,month}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,month}} \cdot \text{cellarea}_{ij,\text{region}}
+\]</span></p>
+<p><span class="math display">\[
+\text {where}
+\ seaice_{ij,region,month} =
+\begin{cases}
+1 &amp; \text{if } sic_{ij,\text{region,month}} \geq 0.15, \\
+0 &amp; \text{otherwise.}
+\end{cases}
+\]</span></p>
+<p>The workflow of the data processing and computation:</p>
+<ul>
+<li><p>CDR sea ice concentration data within the region boundaries from 1985 to the most recent annual processing are loaded</p></li>
+<li><p>Near-real-time sea ice concentration data within the region boundaries are appended to the CDR time series to create the data time series with the latest data available.</p></li>
+<li><p>Flag data are removed from the dataset.</p></li>
+<li><p>Sea ice concentration values are converted from fractions to binary values (0 as no ice, 1 as ice) based on the specified threshold, 0.15.</p></li>
+<li><p>Grid cell area value and the sea ice binary value are multiplied to obtain sea ice extent for each grid.</p></li>
+</ul>
+<ol start="4" type="1">
+<li><p>Add all sea ice extent values across all grids to obtain the sea ice extent of the region.</p></li>
+<li><p>Convert the square meters to square kilometers.</p></li>
+</ol>
+</section>
+<section id="monthly-sea-ice-extent-baseline" class="level3">
+<h3 class="anchored" data-anchor-id="monthly-sea-ice-extent-baseline">Monthly sea ice extent baseline</h3>
+<p>The sea ice extent monthly baseline was computed using sea ice extent from 2015 to 2015, and defined as follows:</p>
+<p>Let <span class="math inline">\(sea\_ice\_ext_{m,y}\)</span> be <span class="math inline">\(mth\)</span> monthly sea ice extent of the <span class="math inline">\(yth\)</span> year, sea ice extent baseline of a <span class="math inline">\({region}\)</span> is defined as follows:</p>
+<p>Mean Sea ice extent of a <span class="math inline">\({region}\)</span> is defined as folows:</p>
+<p><span class="math display">\[
+\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{m,region,y \in [1985,2024]})
+\]</span></p>
+</section>
+<section id="data-processing" class="level3">
+<h3 class="anchored" data-anchor-id="data-processing">Data Processing</h3>
+<p>The data processing was performed using python code and the additional computation and data visualization were done using R.</p>
+</section>
+</section>
+<section id="metadata" class="level2">
+<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
+<p>Metadata follows the CF metadata standards and can be downloaded <a href="">here</a>.</p>
+</section>
+<section id="intended-use" class="level2">
+<h2 class="anchored" data-anchor-id="intended-use">Intended Use</h2>
+<p>The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to compare the recent year’s sea ice extent against the approximately 30-year baseline of sea ice extent. It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.</p>
+</section>
+<section id="contact-us" class="level2">
+<h2 class="anchored" data-anchor-id="contact-us">Contact us</h2>
+<p>For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page here.</p>
+</section>
+<section id="contributors" class="level2">
+<h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
 <ul>
 <li>Sun Hospital, PolarWatch Operations Manager at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program</li>
 <li>Elizabeth Siddon, NOAA Alaska Fisheries Science Center</li>
@@ -156,8 +267,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Matt Calahan, Alaska Fisheries Information Network</li>
 </ul>
 </section>
-<section id="citations" class="level3">
-<h3 class="anchored" data-anchor-id="citations">Citations</h3>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <p><strong>Data</strong></p>
 <p>NOAA/NSIDC. (n.d.). Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4. DATA SET ID: G02202. https://doi.org/10.7265/EFMZ-2T65</p>
 <p>Callahan, M. (2023/12/1). AKmarineareas: Management relevent spatial data for Alaska marine areas. Retrieved from https://github.com/MattCallahan-NOAA/AKmarineareas/</p>
@@ -171,7 +282,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Quarto Authors (n.d). Quarto: An Open-Source Scientific and Technical Publishing System Built on Pandoc. Retrieved from https://github.com/quarto-dev/quarto-cli</p>
 <p>Chart.js Downie N. et al.&nbsp;(2023). Chart.js (v4.4.1): Simple yet flexible JavaScript charting for designers &amp; developers. Retrieved from https://www.chartjs.org/</p>
 <p>Formont P (2016). chartjs: R htmlwidget to integrate ChartJS into R. Retrieved from https://github.com/Tutuchan/chartjs</p>
-<p>R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/. Reynolds, R. W., Smith, T. M., Liu, C., Chelton, D. B., Casey, K. S., &amp; Schlax, M. G. (2007). Daily high-resolution-blended analyses for sea surface temperature. Journal of climate, 20(22), 5473-5496.</p>
+<p>R Core Team (2020). R(version) [Statistical package] Retrieved from https://www.R-project.org/.</p>
+<p>Python Software Foundation. (2024). Python (3.10.14) [Computer software]. Retrieved from https://www.python.org.</p>
 
 
 </section>
