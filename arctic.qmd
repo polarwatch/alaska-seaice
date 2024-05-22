@@ -64,7 +64,9 @@ recent_df$month <- format(as.Date(paste0(recent_df$month, "/01/2001"), "%m/%d/%Y
 recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
- 
+
+
+
 ## Sea ice extent monthly time series
 ```{r}
 #| echo: false
@@ -115,6 +117,25 @@ fig
 ```
 
 ## Sea ice extent anomalies
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+yearly_df 
+anom <- yearly_df %>% 
+  mutate(
+    anomalies = seaice_extent - baseline_df[month, "ext_baseline"]
+  )
+
+fig <- plot_ly(anom, x = ~month, y = ~anomalies, type = 'scatter', mode = 'lines',line = list(color = 'transparent'),showlegend = FALSE, name = 'monthly anomalies') 
+
+fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
+         xaxis = list(title = "Months"),
+         yaxis = list (title = "Million square km"))
+fig
+
+```
 
 ```{r}
 #| echo: false
@@ -145,7 +166,7 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 
 ## Monthly sea ice extent data downloads
 
-[Monthly sea ice extent data (1985-most recent year)](data/arctic_yearly.csv) are available to download.
+[Monthly sea ice extent data (1985-most recent year)](data/alaskan_arctic_yearly.csv), [metadata](), and [white paper]() are available.
 
 ## More resources
 
@@ -153,8 +174,3 @@ NOAA's Annual Arctic Report Card
 
   * [Official Arctic Report Card Page](https://arctic.noaa.gov/report-card/report-card-2023/videos-and-animations-2023/)
   * [2-Pager Fact sheet](https://docs.google.com/presentation/d/1TaKzJqPx-OeYcCZZLVqcPx0n4ilq7NKBaG1Qfwp-anE/edit#slide=id.g192e9543f73_0_16)
-
-
-## Contributions and Citations
-
-* [Contributions and citations](citations.html)
