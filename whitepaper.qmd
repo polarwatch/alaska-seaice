@@ -1,0 +1,137 @@
+# Sea ice Extent in Alaska region
+
+This page presents monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.
+
+The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
+
+Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
+
+Documentation for the calculation of sea ice extent is available on the [Polarwatch github repository]().
+
+
+## Data
+
+To compute the baseline sea ice extent, Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 monthly data were pulled from [PolarWatch](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2023-12-01T00:00:00Z&time_max=2023-12-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,).  
+
+To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration  
+
+__Climate Data Record (CDR) Sea Ice Concentration NSIDC Climate Data Record V4, Arctic__
+
+25-km science quality sea ice concentration data for the Arctic from the NOAA/NSIDC Climate Data Record, Version 4 (G02202). This data set provides a Climate Data Record (CDR) of sea ice concentration from passive microwave data. Daily and monthly versions are available from 1978 to the most recent annual processing.
+
+
+__Near-real-time Sea Ice Concentration__
+
+25-km sea ice concentration data for the Arctic from the Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record (G10016_v2). Daily and monthly versions are available with data beginning Jan 2021. The NRT CDR fills the temporal gap between annual updates of the final CDR providing the most recent data available.
+
+__Polar Stereographic Grid Cell Area Values__
+
+This dataset includes grid cell area values of 25-km polar stereographic projected map as ancillary data to the 25-km sea ice concentration data.  
+
+## Methods and Workflow
+
+Sea ice extent is the sum of the areas where sea ice concentration in each grid indicates sea ice. 
+
+### Monthly Sea ice extent
+
+Let $sic_{ij}$ be the sea ice concentration fraction of the $ij^{th}$ cell from the satellite data. 
+
+Sea ice extent of a ${region}$ is defined as folows: 
+
+$$
+\text{Sea Ice Extent}_{\text{region,month}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,month}} \cdot \text{cellarea}_{ij,\text{region}}
+$$
+
+$$ 
+\text {where} 
+\ seaice_{ij,region,month} = 
+\begin{cases} 
+1 & \text{if } sic_{ij,\text{region,month}} \geq 0.15, \\
+0 & \text{otherwise.}
+\end{cases}
+$$
+
+The workflow of the data processing and computation:
+
+* CDR sea ice concentration data within the region boundaries from 1985 to the most recent annual processing are loaded
+
+* Near-real-time sea ice concentration data within the region boundaries are appended to the CDR time series to create the data time series with the latest data available.
+
+* Flag data are removed from the dataset.
+
+* Sea ice concentration values are converted from fractions to binary values (0 as no ice, 1 as ice) based on the specified threshold, 0.15.
+
+* Grid cell area value and the sea ice binary value are multiplied to obtain sea ice extent for each grid.
+
+4. Add all sea ice extent values across all grids to obtain the sea ice extent of the region.
+
+5. Convert the square meters to square kilometers.
+
+### Monthly sea ice extent baseline
+
+The sea ice extent monthly baseline was computed using sea ice extent from 2015 to 2015, and defined as follows: 
+
+Let $sea\_ice\_ext_{m,y}$ be  $mth$ monthly sea ice extent of the $yth$ year, sea ice extent baseline of a ${region}$ is defined as follows:
+
+Mean Sea ice extent of a ${region}$ is defined as folows: 
+
+$$
+\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{m,region,y \in [1985,2024]})
+$$
+
+### Data Processing
+
+The data processing was performed using python code and the additional computation and data visualization were done using R.
+
+## Metadata
+
+Metadata follows the CF metadata standards and can be downloaded [here]().
+
+## Intended Use
+
+The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to compare the recent year's sea ice extent against the approximately 30-year baseline of sea ice extent. It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.
+
+## Contact us
+
+For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page here.
+
+## Contributors
+
+* Sun Hospital, PolarWatch Operations Manager at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program
+* Elizabeth Siddon, NOAA Alaska Fisheries Science Center
+* Ludovic Brucker, NOAA NESDIS Center for Satellite Applications & Research
+* Matt Calahan, Alaska Fisheries Information Network 
+
+## References
+
+**Data**
+
+NOAA/NSIDC. (n.d.). Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4. DATA SET ID: G02202. https://doi.org/10.7265/EFMZ-2T65
+
+Callahan, M. (2023/12/1). AKmarineareas: Management relevent spatial data for Alaska marine areas. Retrieved from https://github.com/MattCallahan-NOAA/AKmarineareas/
+
+**Data Access**
+
+NOAA/CoastWatch PolarWatch. (n.d.). Data Access and Visualization of Climate Data Record of Passive Microwave Sea Ice Concentration, Version 2 and 4 DATA SET ID: (nsidcG02202v4nhmday
+, nsidcG10016v2nhmday).  https://polarwatch.noaa.gov/catalog/
+
+**Statistics and Plots**
+
+NOAA/CoastWatch PolarWatch. (n.d.). Sea ice extent time series for Alaska region. 
+
+**Software**
+
+Hoyer, S., & Hamman, J. (n.d.). xarray: N-D labeled arrays and datasets in Python. Retrieved from http://xarray.pydata.org
+
+Chamberlain, S. (n.d.). rerddap: General purpose client for ERDDAP servers. Retrieved from https://github.com/ropensci/rerddap
+
+Quarto Authors (n.d). Quarto: An Open-Source Scientific and Technical Publishing System Built on Pandoc. Retrieved from https://github.com/quarto-dev/quarto-cli
+
+Chart.js Downie N. et al. (2023). Chart.js (v4.4.1): Simple yet flexible JavaScript charting for designers & developers. Retrieved from https://www.chartjs.org/
+
+Formont P (2016). chartjs: R htmlwidget to integrate ChartJS into R. Retrieved from https://github.com/Tutuchan/chartjs
+
+R Core Team (2020). R(version) [Statistical package] Retrieved from https://www.R-project.org/. 
+
+Python Software Foundation. (2024). Python (3.10.14) [Computer software]. Retrieved from https://www.python.org.
+

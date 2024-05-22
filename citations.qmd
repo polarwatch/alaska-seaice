@@ -37,3 +37,7 @@ Chart.js Downie N. et al. (2023). Chart.js (v4.4.1): Simple yet flexible JavaScr
 
 Formont P (2016). chartjs: R htmlwidget to integrate ChartJS into R. Retrieved from https://github.com/Tutuchan/chartjs
 
+R Core Team (2020). R: A language and environment for statistical computing. 
+R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/. 
+Reynolds, R. W., Smith, T. M., Liu, C., Chelton, D. B., Casey, K. S., & Schlax, M. G. (2007). 
+Daily high-resolution-blended analyses for sea surface temperature. Journal of climate, 20(22), 5473-5496.
