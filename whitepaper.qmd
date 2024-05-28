@@ -3,7 +3,7 @@
 This website present monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.
 
 
-The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
+The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the [NOAA Alaska Fisheries Science Center](https://www.fisheries.noaa.gov/about/alaska-fisheries-science-center) Ecosystem Management Regions. 
 
 Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
 
