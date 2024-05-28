@@ -1,6 +1,7 @@
 # Sea ice Extent in Alaska region
 
-This page presents monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.
+This website present monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.
+
 
 The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
 
@@ -30,7 +31,8 @@ This dataset includes grid cell area values of 25-km polar stereographic project
 
 ## Methods and Workflow
 
-Sea ice extent is the sum of the areas where sea ice concentration in each grid indicates sea ice. 
+Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.
+
 
 ### Monthly Sea ice extent
 
@@ -51,21 +53,19 @@ $$
 \end{cases}
 $$
 
-The workflow of the data processing and computation:
 
-* CDR sea ice concentration data within the region boundaries from 1985 to the most recent annual processing are loaded
+__Workflow of Data Processing and Computation:__
 
-* Near-real-time sea ice concentration data within the region boundaries are appended to the CDR time series to create the data time series with the latest data available.
+1.  __Data Import__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.
 
-* Flag data are removed from the dataset.
+2. __Data Extension__ Append Near-Real-Time sea ice concentration data to the CDR time series to create an updated dataset with the latest available data.
 
-* Sea ice concentration values are converted from fractions to binary values (0 as no ice, 1 as ice) based on the specified threshold, 0.15.
+3. __Data Cleaning__ Remove all flag values (non-sea ice concentration values) from the dataset.
 
-* Grid cell area value and the sea ice binary value are multiplied to obtain sea ice extent for each grid.
+4. __Data Conversion__ Convert sea ice concentration values from fractions to binary values using a threshold of 0.15 (0 indicates no ice, 1 indicates ice presence).
 
-4. Add all sea ice extent values across all grids to obtain the sea ice extent of the region.
+4. __Sea Ice Extent Calculation__ Sum the grid cell areas across all grids to obtain the total sea ice extent within the regional boundaries.
 
-5. Convert the square meters to square kilometers.
 
 ### Monthly sea ice extent baseline
 
