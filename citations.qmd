@@ -3,7 +3,7 @@
 
 ### Contributors
 
-* Sun Hospital, PolarWatch Operations Manager at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program
+* Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program
 * Elizabeth Siddon, NOAA Alaska Fisheries Science Center
 * Ludovic Brucker, NOAA NESDIS Center for Satellite Applications & Research
 * Matt Calahan, Alaska Fisheries Information Network 
