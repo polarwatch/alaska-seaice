@@ -122,7 +122,6 @@ fig
 #| warning: false
 #| message: false
 
-yearly_df 
 anom <- yearly_df %>% 
   mutate(
     anomalies = seaice_extent - baseline_df[month, "ext_baseline"]
