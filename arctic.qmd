@@ -117,6 +117,25 @@ fig
 ```
 
 ## Sea ice extent anomalies
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+yearly_df 
+anom <- yearly_df %>% 
+  mutate(
+    anomalies = seaice_extent - baseline_df[month, "ext_baseline"]
+  )
+
+fig <- plot_ly(anom, x = ~month, y = ~anomalies, type = 'scatter', mode = 'lines',line = list(color = 'transparent'),showlegend = FALSE, name = 'monthly anomalies') 
+
+fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
+         xaxis = list(title = "Months"),
+         yaxis = list (title = "Million square km"))
+fig
+
+```
 
 ```{r}
 #| echo: false
@@ -148,6 +167,7 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 ## Monthly sea ice extent data downloads
 
 [Monthly sea ice extent data (1985-most recent year)](data/alaskan_arctic_yearly.csv), [metadata](), and [white paper](whitepaper.html) are available.
+
 
 ## More resources
 
