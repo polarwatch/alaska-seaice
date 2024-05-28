@@ -186,7 +186,7 @@ window.Quarto = {
 
 <section id="sea-ice-extent-in-alaska-region" class="level1">
 <h1>Sea ice Extent in Alaska region</h1>
-<p>This page presents monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.</p>
+<p>This website present monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.</p>
 <p>The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region</p>
 <p>Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.</p>
 <p>Documentation for the calculation of sea ice extent is available on the <a href="">Polarwatch github repository</a>.</p>
@@ -203,7 +203,7 @@ window.Quarto = {
 </section>
 <section id="methods-and-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="methods-and-workflow">Methods and Workflow</h2>
-<p>Sea ice extent is the sum of the areas where sea ice concentration in each grid indicates sea ice.</p>
+<p>Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.</p>
 <section id="monthly-sea-ice-extent" class="level3">
 <h3 class="anchored" data-anchor-id="monthly-sea-ice-extent">Monthly Sea ice extent</h3>
 <p>Let <span class="math inline">\(sic_{ij}\)</span> be the sea ice concentration fraction of the <span class="math inline">\(ij^{th}\)</span> cell from the satellite data.</p>
@@ -219,17 +219,13 @@ window.Quarto = {
 0 &amp; \text{otherwise.}
 \end{cases}
 \]</span></p>
-<p>The workflow of the data processing and computation:</p>
-<ul>
-<li><p>CDR sea ice concentration data within the region boundaries from 1985 to the most recent annual processing are loaded</p></li>
-<li><p>Near-real-time sea ice concentration data within the region boundaries are appended to the CDR time series to create the data time series with the latest data available.</p></li>
-<li><p>Flag data are removed from the dataset.</p></li>
-<li><p>Sea ice concentration values are converted from fractions to binary values (0 as no ice, 1 as ice) based on the specified threshold, 0.15.</p></li>
-<li><p>Grid cell area value and the sea ice binary value are multiplied to obtain sea ice extent for each grid.</p></li>
-</ul>
-<ol start="4" type="1">
-<li><p>Add all sea ice extent values across all grids to obtain the sea ice extent of the region.</p></li>
-<li><p>Convert the square meters to square kilometers.</p></li>
+<p><strong>Workflow of Data Processing and Computation:</strong></p>
+<ol type="1">
+<li><p><strong>Data Import</strong> Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.</p></li>
+<li><p><strong>Data Extension</strong> Append Near-Real-Time sea ice concentration data to the CDR time series to create an updated dataset with the latest available data.</p></li>
+<li><p><strong>Data Cleaning</strong> Remove all flag values (non-sea ice concentration values) from the dataset.</p></li>
+<li><p><strong>Data Conversion</strong> Convert sea ice concentration values from fractions to binary values using a threshold of 0.15 (0 indicates no ice, 1 indicates ice presence).</p></li>
+<li><p><strong>Sea Ice Extent Calculation</strong> Sum the grid cell areas across all grids to obtain the total sea ice extent within the regional boundaries.</p></li>
 </ol>
 </section>
 <section id="monthly-sea-ice-extent-baseline" class="level3">
