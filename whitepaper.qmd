@@ -93,7 +93,7 @@ The intended use of the data summaries, which include sea ice extent baselines a
 
 ## Contact us
 
-For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page here.
+For any questions, comments, or feedback, email us at polar.watch@noaa.gov or create an issue on our GitHub page here.
 
 ## Contributors
 
