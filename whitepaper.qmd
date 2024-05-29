@@ -89,7 +89,7 @@ Metadata follows the CF metadata standards and can be downloaded [here]().
 
 ## Intended Use
 
-The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to compare the recent year's sea ice extent against the approximately 30-year baseline of sea ice extent. It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.
+The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to visualize the time series of the monthly sea ice extent values and anomalies based on the approximately 30-year baseline of sea ice extent.  It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.
 
 ## Contact us
 
