@@ -7,7 +7,7 @@ The website features sea ice extent data for three regions: the Alaskan Arctic, 
 
 Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
 
-Documentation for the calculation of sea ice extent is available on the [Polarwatch github repository]().
+Documentation for the calculation of sea ice extent is available on the Polarwatch github repository (add link).
 
 
 ## Data
@@ -85,7 +85,7 @@ The data processing was performed using python code and the additional computati
 
 ## Metadata
 
-Metadata follows the CF metadata standards and can be downloaded [here]().
+Metadata follows the CF metadata standards and can be downloaded here.
 
 ## Intended Use
 
