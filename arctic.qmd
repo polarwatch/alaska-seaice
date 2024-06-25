@@ -152,10 +152,6 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 ## Monthly sea ice extent data downloads
 
 [Monthly sea ice extent data (1985-most recent year)](data/alaskan_arctic_yearly.csv), [metadata](), and [white paper](whitepaper.html) are available.
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 
 ## More resources
 
