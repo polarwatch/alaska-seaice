@@ -1,5 +1,5 @@
 ---
-title: "Sea ice extent in Eastern Bering"
+title: "Sea ice extent in Alaskan Arctic"
 format: 
   html:
     code-fold: true
@@ -8,7 +8,7 @@ format:
 
 > Updated on `r format(Sys.Date(), '%B %d, %Y')`
 
-<img src="img/ebering.png" alt="Eastern Bering" style="float: right; width: 200px;"/>
+<img src="img/arctic.png" alt="Alaskan Arctic" style="float: right; width: 200px;"/>
 
 
 The time series plot and data summary below present statistics on sea ice extent within Alaskan Arctic Sea
@@ -23,7 +23,8 @@ The Alaska region is made up of distinct large marine ecosystems across: the Gul
 More information about the data and sea ice extent calculation can be found on [Sea Ice Extent page](extent.html).
 
 
-## Sea ice extent monthly time series
+
+
 
 ```{r}
 #| echo: false
@@ -39,9 +40,11 @@ library(downloadthis)
 library(ggplot2)
 library(reshape2)
 
-region_title <- "Eastern Bering"
-yearly_df = read.csv("data/ebering_yearly.csv")
-baseline_df = read.csv("data/ebering_baseline.csv")
+region_title <- "Alaskan Arctic"
+yearly_df = read.csv("data/alaskan_arctic_yearly.csv")
+baseline_df = read.csv("data/alaskan_arctic_baseline.csv")
+bs_df = read.csv("data/bs_AlaskanArctic.csv")
+
 abb_months <- c("Jan","Feb","Mar",
               "Apr","May","Jun",
               "Jul","Aug","Sep",
@@ -64,20 +67,23 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 ```
 
+
+
+## Sea ice extent monthly time series
 ```{r}
 #| echo: false
 
     var_orders = c(as.character(lastyear+1), as.character(lastyear),"Mean (1985-2015)", "1985-2022")
-    # blue (1), red (2), green (3), grey (4, 5)
     plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc")
     color_map <- setNames(plot_colors, var_orders)
  
     customColors = list(border = plot_colors,
                         background = plot_colors)
+
+
 ```
 
-
-
+ 
 ```{r}
 #| echo: false
 #| warning: false
@@ -85,6 +91,7 @@ recent_df$month <- factor(recent_df$month, levels = abb_months)
 
 # Plot
 # https://plotly.com/r/hover-text-and-formatting/
+# https://plotly.com/r/time-series/
 
 library(plotly)
 
@@ -105,11 +112,12 @@ fig <- fig %>% add_trace(data = recent_df[recent_df$year == lastyear, ], x = ~mo
             line = list(
             color = plot_colors[2], width = 2), name = lastyear) 
 
-fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified",
+fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
          xaxis = list(title = "Months"),
-         yaxis = list (title = "Million square km"))
+         yaxis = list (title = "Square km"))
 fig
 ```
+
 
 ## Sea ice extent anomalies
 
@@ -137,17 +145,12 @@ anom = (recent_df[recent_df$year == lastyear, ]$seaice_extent - baseline_df$ext_
     cjsLegend()
 
 ```
-
 Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 
 
 ## Monthly sea ice extent data downloads
 
-[Monthly sea ice extent data (1985-most recent year)](data/ebering_yearly.csv), [metadata](), and [white paper](whitepaper.html) are available.
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
+[Monthly sea ice extent data (1985-most recent year)](data/alaskan_arctic_yearly.csv), [metadata](), and [white paper](whitepaper.html) are available.
 
 ## More resources
 

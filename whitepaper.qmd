@@ -2,12 +2,20 @@
 
 This website present monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.
 
+<<<<<<< HEAD
 
 The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the [NOAA Alaska Fisheries Science Center](https://www.fisheries.noaa.gov/about/alaska-fisheries-science-center) Ecosystem Management Regions. 
 
 Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
 
 Documentation for the calculation of sea ice extent is available on the Polarwatch github repository (add link).
+=======
+The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
+
+Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
+
+Documentation for the calculation of sea ice extent is available on the [Polarwatch github repository]().
+>>>>>>> dev
 
 
 ## Data
@@ -33,7 +41,10 @@ This dataset includes grid cell area values of 25-km polar stereographic project
 
 Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 ### Monthly Sea ice extent
 
 Let $sic_{ij}$ be the sea ice concentration fraction of the $ij^{th}$ cell from the satellite data. 
@@ -53,7 +64,10 @@ $$
 \end{cases}
 $$
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 __Workflow of Data Processing and Computation:__
 
 1.  __Data Import__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.
@@ -85,6 +99,7 @@ The data processing was performed using python code and the additional computati
 
 ## Metadata
 
+<<<<<<< HEAD
 Metadata follows the CF metadata standards and can be downloaded here.
 
 ## Intended Use
@@ -98,6 +113,21 @@ For any questions, comments, or feedback, email us at polar.watch@noaa.gov or cr
 ## Contributors
 
 * Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program
+=======
+Metadata follows the CF metadata standards and can be downloaded [here]().
+
+## Intended Use
+
+The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to compare the recent year's sea ice extent against the approximately 30-year baseline of sea ice extent. It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.
+
+## Contact us
+
+For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page here.
+
+## Contributors
+
+* Sun Hospital, PolarWatch Coordinator at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program
+>>>>>>> dev
 * Elizabeth Siddon, NOAA Alaska Fisheries Science Center
 * Ludovic Brucker, NOAA NESDIS Center for Satellite Applications & Research
 * Matt Calahan, Alaska Fisheries Information Network 
