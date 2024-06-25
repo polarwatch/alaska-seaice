@@ -160,12 +160,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sea-ice-extent-in-alaska-region" id="toc-sea-ice-extent-in-alaska-region" class="nav-link active" data-scroll-target="#sea-ice-extent-in-alaska-region">Sea ice Extent in Alaska region</a>
+  <li><a href="#sea-ice-extent-in-alaska-region" id="toc-sea-ice-extent-in-alaska-region" class="nav-link active" data-scroll-target="#sea-ice-extent-in-alaska-region">Sea ice Extent in Alaska region</a></li>
+  <li><a href="#documentation-for-the-calculation-of-sea-ice-extent-is-available-on-the-polarwatch-github-repository-add-link." id="toc-documentation-for-the-calculation-of-sea-ice-extent-is-available-on-the-polarwatch-github-repository-add-link." class="nav-link" data-scroll-target="#documentation-for-the-calculation-of-sea-ice-extent-is-available-on-the-polarwatch-github-repository-add-link.">Documentation for the calculation of sea ice extent is available on the Polarwatch github repository (add link).</a>
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#methods-and-workflow" id="toc-methods-and-workflow" class="nav-link" data-scroll-target="#methods-and-workflow">Methods and Workflow</a>
   <ul class="collapse">
-  <li><a href="#monthly-sea-ice-extent" id="toc-monthly-sea-ice-extent" class="nav-link" data-scroll-target="#monthly-sea-ice-extent">Monthly Sea ice extent</a></li>
   <li><a href="#monthly-sea-ice-extent-baseline" id="toc-monthly-sea-ice-extent-baseline" class="nav-link" data-scroll-target="#monthly-sea-ice-extent-baseline">Monthly sea ice extent baseline</a></li>
   <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
   </ul></li>
@@ -173,6 +173,9 @@ window.Quarto = {
   <li><a href="#intended-use" id="toc-intended-use" class="nav-link" data-scroll-target="#intended-use">Intended Use</a></li>
   <li><a href="#contact-us" id="toc-contact-us" class="nav-link" data-scroll-target="#contact-us">Contact us</a></li>
   <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
+  <li><a href="#intended-use-1" id="toc-intended-use-1" class="nav-link" data-scroll-target="#intended-use-1">Intended Use</a></li>
+  <li><a href="#contact-us-1" id="toc-contact-us-1" class="nav-link" data-scroll-target="#contact-us-1">Contact us</a></li>
+  <li><a href="#contributors-1" id="toc-contributors-1" class="nav-link" data-scroll-target="#contributors-1">Contributors</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -187,9 +190,15 @@ window.Quarto = {
 <section id="sea-ice-extent-in-alaska-region" class="level1">
 <h1>Sea ice Extent in Alaska region</h1>
 <p>This website present monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <p>The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the <a href="https://www.fisheries.noaa.gov/about/alaska-fisheries-science-center">NOAA Alaska Fisheries Science Center</a> Ecosystem Management Regions.</p>
 <p>Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.</p>
-<p>Documentation for the calculation of sea ice extent is available on the Polarwatch github repository (add link).</p>
+</section>
+<section id="documentation-for-the-calculation-of-sea-ice-extent-is-available-on-the-polarwatch-github-repository-add-link." class="level1">
+<h1>Documentation for the calculation of sea ice extent is available on the Polarwatch github repository (add link).</h1>
+<p>The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region</p>
+<p>Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.</p>
+<p>Documentation for the calculation of sea ice extent is available on the <a href="">Polarwatch github repository</a>. &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</p>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>To compute the baseline sea ice extent, Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 monthly data were pulled from <a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">PolarWatch</a>.</p>
@@ -204,8 +213,8 @@ window.Quarto = {
 <section id="methods-and-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="methods-and-workflow">Methods and Workflow</h2>
 <p>Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.</p>
-<section id="monthly-sea-ice-extent" class="level3">
-<h3 class="anchored" data-anchor-id="monthly-sea-ice-extent">Monthly Sea ice extent</h3>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev ### Monthly Sea ice extent</p>
 <p>Let <span class="math inline">\(sic_{ij}\)</span> be the sea ice concentration fraction of the <span class="math inline">\(ij^{th}\)</span> cell from the satellite data.</p>
 <p>Sea ice extent of a <span class="math inline">\({region}\)</span> is defined as folows:</p>
 <p><span class="math display">\[
@@ -219,7 +228,8 @@ window.Quarto = {
 0 &amp; \text{otherwise.}
 \end{cases}
 \]</span></p>
-<p><strong>Workflow of Data Processing and Computation:</strong></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev <strong>Workflow of Data Processing and Computation:</strong></p>
 <ol type="1">
 <li><p><strong>Data Import</strong> Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.</p></li>
 <li><p><strong>Data Extension</strong> Append Near-Real-Time sea ice concentration data to the CDR time series to create an updated dataset with the latest available data.</p></li>
@@ -227,7 +237,6 @@ window.Quarto = {
 <li><p><strong>Data Conversion</strong> Convert sea ice concentration values from fractions to binary values using a threshold of 0.15 (0 indicates no ice, 1 indicates ice presence).</p></li>
 <li><p><strong>Sea Ice Extent Calculation</strong> Sum the grid cell areas across all grids to obtain the total sea ice extent within the regional boundaries.</p></li>
 </ol>
-</section>
 <section id="monthly-sea-ice-extent-baseline" class="level3">
 <h3 class="anchored" data-anchor-id="monthly-sea-ice-extent-baseline">Monthly sea ice extent baseline</h3>
 <p>The sea ice extent monthly baseline was computed using sea ice extent from 2015 to 2015, and defined as follows:</p>
@@ -244,7 +253,7 @@ window.Quarto = {
 </section>
 <section id="metadata" class="level2">
 <h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<p>Metadata follows the CF metadata standards and can be downloaded here.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD Metadata follows the CF metadata standards and can be downloaded here.</p>
 </section>
 <section id="intended-use" class="level2">
 <h2 class="anchored" data-anchor-id="intended-use">Intended Use</h2>
@@ -257,7 +266,22 @@ window.Quarto = {
 <section id="contributors" class="level2">
 <h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
 <ul>
-<li>Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program</li>
+<li><h1 id="sun-hospital-polarwatch-ucsc-fisheries-cooperative-program">Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program</h1>
+Metadata follows the CF metadata standards and can be downloaded <a href="">here</a>.</li>
+</ul>
+</section>
+<section id="intended-use-1" class="level2">
+<h2 class="anchored" data-anchor-id="intended-use-1">Intended Use</h2>
+<p>The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to compare the recent year’s sea ice extent against the approximately 30-year baseline of sea ice extent. It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.</p>
+</section>
+<section id="contact-us-1" class="level2">
+<h2 class="anchored" data-anchor-id="contact-us-1">Contact us</h2>
+<p>For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page here.</p>
+</section>
+<section id="contributors-1" class="level2">
+<h2 class="anchored" data-anchor-id="contributors-1">Contributors</h2>
+<ul>
+<li>Sun Hospital, PolarWatch Coordinator at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</li>
 <li>Elizabeth Siddon, NOAA Alaska Fisheries Science Center</li>
 <li>Ludovic Brucker, NOAA NESDIS Center for Satellite Applications &amp; Research</li>
 <li>Matt Calahan, Alaska Fisheries Information Network</li>
