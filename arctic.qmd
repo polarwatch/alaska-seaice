@@ -169,11 +169,11 @@ fig1 <- plot_ly(df_merge, x = ~date, y = ~anom, type = 'scatter', mode = 'lines'
         )
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~2*seaice_extent_std, type = 'scatter', mode = 'lines',
-            line = list(color = '#1F51FF'), fill='transparent',
+            line = list(color = '#FC4100'), fill='transparent',
            name = '+2SD') 
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~-2*seaice_extent_std, type = 'scatter', mode = 'lines',
-            line = list(color = '#1F51FF'), fill='transparent',
+            line = list(color = '#FC4100'), fill='transparent',
            name = '-2SD') 
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~1*seaice_extent_std, type = 'scatter', mode = 'lines',
