@@ -95,18 +95,23 @@ fig <- plot_ly(baseline_df1, x = ~date, y = ~upper_extent, type = 'scatter',
       # Baseline
         add_trace(x = ~date, y = ~seaice_extent_mean, type = 'scatter', mode = 'lines',
                   line = list(color=plot_colors[3], width  = 2),name = 'Baseline') %>%   
-      # Latest point
-        add_trace( x= latest$date,  y = latest$seaice_extent, type='scatter', mode = 'markers',
-          marker = list(color=plot_colors[1], size=10), name = "Latest") %>% 
-      
-      # Current year
-        add_trace(data = dat_this, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
-            line = list(color=plot_colors[1], width  = 3),name = lastyear + 1) %>%
-      
+
       # Last year
       add_trace(data = dat_last, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
             line = list(
-            color = plot_colors[2], width = 2), name = lastyear) 
+            color = plot_colors[2], width = 2), name = lastyear) %>% 
+
+      # Current year
+        add_trace(data = dat_this, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
+            line = list(color=plot_colors[1], width  = 3),name = lastyear + 1) %>%
+
+      # Latest point
+        add_trace( x= latest$date,  y = latest$seaice_extent, type='scatter', mode = 'markers',
+          marker = list(color=plot_colors[1], size=10), name = "Latest") 
+      
+
+      
+
 
 # Add style to chart
 fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
