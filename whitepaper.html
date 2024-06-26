@@ -165,8 +165,8 @@ window.Quarto = {
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#methods-and-workflow" id="toc-methods-and-workflow" class="nav-link" data-scroll-target="#methods-and-workflow">Methods and Workflow</a>
   <ul class="collapse">
-  <li><a href="#monthly-sea-ice-extent" id="toc-monthly-sea-ice-extent" class="nav-link" data-scroll-target="#monthly-sea-ice-extent">Monthly Sea ice extent</a></li>
-  <li><a href="#monthly-sea-ice-extent-baseline" id="toc-monthly-sea-ice-extent-baseline" class="nav-link" data-scroll-target="#monthly-sea-ice-extent-baseline">Monthly sea ice extent baseline</a></li>
+  <li><a href="#daily-sea-ice-extent" id="toc-daily-sea-ice-extent" class="nav-link" data-scroll-target="#daily-sea-ice-extent">Daily Sea ice extent</a></li>
+  <li><a href="#daily-sea-ice-extent-baseline" id="toc-daily-sea-ice-extent-baseline" class="nav-link" data-scroll-target="#daily-sea-ice-extent-baseline">Daily sea ice extent baseline</a></li>
   <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
   </ul></li>
   <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
@@ -187,7 +187,7 @@ window.Quarto = {
 <section id="sea-ice-extent-in-alaska-region" class="level1">
 <h1>Sea ice Extent in Alaska region</h1>
 <p>This website presents daily time series of sea ice extent and its anomaly within the management regions of Alaskan waters.</p>
-<p>The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region</p>
+<p>The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions.</p>
 <p>Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.</p>
 <p>Documentation for the calculation of sea ice extent is available on the <a href="">Polarwatch github repository</a>.</p>
 <section id="data" class="level2">
@@ -204,16 +204,16 @@ window.Quarto = {
 <section id="methods-and-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="methods-and-workflow">Methods and Workflow</h2>
 <p>Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.</p>
-<section id="monthly-sea-ice-extent" class="level3">
-<h3 class="anchored" data-anchor-id="monthly-sea-ice-extent">Monthly Sea ice extent</h3>
+<section id="daily-sea-ice-extent" class="level3">
+<h3 class="anchored" data-anchor-id="daily-sea-ice-extent">Daily Sea ice extent</h3>
 <p>Let <span class="math inline">\(sic_{ij}\)</span> be the satellite estimated sea ice concentration (i.e., fraction) of the <span class="math inline">\(ij^{th}\)</span> grid cell.</p>
 <p>Sea ice extent of a <span class="math inline">\({region}\)</span> is defined as follows:</p>
 <p><span class="math display">\[
-\text{Sea Ice Extent}_{\text{region,month}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,month}} \cdot \text{cellarea}_{ij,\text{region}}
+\text{Sea Ice Extent}_{\text{region,day}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,day}} \cdot \text{cellarea}_{ij,\text{region}}
 \]</span></p>
 <p><span class="math display">\[
 \text {where}
-\ seaice_{ij,region,month} =
+\ seaice_{ij,region,day} =
 \begin{cases}
 1 &amp; \text{if } sic_{ij,\text{region,month}} \geq 0.15, \\
 0 &amp; \text{otherwise.}
@@ -221,20 +221,20 @@ window.Quarto = {
 \]</span></p>
 <p><strong>Workflow of Data Processing and Computation:</strong></p>
 <ol type="1">
-<li><p><strong>Data Import</strong> Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.</p></li>
-<li><p><strong>Data Extension</strong> Append Near-Real-Time sea ice concentration data to the CDR time series to create an updated dataset with the latest available data.</p></li>
+<li><p><strong>Data Import for Baseline</strong> Import Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 within the specified regional boundaries to compute daily baseline. the most recent annual processing within the specified regional boundaries.</p></li>
+<li><p><strong>Data Import for most recent years</strong> Import Near-Real-Time sea ice concentration data to the CDR time series.</p></li>
 <li><p><strong>Data Cleaning</strong> Remove all flag values (non-sea ice concentration values) from the dataset.</p></li>
 <li><p><strong>Data Conversion</strong> Convert sea ice concentration values from fractions to binary values using a threshold of 0.15 (0 indicates no ice, 1 indicates ice presence).</p></li>
 <li><p><strong>Sea Ice Extent Calculation</strong> Sum the grid cell areas across all grids to obtain the total sea ice extent within the regional boundaries.</p></li>
 </ol>
 </section>
-<section id="monthly-sea-ice-extent-baseline" class="level3">
-<h3 class="anchored" data-anchor-id="monthly-sea-ice-extent-baseline">Monthly sea ice extent baseline</h3>
-<p>The sea ice extent monthly baseline was computed using sea ice extent from 2015 to 2015, and defined as follows:</p>
-<p>Let <span class="math inline">\(sea\_ice\_ext_{m,y}\)</span> be <span class="math inline">\(mth\)</span> monthly sea ice extent of the <span class="math inline">\(yth\)</span> year, sea ice extent baseline of a <span class="math inline">\({region}\)</span> is defined as follows:</p>
+<section id="daily-sea-ice-extent-baseline" class="level3">
+<h3 class="anchored" data-anchor-id="daily-sea-ice-extent-baseline">Daily sea ice extent baseline</h3>
+<p>The sea ice extent daily baseline was computed using sea ice extent from 1985 to 2015, and defined as follows:</p>
+<p>Let <span class="math inline">\(sea\_ice\_ext_{d,y}\)</span> be <span class="math inline">\(dth\)</span> daily sea ice extent of the <span class="math inline">\(yth\)</span> year, sea ice extent baseline of a <span class="math inline">\({region}\)</span> is defined as follows:</p>
 <p>Mean Sea ice extent of a <span class="math inline">\({region}\)</span> is defined as folows:</p>
 <p><span class="math display">\[
-\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{m,region,y \in [1985,2024]})
+\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{d,region,y \in [1985,2015]})
 \]</span></p>
 </section>
 <section id="data-processing" class="level3">
