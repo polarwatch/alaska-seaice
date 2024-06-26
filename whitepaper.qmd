@@ -2,7 +2,7 @@
 
 This website presents daily time series of sea ice extent and its anomaly within the management regions of Alaskan waters.
 
-The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
+The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. 
 
 Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
 
@@ -33,19 +33,19 @@ This dataset includes grid cell area values for the 25-km polar stereographic gr
 
 Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.
 
-### Monthly Sea ice extent
+### Daily Sea ice extent
 
 Let $sic_{ij}$ be the satellite estimated sea ice concentration (i.e., fraction) of the $ij^{th}$ grid cell.
 
 Sea ice extent of a ${region}$ is defined as follows:
 
 $$
-\text{Sea Ice Extent}_{\text{region,month}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,month}} \cdot \text{cellarea}_{ij,\text{region}}
+\text{Sea Ice Extent}_{\text{region,day}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,day}} \cdot \text{cellarea}_{ij,\text{region}}
 $$
 
 $$ 
 \text {where} 
-\ seaice_{ij,region,month} = 
+\ seaice_{ij,region,day} = 
 \begin{cases} 
 1 & \text{if } sic_{ij,\text{region,month}} \geq 0.15, \\
 0 & \text{otherwise.}
@@ -54,9 +54,9 @@ $$
 
 __Workflow of Data Processing and Computation:__
 
-1.  __Data Import__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.
+1.  __Data Import for Baseline__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 within the specified regional boundaries to compute daily baseline.   the most recent annual processing within the specified regional boundaries.
 
-2. __Data Extension__ Append Near-Real-Time sea ice concentration data to the CDR time series to create an updated dataset with the latest available data.
+2. __Data Import for most recent years__ Import Near-Real-Time sea ice concentration data to the CDR time series.
 
 3. __Data Cleaning__ Remove all flag values (non-sea ice concentration values) from the dataset.
 
@@ -65,16 +65,16 @@ __Workflow of Data Processing and Computation:__
 4. __Sea Ice Extent Calculation__ Sum the grid cell areas across all grids to obtain the total sea ice extent within the regional boundaries.
 
 
-### Monthly sea ice extent baseline
+### Daily sea ice extent baseline
 
-The sea ice extent monthly baseline was computed using sea ice extent from 2015 to 2015, and defined as follows: 
+The sea ice extent daily baseline was computed using sea ice extent from 1985 to 2015, and defined as follows: 
 
-Let $sea\_ice\_ext_{m,y}$ be  $mth$ monthly sea ice extent of the $yth$ year, sea ice extent baseline of a ${region}$ is defined as follows:
+Let $sea\_ice\_ext_{d,y}$ be  $dth$ daily sea ice extent of the $yth$ year, sea ice extent baseline of a ${region}$ is defined as follows:
 
 Mean Sea ice extent of a ${region}$ is defined as folows: 
 
 $$
-\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{m,region,y \in [1985,2024]})
+\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{d,region,y \in [1985,2015]})
 $$
 
 ### Data Processing
