@@ -7,18 +7,11 @@
     "text": "Updated on June 26, 2024\nThe time series plot and data summary below present statistics on sea ice extent within Alaskan Arctic Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.\nMore information about the data and sea ice extent calculation can be found on Sea Ice Extent page."
   },
   {
-    "objectID": "nbering.html#sea-ice-extent-monthly-time-series",
-    "href": "nbering.html#sea-ice-extent-monthly-time-series",
-    "title": "Sea ice extent in Northern Bering",
-    "section": "Sea ice extent monthly time series",
-    "text": "Sea ice extent monthly time series"
-  },
-  {
     "objectID": "nbering.html#sea-ice-extent-anomalies",
     "href": "nbering.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Northern Bering",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\n\n\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
+    "text": "Sea ice extent anomalies\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
   },
   {
     "objectID": "nbering.html#monthly-sea-ice-extent-data-downloads",
@@ -53,14 +46,14 @@
     "href": "ebering.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\n\n\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
+    "text": "Sea ice extent anomalies\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
   },
   {
     "objectID": "ebering.html#monthly-sea-ice-extent-data-downloads",
     "href": "ebering.html#monthly-sea-ice-extent-data-downloads",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Monthly sea ice extent data downloads",
-    "text": "Monthly sea ice extent data downloads\nMonthly sea ice extent data (1985-most recent year), metadata, and white paper are available. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\n======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev"
+    "text": "Monthly sea ice extent data downloads\nMonthly sea ice extent data (1985-most recent year), metadata, and white paper are available."
   },
   {
     "objectID": "ebering.html#more-resources",
