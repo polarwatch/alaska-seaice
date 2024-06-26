@@ -1,14 +1,14 @@
 # Sea ice Extent in Alaska region
 
-This website present monthly time series and anomalies for sea ice extent within the management regions of Alaskan waters.
+This website presents daily time series of sea ice extent and its anomaly within the management regions of Alaskan waters.
 
 <<<<<<< HEAD
 
 The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the [NOAA Alaska Fisheries Science Center](https://www.fisheries.noaa.gov/about/alaska-fisheries-science-center) Ecosystem Management Regions. 
 
-Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
+Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when new dates are available.
 
-Documentation for the calculation of sea ice extent is available on the Polarwatch github repository (add link).
+Documentation for the calculation of sea ice extent is available on the PolarWatch github repository (add link).
 =======
 The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
 
@@ -22,20 +22,21 @@ Documentation for the calculation of sea ice extent is available on the [Polarwa
 
 To compute the baseline sea ice extent, Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 monthly data were pulled from [PolarWatch](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2023-12-01T00:00:00Z&time_max=2023-12-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,).  
 
-To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration  
+To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration product has been used.
 
-__Climate Data Record (CDR) Sea Ice Concentration NSIDC Climate Data Record V4, Arctic__
+__Climate Data Record (CDR) of Passive Microwave Sea Ice Concentration__
 
-25-km science quality sea ice concentration data for the Arctic from the NOAA/NSIDC Climate Data Record, Version 4 (G02202). This data set provides a Climate Data Record (CDR) of sea ice concentration from passive microwave data. Daily and monthly versions are available from 1978 to the most recent annual processing.
+This data set provides a CDR of sea ice concentration at 25 km resolution. Daily and monthly versions are available from 1978 to the most recent annual processing. The data are deemed of science quality. The product name is NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4 (G02202).
 
 
 __Near-real-time Sea Ice Concentration__
 
-25-km sea ice concentration data for the Arctic from the Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record (G10016_v2). Daily and monthly versions are available with data beginning Jan 2021. The NRT CDR fills the temporal gap between annual updates of the final CDR providing the most recent data available.
+The NRT CDR of sea ice concentration at 25 km is updated daily and used while waiting for the annual processing of the science quality CDR described above. Daily and monthly versions are available. The product name is Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record (G10016_v2).
+
 
 __Polar Stereographic Grid Cell Area Values__
 
-This dataset includes grid cell area values of 25-km polar stereographic projected map as ancillary data to the 25-km sea ice concentration data.  
+This dataset includes grid cell area values for the 25-km polar stereographic grid used for the sea ice concentration data.
 
 ## Methods and Workflow
 
@@ -47,9 +48,9 @@ Sea ice extent is calculated as the sum of the areas of each grid cell where the
 >>>>>>> dev
 ### Monthly Sea ice extent
 
-Let $sic_{ij}$ be the sea ice concentration fraction of the $ij^{th}$ cell from the satellite data. 
+Let $sic_{ij}$ be the satellite estimated sea ice concentration (i.e., fraction) of the $ij^{th}$ grid cell.
 
-Sea ice extent of a ${region}$ is defined as folows: 
+Sea ice extent of a ${region}$ is defined as follows:
 
 $$
 \text{Sea Ice Extent}_{\text{region,month}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,month}} \cdot \text{cellarea}_{ij,\text{region}}
