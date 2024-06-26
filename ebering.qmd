@@ -52,12 +52,6 @@ plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc"
 #| warning: false
 #| message: false
 
-# Plot
-# https://plotly.com/r/hover-text-and-formatting/
-# https://plotly.com/r/time-series/
-
-
-
 baseline_df1 = read.csv("data/bs_EasternBering.csv")
 recent_df1 = read.csv("data/ext_recent_EasternBering.csv")
 
@@ -132,9 +126,6 @@ fig
 #| echo: false
 #| warning: false
 #| message: false
-# Plot
-# https://plotly.com/r/hover-text-and-formatting/
-# https://plotly.com/r/time-series/
 
 df_merge <- merge(dat_last, baseline_df1, by="date") 
 df_merge$anom = df_merge$seaice_extent - df_merge$seaice_extent_mean
@@ -154,7 +145,6 @@ yaxis <- list(title = "Square km",
             zerolinewidth = 1,
             showline = TRUE,
             showticklabels = TRUE)
-
 
 # Create Plotly figure
 fig1 <- plot_ly(df_merge, x = ~date, y = ~anom, type = 'scatter', mode = 'lines', 
