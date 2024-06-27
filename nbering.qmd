@@ -190,7 +190,7 @@ Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and N
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 
 
 
-## Monthly sea ice extent data downloads
+## Daily sea ice extent data downloads
 
 The data used in the charts, metadata and white paper are available.
 
