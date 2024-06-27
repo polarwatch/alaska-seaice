@@ -19,7 +19,7 @@ website:
 
     right:
       - icon: github
-        href: https://github.com/shospital/alaska-seaice
+        href: https://github.com/polarwatch/alaska-seaice
 format:
   html:
     grid:

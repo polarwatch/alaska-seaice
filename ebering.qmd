@@ -14,9 +14,9 @@ format:
 The time series plot and data summary below present statistics on sea ice extent within Alaskan Arctic Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
-* Mean (1985-2015): Represents the average sea ice extent from 1985 to 2015.
-* Upper and Lower Bounds of Error Band (1985-2015): Reflect the uncertainty of the Mean (1985 to 2015).
-* Current and Previous Year: Show the monthly sea ice extent values for the current and previous year within the area.
+* Mean (1985-2015): Represents the daily average sea ice extent from 1985 to 2015.
+* Upper and Lower Bounds (1985-2015): Reflect the daily standard deviation (1985 to 2015).
+* Current and Previous Year: Show the daily sea ice extent values for the current and previous years within the area.
 
 The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
 
@@ -51,12 +51,6 @@ plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc"
 #| echo: false
 #| warning: false
 #| message: false
-
-# Plot
-# https://plotly.com/r/hover-text-and-formatting/
-# https://plotly.com/r/time-series/
-
-
 
 baseline_df1 = read.csv("data/bs_EasternBering.csv")
 recent_df1 = read.csv("data/ext_recent_EasternBering.csv")
@@ -128,17 +122,21 @@ fig
 
 ## Sea ice extent anomalies
 
+_Users can click on the data names in the legend to toggle it on and off._
+
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
-# Plot
-# https://plotly.com/r/hover-text-and-formatting/
-# https://plotly.com/r/time-series/
 
-df_merge <- merge(dat_last, baseline_df1, by="date") 
-df_merge$anom = df_merge$seaice_extent - df_merge$seaice_extent_mean
-anom_range = max(abs(df_merge$anom))
+
+anom_current <- left_join(dat_this, baseline_df1, by = "date")
+anom_last <- left_join(dat_last, baseline_df1, by = "date")
+
+anom_current$anom = anom_current$seaice_extent - anom_current$seaice_extent_mean
+anom_last$anom = anom_last$seaice_extent - anom_last$seaice_extent_mean
+
+anom_range = max(abs(anom_current$anom), abs(anom_last$anom))
 
 # Axis specs
 xaxis <- list(title = "Dates (MM-DD)",
@@ -157,14 +155,12 @@ yaxis <- list(title = "Square km",
 
 
 # Create Plotly figure
-fig1 <- plot_ly(df_merge, x = ~date, y = ~anom, type = 'scatter', mode = 'lines', 
-               fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name="Anomalies" )%>%
-        layout(
-          showlegend = TRUE,
-          yaxis = yaxis,
-          xaxis = xaxis,
-          plot_bgcolor = '#ffffff'
-        )
+fig1 <- plot_ly(anom_last, x = ~date, y = ~anom, type = 'scatter', mode = 'lines', 
+               fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=paste0("Anomaly: ", lastyear ))
+
+
+fig1 <- fig1 %>%  add_trace(data = anom_current, x = ~date, y = ~anom, type = 'scatter', mode = 'lines',
+                            fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=paste0("Anomaly: ", lastyear + 1 )) 
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~2*seaice_extent_std, type = 'scatter', mode = 'lines',
             line = list(color = '#FC4100'), fill='transparent',
@@ -182,8 +178,15 @@ fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~-1*seaice_extent
             line = list(color = '#6495ED'), fill='transparent',
            name = '-1SD') 
 
+# Add style to chart
+fig1 <- fig1 %>% layout(showlegend = TRUE,  
+                      hovermode = "x unified",
+                      yaxis = yaxis,
+                      xaxis = xaxis,
+                      plot_bgcolor = '#ffffff'
+                    )
+
 fig1
- 
 ```
 Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 

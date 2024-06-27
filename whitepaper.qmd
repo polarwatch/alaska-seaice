@@ -2,20 +2,11 @@
 
 This website presents daily time series of sea ice extent and its anomaly within the management regions of Alaskan waters.
 
-<<<<<<< HEAD
-
-The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the [NOAA Alaska Fisheries Science Center](https://www.fisheries.noaa.gov/about/alaska-fisheries-science-center) Ecosystem Management Regions. 
-
-Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when new dates are available.
-
-Documentation for the calculation of sea ice extent is available on the PolarWatch github repository (add link).
-=======
-The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. #TODO: add link to the management region
+The website features sea ice extent data for three regions: the Alaskan Arctic, Northern Bering, and Eastern Bering Sea. The boundaries of these regions are defined by the Ecosystem Management Regions. 
 
 Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
 
 Documentation for the calculation of sea ice extent is available on the [Polarwatch github repository]().
->>>>>>> dev
 
 
 ## Data
@@ -42,38 +33,30 @@ This dataset includes grid cell area values for the 25-km polar stereographic gr
 
 Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
-### Monthly Sea ice extent
+### Daily Sea ice extent
 
 Let $sic_{ij}$ be the satellite estimated sea ice concentration (i.e., fraction) of the $ij^{th}$ grid cell.
 
 Sea ice extent of a ${region}$ is defined as follows:
 
 $$
-\text{Sea Ice Extent}_{\text{region,month}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,month}} \cdot \text{cellarea}_{ij,\text{region}}
+\text{Sea Ice Extent}_{\text{region,day}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region,day}} \cdot \text{cellarea}_{ij,\text{region}}
 $$
 
 $$ 
 \text {where} 
-\ seaice_{ij,region,month} = 
+\ seaice_{ij,region,day} = 
 \begin{cases} 
 1 & \text{if } sic_{ij,\text{region,month}} \geq 0.15, \\
 0 & \text{otherwise.}
 \end{cases}
 $$
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 __Workflow of Data Processing and Computation:__
 
-1.  __Data Import__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to the most recent annual processing within the specified regional boundaries.
+1.  __Data Import for Baseline__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 within the specified regional boundaries to compute daily baseline.   the most recent annual processing within the specified regional boundaries.
 
-2. __Data Extension__ Append Near-Real-Time sea ice concentration data to the CDR time series to create an updated dataset with the latest available data.
+2. __Data Import for most recent years__ Import Near-Real-Time sea ice concentration data to the CDR time series.
 
 3. __Data Cleaning__ Remove all flag values (non-sea ice concentration values) from the dataset.
 
@@ -82,16 +65,16 @@ __Workflow of Data Processing and Computation:__
 4. __Sea Ice Extent Calculation__ Sum the grid cell areas across all grids to obtain the total sea ice extent within the regional boundaries.
 
 
-### Monthly sea ice extent baseline
+### Daily sea ice extent baseline
 
-The sea ice extent monthly baseline was computed using sea ice extent from 2015 to 2015, and defined as follows: 
+The sea ice extent daily baseline was computed using sea ice extent from 1985 to 2015, and defined as follows: 
 
-Let $sea\_ice\_ext_{m,y}$ be  $mth$ monthly sea ice extent of the $yth$ year, sea ice extent baseline of a ${region}$ is defined as follows:
+Let $sea\_ice\_ext_{d,y}$ be  $dth$ daily sea ice extent of the $yth$ year, sea ice extent baseline of a ${region}$ is defined as follows:
 
 Mean Sea ice extent of a ${region}$ is defined as folows: 
 
 $$
-\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{m,region,y \in [1985,2024]})
+\text{Sea ice extent baseline}_{\text{region}} = Mean ( sea\_ice\_ext_{d,region,y \in [1985,2015]})
 $$
 
 ### Data Processing
@@ -100,21 +83,6 @@ The data processing was performed using python code and the additional computati
 
 ## Metadata
 
-<<<<<<< HEAD
-Metadata follows the CF metadata standards and can be downloaded here.
-
-## Intended Use
-
-The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to visualize the time series of the monthly sea ice extent values and anomalies based on the approximately 30-year baseline of sea ice extent.  It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.
-
-## Contact us
-
-For any questions, comments, or feedback, email us at polar.watch@noaa.gov or create an issue on our GitHub page here.
-
-## Contributors
-
-* Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program
-=======
 Metadata follows the CF metadata standards and can be downloaded [here]().
 
 ## Intended Use
@@ -128,7 +96,6 @@ For any questions, comments, or feedback, please feel free to email us at polar.
 ## Contributors
 
 * Sun Hospital, PolarWatch Coordinator at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program
->>>>>>> dev
 * Elizabeth Siddon, NOAA Alaska Fisheries Science Center
 * Ludovic Brucker, NOAA NESDIS Center for Satellite Applications & Research
 * Matt Calahan, Alaska Fisheries Information Network 
