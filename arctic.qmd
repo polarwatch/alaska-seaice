@@ -84,6 +84,17 @@ yaxis <- list(title = "Square km",
             showline = TRUE,
             showticklabels = TRUE)
 
+hline <- function(y = 0, color = "black") {
+  list(
+    type = "line",
+    x0 = 0,
+    x1 = 1,
+    xref = "paper",
+    y0 = y,
+    y1 = y,
+    line = list(color = color, dash="dot")
+  )
+}
 # Add data to chart
 
           # Upper extent 
@@ -112,9 +123,13 @@ fig <- plot_ly(baseline_df1, x = ~date, y = ~upper_extent, type = 'scatter',
           marker = list(color=plot_colors[1], size=10), name = "Latest") 
       
 # Add style to chart
+total_area = 511126.86
 fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
          xaxis = xaxis,
-         yaxis = yaxis)
+         yaxis = yaxis,
+         shapes = list(hline(511126.856559928)))%>%
+        add_text(showlegend = FALSE, x = c("11-20"), y = c(total_area*1.02),
+        text = c("Total Area"))
 
 fig
 
@@ -158,7 +173,7 @@ yaxis <- list(title = "Square km",
 
 
 # Create Plotly figure
-fig1 <- plot_ly(anom_last, x = ~date, y = ~anom, type = 'scatter', mode = 'lines', 
+fig1 <- plot_ly(anom_last, x = ~date, y = ~anom, type = 'scatter', mode = 'lines',
                fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=paste0("Anomaly: ", lastyear ))
 
 
