@@ -9,7 +9,7 @@
 * date: Month-day (format: mm-dd)
 
 ## Resource
-* link to methods : https://polarwatch.github.io/alaska-seaice/whitepaper.html
+* link to methods : https://polarwatch.github.io/alaska-seaice/methods.html
 
 ## Creator
 * PolarWatch, NOAA CoastWatch : https://polarwatch.noaa.gov
