@@ -211,9 +211,9 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 
 ## Daily Sea ice extent data downloads
 
-The data used in the charts, metadata and white paper are available.
+The chart data is available for download, and the data sources and calculation methods can be found on the methods page.
 
-- [White paper](whitepaper.html)
+- [Methods](methods.html)
 - [Daily sea ice extent baseline time series (1985-2015)](data/bs_AlaskanArctic.csv), [metadata](data/bs_README.txt)
 - [Daily sea ice extent time series (current, last year)](data/ext_recent_AlaskanArctic.csv), [metadata](data/ext_README.txt)
 - [Daily sea ice concentration satellite data (CDR), metadata](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)
