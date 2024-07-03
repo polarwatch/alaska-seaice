@@ -10,7 +10,7 @@ and highlight the potential applications of sea ice data in research and resourc
 The project was initiated in 2024, and the development version of the webpage is 
 currently available for viewing at https://polarwatch.github.io/alaska-seaice/.
 
-The white paper describing the method used to compute the time series can be found [here](https://polarwatch.github.io/alaska-seaice/whitepaper.html).  
+The description of the data and methods used to compute the time series can be found [here](https://polarwatch.github.io/alaska-seaice/methods.html).  
 
 Objectives of the Project:
 * To visualize and make available downloadable time series data of key sea ice indicators.
