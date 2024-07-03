@@ -6,9 +6,6 @@ The website features sea ice extent data for three regions defined by the Ecosys
 
 Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.
 
-Documentation for the calculation of sea ice extent is available on the [Polarwatch github repository]().
-
-
 ## Data
 
 Sea ice concentration represents the fraction (between 0 and 1) of the grid cell covered by sea ice. This can be estimated using satellite microwave radiometers. To compute the sea ice extent baseline (i.e., the 30-year climatology), satellite Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 were pulled from [PolarWatch](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2023-12-01T00:00:00Z&time_max=2023-12-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,). To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration product has been used.
@@ -69,7 +66,15 @@ __Workflow of Data Processing and Computation:__
 The daily sea ice extent baseline for a given region was computed using sea ice extent from 1985 to 2015, and defined as follows:
 
 $$
-\text{Sea ice extent baseline}_{\text{region}} = Mean (\text{Sea Ice Extent}_{\text{region, day, year} \in [1985, 2015]})
+\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea Ice Extent}_{\text{region, day}, \text{year} \in [1985, 2015]})
+$$ 
+
+### Daily sea ice extent anomaly
+
+The daily sea ice extent anomaly for a given region was computed using sea ice extent baseline:
+
+$$
+\text{Sea ice extent anomaly}_{\text{region, day, year}} = \text{Sea Ice Extent}_{\text{region, day, year}} - \text{Sea ice extent baseline}_{\text{region, day}} 
 $$ 
 
 
