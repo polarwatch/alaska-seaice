@@ -3,8 +3,8 @@ name: Update data Workflow
 on:
   schedule:
     # Runs at 04:00 UTC every day
-    # '0 4 * * *'
-    - cron: '*/10 * * * *'
+    # '0 4 * * *', '*/10 * * * *'
+    - cron: '0 4 * * *'
   push:
     branches:
       - main
