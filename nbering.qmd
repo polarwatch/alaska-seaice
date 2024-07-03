@@ -11,7 +11,7 @@ format:
 <img src="img/nbering.png" alt="Northern Bering" style="float: right; width: 200px;"/>
 
 
-The time series plot and data summary below present statistics on sea ice extent within Alaskan Arctic Sea
+The time series plot and data summary below present statistics on sea ice extent within northern Bering Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 * Mean (1985-2015): Represents the daily average sea ice extent from 1985 to 2015.
@@ -20,15 +20,12 @@ computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
 
-More information about the data and sea ice extent calculation can be found on [Sea Ice Extent page](extent.html).
-
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
 #| results: 'hide'
 
-library(chartjs)
 library(dplyr)
 library(gt)
 library(reshape2)
