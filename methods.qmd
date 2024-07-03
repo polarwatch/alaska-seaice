@@ -8,8 +8,7 @@ Sea ice extent for each region is calculated using sea ice concentration data av
 
 ## Data
 
-Sea ice concentration represents the fraction (between 0 and 1) of the grid cell covered by sea ice. This can be estimated using satellite microwave radiometers. To compute the sea ice extent baseline (i.e., the 30-year climatology), satellite Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 were pulled from [PolarWatch](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2023-12-01T00:00:00Z&time_max=2023-12-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,). To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration product has been used.
-
+Sea ice concentration represents the fraction (between 0 and 1) of the grid cell covered by sea ice. This can be estimated using satellite microwave radiometers. To compute the sea ice extent baseline (i.e., the 30-year climatology), satellite Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 were pulled from [PolarWatch](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2023-12-01T00:00:00Z&time_max=2023-12-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,). The sea ice extent values of the two most recent years were computed using the Near-real-time Sea Ice Concentration data.  
 
 __Climate Data Record (CDR) of Passive Microwave Sea Ice Concentration__
 
@@ -25,7 +24,7 @@ __Polar Stereographic Grid Cell Area__
 
 This dataset includes grid cell area values for the 25-km polar stereographic grid used for the sea ice concentration data.
 
-## Methods and Workflow
+## Methods
 
 Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice. Typically, that threshold is 0.15 (i.e. when the sea ice concentration estimated in that grid cell is 15% of greater, the area of the entire grid cell is used to calculate the sea ice extent). Alternatively, one can also calculate the sea ice area, in which case the grid cell area is multiplied by the sea ice concentration. Here, we work with sea ice extent.
 
