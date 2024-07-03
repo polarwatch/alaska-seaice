@@ -66,7 +66,7 @@ __Workflow of Data Processing and Computation:__
 The daily sea ice extent baseline for a given region was computed using sea ice extent from 1985 to 2015, and defined as follows:
 
 $$
-\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea Ice Extent}_{\text{region, day}, \text{year} \in [1985, 2015]})
+\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea Ice Extent}_{\text{region, day, year} \in [1985, 2015]})
 $$ 
 
 ### Daily sea ice extent anomaly
