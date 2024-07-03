@@ -34,6 +34,7 @@ jobs:
        
      - name: Run Python script
        run: |
+        conda init bash
         conda activate seaice
         python scripts/update_daily_extent.py  # This script updates CSV files in data/
 
