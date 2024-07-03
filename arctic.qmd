@@ -20,11 +20,6 @@ computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
 
-More information about the data and sea ice extent calculation can be found on [Sea Ice Extent page](extent.html).
-
-
-
-
 
 ```{r}
 #| echo: false
@@ -32,11 +27,8 @@ More information about the data and sea ice extent calculation can be found on [
 #| message: false
 #| results: 'hide'
 
-library(chartjs)
 library(dplyr)
 library(gt)
-library(downloadthis)
-library(ggplot2)
 library(reshape2)
 library(plotly)
 library(magrittr)
