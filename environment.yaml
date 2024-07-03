@@ -1,0 +1,12 @@
+name: seaice
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - numpy
+  - pandas
+  - xarray
+  - geopandas
+  - rasterio
+  - rioxarray
+  - shapely
