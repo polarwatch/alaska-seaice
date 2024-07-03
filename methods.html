@@ -163,7 +163,7 @@ window.Quarto = {
   <li><a href="#sea-ice-extent-in-alaska-region" id="toc-sea-ice-extent-in-alaska-region" class="nav-link active" data-scroll-target="#sea-ice-extent-in-alaska-region">Sea ice Extent in Alaska region</a>
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#methods-and-workflow" id="toc-methods-and-workflow" class="nav-link" data-scroll-target="#methods-and-workflow">Methods and Workflow</a>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
   <li><a href="#daily-sea-ice-extent" id="toc-daily-sea-ice-extent" class="nav-link" data-scroll-target="#daily-sea-ice-extent">Daily sea ice extent</a></li>
   <li><a href="#daily-sea-ice-extent-baseline" id="toc-daily-sea-ice-extent-baseline" class="nav-link" data-scroll-target="#daily-sea-ice-extent-baseline">Daily sea ice extent baseline</a></li>
@@ -192,7 +192,7 @@ window.Quarto = {
 <p>Sea ice extent for each region is calculated using sea ice concentration data available from NOAA PolarWatch and is updated automatically when the new data are available.</p>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>Sea ice concentration represents the fraction (between 0 and 1) of the grid cell covered by sea ice. This can be estimated using satellite microwave radiometers. To compute the sea ice extent baseline (i.e., the 30-year climatology), satellite Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 were pulled from <a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">PolarWatch</a>. To provide a continuous and near-real-time time series of sea ice extent, the Near-real-time sea ice concentration product has been used.</p>
+<p>Sea ice concentration represents the fraction (between 0 and 1) of the grid cell covered by sea ice. This can be estimated using satellite microwave radiometers. To compute the sea ice extent baseline (i.e., the 30-year climatology), satellite Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 were pulled from <a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">PolarWatch</a>. The sea ice extent values of the two most recent years were computed using the Near-real-time Sea Ice Concentration data.</p>
 <p><strong>Climate Data Record (CDR) of Passive Microwave Sea Ice Concentration</strong></p>
 <p>This data set provides a CDR of sea ice concentration at 25 km resolution. Daily and monthly versions are available from 1978 to the most recent annual processing. The data are deemed of science quality. The product name is NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4 (G02202), doi:10.7265/EFMZ-2T65.</p>
 <p><strong>Near-real-time Sea Ice Concentration</strong></p>
@@ -200,8 +200,8 @@ window.Quarto = {
 <p><strong>Polar Stereographic Grid Cell Area</strong></p>
 <p>This dataset includes grid cell area values for the 25-km polar stereographic grid used for the sea ice concentration data.</p>
 </section>
-<section id="methods-and-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="methods-and-workflow">Methods and Workflow</h2>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
 <p>Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice. Typically, that threshold is 0.15 (i.e.&nbsp;when the sea ice concentration estimated in that grid cell is 15% of greater, the area of the entire grid cell is used to calculate the sea ice extent). Alternatively, one can also calculate the sea ice area, in which case the grid cell area is multiplied by the sea ice concentration. Here, we work with sea ice extent.</p>
 <section id="daily-sea-ice-extent" class="level3">
 <h3 class="anchored" data-anchor-id="daily-sea-ice-extent">Daily sea ice extent</h3>
