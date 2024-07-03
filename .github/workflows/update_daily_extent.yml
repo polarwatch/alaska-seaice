@@ -24,6 +24,11 @@ jobs:
          environment-file: environment.yaml
          python-version: 3.9
          auto-activate-base: false
+         
+     - name: Add conda to system path
+       run: |
+        echo $CONDA/bin >> $GITHUB_PATH
+        
      - name: Install Dependencies          
        run: conda env update --file environment.yaml --name seaice
        
