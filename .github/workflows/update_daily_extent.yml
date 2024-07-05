@@ -50,10 +50,7 @@ jobs:
         git add data/*.csv
         git commit -m "Update CSV data" || echo "No changes to commit"
         git push
-       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-      
+
            
          
         
