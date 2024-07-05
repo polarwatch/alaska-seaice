@@ -28,8 +28,10 @@ jobs:
          auto-update-conda: true
              
      - name: Run Python script
-       run: python scripts/update_daily_extent.py  # This script updates CSV files in data/
-
+       run: |
+          conda activate seaice
+          python scripts/update_daily_extent.py  # This script updates CSV files in data/
+          
      - name: Commit and push if changes
        run: |
         git config --global user.email "sun.bak-hospital@noaa.gov"
