@@ -29,10 +29,9 @@ jobs:
        run: |
         echo $CONDA/bin >> $GITHUB_PATH
 
-    - name: Initialize Conda
-      run: conda init bash
-      shell: bash
-
+     - name: Initialize Conda
+       run: conda init bash
+       shell: bash
 
      - name: Install Dependencies          
        run: conda env update --file environment.yaml --name seaice
