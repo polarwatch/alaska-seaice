@@ -38,7 +38,10 @@ def main():
         .to_dataframe()
         .reset_index()
         .drop(['spatial_ref'], axis='columns'))
-        ext_df.to_csv(f'data/ext_recent_{name}.csv', mode='a', index=False, header=False)
-    
+        try:
+            ext_df.to_csv(f'data/ext_recent_{name}.csv', mode='a', index=False, header=False)
+            print('successfully updated ext_recent files')
+        except : 
+            print(f'Failed to update the ext_recent files: {e}')
 if __name__ == "__main__":
     main()
