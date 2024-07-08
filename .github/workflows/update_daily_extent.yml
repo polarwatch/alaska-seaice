@@ -17,19 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: Checkout repository
-       uses: actions/checkout@v3
+       uses: actions/checkout@v4
 
      - name: Setup Miniconda
-       uses: conda-incubator/setup-miniconda@v2
+       uses: conda-incubator/setup-miniconda@v3
        with:
          python-version: 3.9
          activate-environment: seaice
          environment-file: environment.yaml
-         auto-update-conda: true
-             
+     
      - name: Run Python script
        run: |
-          conda activate seaice
           python scripts/update_daily_extent.py  # This script updates CSV files in data/
           
      - name: Commit and push if changes
