@@ -6,6 +6,8 @@ dependencies:
   - numpy
   - pandas
   - geopandas
+  - netcdf4
+  - pydap
   - xarray
   - rasterio
   - shapely
