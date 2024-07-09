@@ -24,7 +24,7 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v3
         with:
           activate-environment: seaice
-          environment-file: environment.yaml
+          environment-file: scripts/environment.yaml
           python-version: 3.9
           auto-activate-base: false
       - run: |
