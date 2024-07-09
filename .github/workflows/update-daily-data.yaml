@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --global user.email "sun.bak-hospital@noaa.gov"
           git config --global user.name "Sunny Hospital"
-          git add seaice-extent-fisheries/data/*.csv
+          git add data/*.csv
           git commit -m "Update CSV data" || echo "No changes to commit"
           git push
 
