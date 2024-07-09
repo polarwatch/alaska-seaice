@@ -7,7 +7,7 @@ on:
     - cron: '0 4 * * *'
 jobs:
   update-daily-data:
-    name: Start Linux
+    name: Install Python
     runs-on: "ubuntu-latest"
     defaults:
       run:
