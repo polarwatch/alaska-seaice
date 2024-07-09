@@ -1,8 +1,8 @@
-# .github/worflows/deploy.yaml
-#on:
-#  workflow_dispatch:
-#  push:
-#    branches: main
+# .github/worflows/publish.yaml
+on:
+ workflow_dispatch:
+ push:
+   branches: main
 
 name: Quarto Publish
 
