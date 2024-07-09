@@ -31,8 +31,6 @@ jobs:
             any::dplyr
             any::RColorBrewer
             any::gt
-            local::chartjs
-            any::downloadthis
             any::reshape2
             any::DT
             any::plotly
