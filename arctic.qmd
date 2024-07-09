@@ -10,15 +10,16 @@ format:
 
 <img src="img/arctic.png" alt="Alaskan Arctic" style="float: right; width: 200px;"/>
 
-
-The time series plot and data summary below present statistics on sea ice extent within Alaskan Arctic Sea
+The time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
-* Mean (1985-2015): Represents the daily average sea ice extent from 1985 to 2015.
-* Upper and Lower Bounds (1985-2015): Reflect the daily standard deviation (1985 to 2015).
-* Current and Previous Year: Show the daily sea ice extent values for the current and previous years within the area.
+* Mean (1985-2015): Represents the average sea ice extent from 1985 to 2015.
+* Upper and Lower Bounds of Error Band (1985-2015): Reflect the uncertainty of the Mean (1985 to 2015).
+* Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
 
-The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
+The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
+
+## Sea ice extent daily time series
 
 
 ```{r}
