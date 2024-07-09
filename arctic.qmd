@@ -176,19 +176,19 @@ fig1 <- fig1 %>%  add_trace(data = anom_current, x = ~date, y = ~anom, type = 's
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~2*seaice_extent_std, type = 'scatter', mode = 'lines',
             line = list(color = '#FC4100'), fill='transparent',
-           name = '+2SD') 
+           name = '+2 STDev') 
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~-2*seaice_extent_std, type = 'scatter', mode = 'lines',
             line = list(color = '#FC4100'), fill='transparent',
-           name = '-2SD') 
+           name = '-2 STDev') 
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~1*seaice_extent_std, type = 'scatter', mode = 'lines',
             line = list(color = '#6495ED'), fill='transparent',
-           name = '+1SD') 
+           name = '+1 STDev') 
 
 fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~-1*seaice_extent_std, type = 'scatter', mode = 'lines',
             line = list(color = '#6495ED'), fill='transparent',
-           name = '-1SD') 
+           name = '-1 STDev') 
 
 # Add style to chart
 fig1 <- fig1 %>% layout(showlegend = TRUE,  
