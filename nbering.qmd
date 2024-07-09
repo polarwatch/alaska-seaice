@@ -71,7 +71,8 @@ yaxis <- list(title = "Square km",
             showgrid = TRUE,
             zeroline = FALSE,
             showline = TRUE,
-            showticklabels = TRUE)
+            showticklabels = TRUE,
+            autorange = TRUE)
 
 hline <- function(y = 0, color = "black") {
   list(
@@ -159,12 +160,12 @@ xaxis <- list(title = "Dates (MM-DD)",
             ticklen = 2)
 
 yaxis <- list(title = "Square km",
-            range = c(-1 * anom_range, anom_range), 
             showgrid = TRUE,
             zeroline = FALSE,
             zerolinewidth = 1,
             showline = TRUE,
-            showticklabels = TRUE)
+            showticklabels = TRUE,
+            autorange = TRUE)
 
 
 # Create Plotly figure
