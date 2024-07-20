@@ -3,41 +3,66 @@ import pandas as pd
 import numpy as np
 from datetime import date
 import geopandas as gpd
-from utils import SIC25k
+from utils import *
+import xarray as xr
+
+SERVER="https://polarwatch.noaa.gov/erddap/griddap"
 
 def main():
         
-    crs = 'epsg:3413'
+    # PolarWatch dataset ID of the NSIDC near real time 
+    # sea ice conc in the northern hemisphere (nh)
     nrt_id = 'nsidcG10016v2nh1day'
-    var_name = 'cdr_seaice_conc'
-    a_id = 'pstere_gridcell_N25k'
-    server="https://polarwatch.noaa.gov/erddap/griddap"
- 
-    
-    regions = dict([('AlaskanArctic', 'arctic_sf.shp'), ('NorthernBering', 'nbering_sf.shp'), ('EasternBering', 'ebering_sf.shp')])
-   # single = dict([('AlaskanArctic', 'arctic_sf.shp')])
 
-    recent_dat = pd.read_csv("data/ext_recent_AlaskanArctic.csv", parse_dates=['time'])
+    # EPSG code used for polar stereographic projection (nh)
+    crs = 'epsg:3413'
+    var_name = 'cdr_seaice_conc'
+
+    # Dictionaries of names and associated shape files
+    regions = dict([('AlaskanArctic', 'arctic_sf.shp'), ('NorthernBering', 'nbering_sf.shp'), ('EasternBering', 'ebering_sf.shp')])
+
+    # Get the latest date from recently updated file
+    recent_dat = pd.read_csv("data/ext_recent_NorthernBering.csv", parse_dates=['time'])
     start_date = (recent_dat['time'].max() + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
     end_date = date.today().strftime('%Y-%m-%d')
 
-    for name, shp in regions.items():
-        print(f'Processing:  {name}')
-        alaska_shp = gpd.read_file(f'resources/alaska_shapefiles/{shp}')
+    # Get most recent sea ice data
+    sic = get_var_data(SERVER, nrt_id, crs, var_name, [start_date, end_date])
 
-        alaska_shp_proj = alaska_shp.to_crs(crs)
+    # If new data are available, continue
+    if sic.size > 0:
 
-        sic = SIC25k(crs=crs, id=nrt_id, varname = var_name, server = server, shape = alaska_shp_proj)
-        ext = sic.compute_extent_km(area_id = a_id, dates=[start_date, end_date])
+        # Loop through regions
+        for name, shp in regions.items():
+            print(f'Processing:  {name}')
+            
+            # load regional shapefile
+            alaska_shp = gpd.read_file(f'resources/alaska_shapefiles/{shp}')
 
-        ext_df = (ext
-        .to_dataframe()
-        .reset_index()
-        .drop(['spatial_ref'], axis='columns'))
-        try:
-            ext_df.to_csv(f'data/ext_recent_{name}.csv', mode='a', index=False, header=False)
-            print('successfully updated ext_recent files')
-        except : 
-            print(f'Failed to update the ext_recent files: {e}')
+            # transform the shape to the data projection
+            alaska_shp_proj = alaska_shp.to_crs(crs)
+
+            # Load regional grid cell area data
+            ds_area = get_area(name)
+            
+            # Clip sic data using shape
+            clipped_sic = clip_data(sic, alaska_shp_proj)
+
+            # Compute extent with sic and grid cell area
+            ext = compute_extent_km(clipped_sic, ds_area)
+
+            # Format the dataset and append to csv file
+            ext_df = (ext
+            .to_dataframe()
+            .reset_index()
+            .drop(['spatial_ref'], axis='columns'))
+            try:
+                ext_df.to_csv(f'data/ext_recent_{name}.csv', mode='a', index=False, header=False)
+                print('Successfully updated ext_recent files')
+            except : 
+                print(f'Failed to update the ext_recent files for {name}')
+    else:
+        print("Processing Stopped: No new data available. ")
+
 if __name__ == "__main__":
     main()
