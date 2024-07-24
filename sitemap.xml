@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/methods.html</loc>
-    <lastmod>2024-07-23T21:17:18.370Z</lastmod>
-  </url>
-  <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/regions.html</loc>
-    <lastmod>2024-07-23T21:17:18.370Z</lastmod>
-  </url>
-  <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/citations.html</loc>
-    <lastmod>2024-07-23T21:17:18.366Z</lastmod>
-  </url>
-  <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/nbering.html</loc>
-    <lastmod>2024-07-23T21:17:18.370Z</lastmod>
-  </url>
-  <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/about.html</loc>
-    <lastmod>2024-07-23T21:17:18.366Z</lastmod>
-  </url>
-  <url>
     <loc>https://polarwatch.github.io/alaska-seaice/arctic.html</loc>
-    <lastmod>2024-07-23T21:17:18.366Z</lastmod>
+    <lastmod>2024-07-24T14:21:37.410Z</lastmod>
   </url>
   <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/data.html</loc>
-    <lastmod>2024-07-23T21:17:18.366Z</lastmod>
+    <loc>https://polarwatch.github.io/alaska-seaice/methods.html</loc>
+    <lastmod>2024-07-24T14:21:37.418Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/seaice.html</loc>
-    <lastmod>2024-07-23T21:17:18.382Z</lastmod>
+    <lastmod>2024-07-24T14:21:37.426Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/ebering.html</loc>
-    <lastmod>2024-07-23T21:17:18.370Z</lastmod>
+    <lastmod>2024-07-24T14:21:37.414Z</lastmod>
+  </url>
+  <url>
+    <loc>https://polarwatch.github.io/alaska-seaice/regions.html</loc>
+    <lastmod>2024-07-24T14:21:37.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://polarwatch.github.io/alaska-seaice/about.html</loc>
+    <lastmod>2024-07-24T14:21:37.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://polarwatch.github.io/alaska-seaice/data.html</loc>
+    <lastmod>2024-07-24T14:21:37.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://polarwatch.github.io/alaska-seaice/nbering.html</loc>
+    <lastmod>2024-07-24T14:21:37.418Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/extent.html</loc>
-    <lastmod>2024-07-23T21:17:18.370Z</lastmod>
+    <lastmod>2024-07-24T14:21:37.414Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/index.html</loc>
-    <lastmod>2024-07-23T21:17:18.370Z</lastmod>
+    <lastmod>2024-07-24T14:21:37.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://polarwatch.github.io/alaska-seaice/citations.html</loc>
+    <lastmod>2024-07-24T14:21:37.410Z</lastmod>
   </url>
 </urlset>
