@@ -48,8 +48,8 @@ plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc"
 #| warning: false
 #| message: false
 
-baseline_df1 = read.csv("https://github.com/polarwatch/alaska-seaice/tree/main/data/bs_AlaskanArctic.csv")
-recent_df1 = read.csv("https://github.com/polarwatch/alaska-seaice/tree/main/data/ext_recent_AlaskanArctic.csv")
+baseline_df1 = read.csv("data/bs_AlaskanArctic.csv")
+recent_df1 = read.csv("data/ext_recent_AlaskanArctic.csv")
 
 # Get upper and lower bound of sea ice extent using standard dev
 baseline_df1$upper_extent <- baseline_df1$seaice_extent_mean + baseline_df1$seaice_extent_std
