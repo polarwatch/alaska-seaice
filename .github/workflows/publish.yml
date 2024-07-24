@@ -1,12 +1,13 @@
 # .github/worflows/publish.yaml
-# on:
-#  workflow_dispatch:
-#  push:
-#    branches: main
+
+name: Update Data Direrctory
+
 on:
   push:
     branches:
       - main
+    paths:
+      - 'data/**'
   schedule:
     # Runs at 05:00 UTC every day
     - cron: '0 5 * * *'
@@ -22,30 +23,50 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+     
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Check out gh-pages branch
+        run: |
+          git fetch origin
+          git checkout gh-pages
+          git checkout main -- data/
+          
+      - name: Commit and push changes
+        run: |
+          git add data/
+          git commit -m "Update data directory"
+          git push origin gh-pages
+          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      # - name: Set up Quarto
+      #   uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Install R
-        uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: '4.2.0'
+      # - name: Install R
+      #   uses: r-lib/actions/setup-r@v2
+      #   with:
+      #     r-version: '4.2.0'
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages:
-            any::knitr
-            any::rmarkdown
-            any::dplyr
-            any::RColorBrewer
-            any::gt
-            any::reshape2
-            any::DT
-            any::plotly
+      # - uses: r-lib/actions/setup-r-dependencies@v2
+      #   with:
+      #     packages:
+      #       any::knitr
+      #       any::rmarkdown
+      #       any::dplyr
+      #       any::RColorBrewer
+      #       any::gt
+      #       any::reshape2
+      #       any::DT
+      #       any::plotly
             
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
+      # - name: Render and Publish
+      #   uses: quarto-dev/quarto-actions/publish@v2
+      #   with:
+      #     target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
