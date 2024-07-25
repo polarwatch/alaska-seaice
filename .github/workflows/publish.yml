@@ -38,6 +38,6 @@ jobs:
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
-          target: gh-pages-${{ github.run_id }}
+          target: gh-pages-${{ github}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
