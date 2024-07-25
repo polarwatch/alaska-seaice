@@ -133,10 +133,6 @@ window.Quarto = {
     <a class="nav-link" href="https://shinyfin.psmfc.org/ak-sst-mhw/"> 
 <span class="menu-text">ShinyFIN (SST)</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://polarwatch.noaa.gov"> 
-<span class="menu-text">PolarWatch</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -288,6 +284,25 @@ window.Quarto = {
 </section>
 
 </main> <!-- /main -->
+<script>
+// custom.js
+document.addEventListener("DOMContentLoaded", function() {
+  // List of URLs with target=_blank
+  const urlsToOpenInNewTab = [
+    "https://github.com/polarwatch/alaska-seaice",
+    "https://shinyfin.psmfc.org/ak-sst-mhw/",
+    "https://polarwatch.noaa.gov"
+  ];
+
+  urlsToOpenInNewTab.forEach(url => {
+    const link = document.querySelector(`a[href="${url}"]`);
+    if (link) {
+      link.setAttribute('target', '_blank');
+    }
+  });
+});
+</script>
+
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
