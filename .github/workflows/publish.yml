@@ -34,10 +34,13 @@ jobs:
             any::reshape2
             any::DT
             any::plotly
-            
+
+      - name: Render Quarto
+        run: quarto render
+        
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
-          target: gh-pages-${{ github}}
+          target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
