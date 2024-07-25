@@ -35,8 +35,8 @@ jobs:
             any::DT
             any::plotly
 
-      - name: Render Quarto
-        run: quarto render
+      # - name: Render Quarto
+      #   run: quarto render
         
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
