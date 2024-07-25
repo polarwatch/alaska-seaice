@@ -27,6 +27,7 @@ format:
       body-width: 1000px
     theme: flatly
     css: styles.css
+    include-after-body: custom.js
     toc: true
 
 
