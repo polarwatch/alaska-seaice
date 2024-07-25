@@ -13,9 +13,8 @@ website:
         file: nbering.qmd
       - text: "ShinyFIN (SST)"
         href: https://shinyfin.psmfc.org/ak-sst-mhw/
-
-      - text: "PolarWatch"
-        href: https://polarwatch.noaa.gov
+#      - text: "PolarWatch"
+#        href: https://polarwatch.noaa.gov
 
     right:
       - icon: github

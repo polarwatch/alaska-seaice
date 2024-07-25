@@ -1,3 +1,4 @@
+<script>
 // custom.js
 document.addEventListener("DOMContentLoaded", function() {
   // List of URLs with target=_blank
@@ -14,3 +15,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+</script>
+
