@@ -1,8 +1,11 @@
 # .github/worflows/publish.yaml
 on:
-  workflow_dispatch:
-  push:
-    branches: main
+  # workflow_dispatch:
+  # push:
+  #   branches: main
+  schedule:
+    # Runs at 05:00 UTC every day
+    - cron: '0 5 * * *'
 
 name: Quarto Publish
 
