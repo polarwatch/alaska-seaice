@@ -4,35 +4,50 @@
     "href": "nbering.html",
     "title": "Sea ice extent in Northern Bering",
     "section": "",
-    "text": "Updated on August 09, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic."
+    "text": "Updated on August 09, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "crumbs": [
+      "Northern Bering"
+    ]
   },
   {
     "objectID": "nbering.html#sea-ice-extent-daily-time-series",
     "href": "nbering.html#sea-ice-extent-daily-time-series",
     "title": "Sea ice extent in Northern Bering",
     "section": "Sea ice extent daily time series",
-    "text": "Sea ice extent daily time series"
+    "text": "Sea ice extent daily time series",
+    "crumbs": [
+      "Northern Bering"
+    ]
   },
   {
     "objectID": "nbering.html#sea-ice-extent-anomalies",
     "href": "nbering.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Northern Bering",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
+    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch",
+    "crumbs": [
+      "Northern Bering"
+    ]
   },
   {
     "objectID": "nbering.html#daily-sea-ice-extent-data-downloads",
     "href": "nbering.html#daily-sea-ice-extent-data-downloads",
     "title": "Sea ice extent in Northern Bering",
     "section": "Daily sea ice extent data downloads",
-    "text": "Daily sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata"
+    "text": "Daily sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata",
+    "crumbs": [
+      "Northern Bering"
+    ]
   },
   {
     "objectID": "nbering.html#more-resources",
     "href": "nbering.html#more-resources",
     "title": "Sea ice extent in Northern Bering",
     "section": "More resources",
-    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet"
+    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet",
+    "crumbs": [
+      "Northern Bering"
+    ]
   },
   {
     "objectID": "methods.html",
@@ -93,14 +108,14 @@
   {
     "objectID": "seaice.html",
     "href": "seaice.html",
-    "title": "Sea Ice in Alaska",
+    "title": "Sea Ice @ Alaska",
     "section": "",
     "text": "Sea ice is seawater that has frozen and floats on the ocean, forming exclusively on the ocean itself. Unlike sea ice, icebergs, glaciers, and ice shelves originate on land before breaking off and floating in the ocean. In the Arctic, sea ice forms and grows in the fall and winter and diminishes in the spring and summer, though it does not melt entirely.\n\n\n\nSea ice plays profound roles in polar ecosystems, environment, climate and weather. Sea ice is crucial in polar ecosystems, environmental balance and climate, and weather patterns. [LB 2 sentences very similar.]\nDuring summer, melting sea ice releases essential nutrients into the ocean, sparking the growth of phytoplankton as more sunlight penetrates the water. In winter, as the sea ice forms, it expels salt, altering the salinity of the water beneath. This saltier water descends, stirring the ocean layers and bringing nutrients to the surface.\nThe presence of sea ice also modulates coastal condition, dampening the wind and wave impacts. Its reflective surface sends sunlight back into space, playing a key role in climate regulation by reducing heat absorption.\nFurthermore, sea ice forms a vital habitat for various Arctic mammals.\n\nSea Ice on NOAA/NESDIS\nSeaIce on NASA Earth Observatory\nQuick Facts about Sea Ice from NSIDC\n\n\n\n\nSea ice concentration is a measurement of the amount of sea ice in a given area. Sea ice extent is the total area covered by some amount of ice, including open water between ice floes.\nIce extent is typically reported in square kilometers. Extent differentiates a region as either “ice-covered” or “not ice-covered.” A threshold determines this labeling.\nA typical threshold is 15 percent, meaning that if the grid cell has greater than 15 percent ice concentration, the cell is labeled as “ice-covered”.\n\nMore about Sea Ice Extent from NSIDC\nGet Sea Ice Satellite data (NOAA PolarWatch)\nTutorial and code for the data\n\nThe sea ice extent is derived from the sea ice concentration remote sensing data. The sea ice extent is calculated as the total area, measured in square kilometers (km2), where each grid cell exhibits a sea ice concentration of 15% or more.\n\n\n\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic."
   },
   {
     "objectID": "seaice.html#sea-ice-in-the-arctic",
     "href": "seaice.html#sea-ice-in-the-arctic",
-    "title": "Sea Ice in Alaska",
+    "title": "Sea Ice @ Alaska",
     "section": "",
     "text": "Sea ice is seawater that has frozen and floats on the ocean, forming exclusively on the ocean itself. Unlike sea ice, icebergs, glaciers, and ice shelves originate on land before breaking off and floating in the ocean. In the Arctic, sea ice forms and grows in the fall and winter and diminishes in the spring and summer, though it does not melt entirely.\n\n\n\nSea ice plays profound roles in polar ecosystems, environment, climate and weather. Sea ice is crucial in polar ecosystems, environmental balance and climate, and weather patterns. [LB 2 sentences very similar.]\nDuring summer, melting sea ice releases essential nutrients into the ocean, sparking the growth of phytoplankton as more sunlight penetrates the water. In winter, as the sea ice forms, it expels salt, altering the salinity of the water beneath. This saltier water descends, stirring the ocean layers and bringing nutrients to the surface.\nThe presence of sea ice also modulates coastal condition, dampening the wind and wave impacts. Its reflective surface sends sunlight back into space, playing a key role in climate regulation by reducing heat absorption.\nFurthermore, sea ice forms a vital habitat for various Arctic mammals.\n\nSea Ice on NOAA/NESDIS\nSeaIce on NASA Earth Observatory\nQuick Facts about Sea Ice from NSIDC\n\n\n\n\nSea ice concentration is a measurement of the amount of sea ice in a given area. Sea ice extent is the total area covered by some amount of ice, including open water between ice floes.\nIce extent is typically reported in square kilometers. Extent differentiates a region as either “ice-covered” or “not ice-covered.” A threshold determines this labeling.\nA typical threshold is 15 percent, meaning that if the grid cell has greater than 15 percent ice concentration, the cell is labeled as “ice-covered”.\n\nMore about Sea Ice Extent from NSIDC\nGet Sea Ice Satellite data (NOAA PolarWatch)\nTutorial and code for the data\n\nThe sea ice extent is derived from the sea ice concentration remote sensing data. The sea ice extent is calculated as the total area, measured in square kilometers (km2), where each grid cell exhibits a sea ice concentration of 15% or more.\n\n\n\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea, and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic."
   },
@@ -114,14 +129,14 @@
   {
     "objectID": "citations.html",
     "href": "citations.html",
-    "title": "Sea Ice in Alaska",
+    "title": "Sea Ice @ Alaska",
     "section": "",
     "text": "Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program\nElizabeth Siddon, NOAA Alaska Fisheries Science Center\nLudovic Brucker, NOAA NESDIS Center for Satellite Applications & Research\nMatt Calahan, Alaska Fisheries Information Network\n\n\n\n\nData\nNOAA/NSIDC. (n.d.). Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4. DATA SET ID: G02202. https://doi.org/10.7265/EFMZ-2T65\nCallahan, M. (2023/12/1). AKmarineareas: Management relevent spatial data for Alaska marine areas. Retrieved from https://github.com/MattCallahan-NOAA/AKmarineareas/\nData Access\nNOAA/CoastWatch PolarWatch. (n.d.). Data Access and Visualization of Climate Data Record of Passive Microwave Sea Ice Concentration, Version 2 and 4 DATA SET ID: (nsidcG02202v4nhmday , nsidcG10016v2nhmday). https://polarwatch.noaa.gov/catalog/\nStatistics and Plots\nNOAA/CoastWatch PolarWatch. (n.d.). Sea ice extent time series for Alaska region.\nSoftware\nHoyer, S., & Hamman, J. (n.d.). xarray: N-D labeled arrays and datasets in Python. Retrieved from http://xarray.pydata.org\nChamberlain, S. (n.d.). rerddap: General purpose client for ERDDAP servers. Retrieved from https://github.com/ropensci/rerddap\nQuarto Authors (n.d). Quarto: An Open-Source Scientific and Technical Publishing System Built on Pandoc. Retrieved from https://github.com/quarto-dev/quarto-cli\nChart.js Downie N. et al. (2023). Chart.js (v4.4.1): Simple yet flexible JavaScript charting for designers & developers. Retrieved from https://www.chartjs.org/\nFormont P (2016). chartjs: R htmlwidget to integrate ChartJS into R. Retrieved from https://github.com/Tutuchan/chartjs\nR Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/. Reynolds, R. W., Smith, T. M., Liu, C., Chelton, D. B., Casey, K. S., & Schlax, M. G. (2007). Daily high-resolution-blended analyses for sea surface temperature. Journal of climate, 20(22), 5473-5496."
   },
   {
     "objectID": "citations.html#contributions-and-citations",
     "href": "citations.html#contributions-and-citations",
-    "title": "Sea Ice in Alaska",
+    "title": "Sea Ice @ Alaska",
     "section": "",
     "text": "Sun Hospital, PolarWatch UCSC Fisheries Cooperative Program\nElizabeth Siddon, NOAA Alaska Fisheries Science Center\nLudovic Brucker, NOAA NESDIS Center for Satellite Applications & Research\nMatt Calahan, Alaska Fisheries Information Network\n\n\n\n\nData\nNOAA/NSIDC. (n.d.). Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4. DATA SET ID: G02202. https://doi.org/10.7265/EFMZ-2T65\nCallahan, M. (2023/12/1). AKmarineareas: Management relevent spatial data for Alaska marine areas. Retrieved from https://github.com/MattCallahan-NOAA/AKmarineareas/\nData Access\nNOAA/CoastWatch PolarWatch. (n.d.). Data Access and Visualization of Climate Data Record of Passive Microwave Sea Ice Concentration, Version 2 and 4 DATA SET ID: (nsidcG02202v4nhmday , nsidcG10016v2nhmday). https://polarwatch.noaa.gov/catalog/\nStatistics and Plots\nNOAA/CoastWatch PolarWatch. (n.d.). Sea ice extent time series for Alaska region.\nSoftware\nHoyer, S., & Hamman, J. (n.d.). xarray: N-D labeled arrays and datasets in Python. Retrieved from http://xarray.pydata.org\nChamberlain, S. (n.d.). rerddap: General purpose client for ERDDAP servers. Retrieved from https://github.com/ropensci/rerddap\nQuarto Authors (n.d). Quarto: An Open-Source Scientific and Technical Publishing System Built on Pandoc. Retrieved from https://github.com/quarto-dev/quarto-cli\nChart.js Downie N. et al. (2023). Chart.js (v4.4.1): Simple yet flexible JavaScript charting for designers & developers. Retrieved from https://www.chartjs.org/\nFormont P (2016). chartjs: R htmlwidget to integrate ChartJS into R. Retrieved from https://github.com/Tutuchan/chartjs\nR Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/. Reynolds, R. W., Smith, T. M., Liu, C., Chelton, D. B., Casey, K. S., & Schlax, M. G. (2007). Daily high-resolution-blended analyses for sea surface temperature. Journal of climate, 20(22), 5473-5496."
   },
@@ -151,70 +166,100 @@
     "href": "arctic.html",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "",
-    "text": "Updated on August 09, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic."
+    "text": "Updated on August 09, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "crumbs": [
+      "Alaskan Arctic"
+    ]
   },
   {
     "objectID": "arctic.html#sea-ice-extent-daily-time-series",
     "href": "arctic.html#sea-ice-extent-daily-time-series",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "Sea ice extent daily time series",
-    "text": "Sea ice extent daily time series"
+    "text": "Sea ice extent daily time series",
+    "crumbs": [
+      "Alaskan Arctic"
+    ]
   },
   {
     "objectID": "arctic.html#sea-ice-extent-anomalies",
     "href": "arctic.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
+    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch",
+    "crumbs": [
+      "Alaskan Arctic"
+    ]
   },
   {
     "objectID": "arctic.html#daily-sea-ice-extent-data-downloads",
     "href": "arctic.html#daily-sea-ice-extent-data-downloads",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "Daily Sea ice extent data downloads",
-    "text": "Daily Sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata"
+    "text": "Daily Sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata",
+    "crumbs": [
+      "Alaskan Arctic"
+    ]
   },
   {
     "objectID": "arctic.html#more-resources",
     "href": "arctic.html#more-resources",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "More resources",
-    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet"
+    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet",
+    "crumbs": [
+      "Alaskan Arctic"
+    ]
   },
   {
     "objectID": "ebering.html",
     "href": "ebering.html",
     "title": "Sea ice extent in Eastern Bering",
     "section": "",
-    "text": "Updated on August 09, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic."
+    "text": "Updated on August 09, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "crumbs": [
+      "Eastern Bering"
+    ]
   },
   {
     "objectID": "ebering.html#sea-ice-extent-daily-time-series",
     "href": "ebering.html#sea-ice-extent-daily-time-series",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Sea ice extent daily time series",
-    "text": "Sea ice extent daily time series"
+    "text": "Sea ice extent daily time series",
+    "crumbs": [
+      "Eastern Bering"
+    ]
   },
   {
     "objectID": "ebering.html#sea-ice-extent-anomalies",
     "href": "ebering.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch"
+    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch",
+    "crumbs": [
+      "Eastern Bering"
+    ]
   },
   {
     "objectID": "ebering.html#data-access-and-method-description",
     "href": "ebering.html#data-access-and-method-description",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Data access and method description",
-    "text": "Data access and method description\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page:\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata"
+    "text": "Data access and method description\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page:\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata",
+    "crumbs": [
+      "Eastern Bering"
+    ]
   },
   {
     "objectID": "ebering.html#more-resources",
     "href": "ebering.html#more-resources",
     "title": "Sea ice extent in Eastern Bering",
     "section": "More resources",
-    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet"
+    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet",
+    "crumbs": [
+      "Eastern Bering"
+    ]
   },
   {
     "objectID": "index.html",
