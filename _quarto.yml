@@ -31,7 +31,7 @@ website:
 format:
   html:
     grid:
-      sidebar-width: 200px
+      # sidebar-width: 200px
       body-width: 1000px
     theme: flatly
     css: styles.css
