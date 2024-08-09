@@ -2,27 +2,36 @@ project:
   type: website
 
 website:
-  title: "Sea Ice in Alaska"
-  navbar:
-    left:
-      - text: "Alaskan Arctic"
-        file: arctic.qmd
-      - text: "Eastern Bering"
-        file: ebering.qmd
-      - text: "Northern Bering"
-        file: nbering.qmd
-      - text: "ShinyFIN (SST)"
-        href: https://shinyfin.psmfc.org/ak-sst-mhw/
-#      - text: "PolarWatch"
-#        href: https://polarwatch.noaa.gov
+  title: "Sea Ice @ Alaska"
 
-    right:
+  sidebar:
+    pinned: true
+    align: center
+    tools: 
       - icon: github
-        href: https://github.com/polarwatch/alaska-seaice
+        href: https://github.com/polarwatch
+        text: "PolarWatch Repository"
+      - icon: globe
+        href: https://polarwatch.noaa.gov
+        text: "PolarWatch Website"
+
+    contents:
+      - href: arctic.qmd
+        text: "Alaskan Arctic"
+      - href: ebering.qmd
+        text: "Eastern Bering"
+      - href: nbering.qmd
+        text: "Northern Bering"
+      - href: https://shinyfin.psmfc.org/ak-sst-mhw/
+        text: "ShinyFIN (SST)"
+      - href: https:/polarwatch.noaa.gov
+        text: "PolarWatch"
+        
+
 format:
   html:
     grid:
-      sidebar-width: 100px
+      sidebar-width: 200px
       body-width: 1000px
     theme: flatly
     css: styles.css
