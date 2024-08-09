@@ -11,9 +11,11 @@ website:
       - icon: github
         href: https://github.com/polarwatch
         text: "PolarWatch Repository"
+        target: _blank
       - icon: globe
         href: https://polarwatch.noaa.gov
         text: "PolarWatch Website"
+        target: _blank
 
     contents:
       - href: arctic.qmd
@@ -24,8 +26,10 @@ website:
         text: "Northern Bering"
       - href: https://shinyfin.psmfc.org/ak-sst-mhw/
         text: "ShinyFIN (SST)"
-      - href: https:/polarwatch.noaa.gov
+        target: _blank
+      - href: https://polarwatch.noaa.gov
         text: "PolarWatch"
+        target: _blank
         
 
 format:
