@@ -8,3 +8,44 @@
     }
 
 
+/* Custom CSS for Quarto Navbar */
+.navbar-toggler {
+    display: block; /* Ensure the toggle button is displayed */
+    z-index: 1001; /* Ensure it is above other elements */
+}
+
+.navbar-toggler-icon {
+    display: block; /* Ensure the toggle icon is displayed */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        z-index: 1001; /* Ensure the navbar is on top */
+    }
+
+    .navbar-toggler {
+        margin-top: 10px; /* Adjust margin if necessary */
+    }
+
+    .navbar-collapse {
+        position: relative;
+        z-index: 1000; /* Ensure the navbar menu is on top */
+    }
+}
+
+/* Ensure the sidebar menu is not hidden */
+.sidebar {
+    margin-top: 200px;
+    position: relative;
+    z-index: 1000; /* Ensure the sidebar is on top */
+}
+
+@media (max-width: 768px) {
+    /* Adjust sidebar for mobile view */
+    .sidebar {
+        margin-top: 0; /* Reset margin top for better positioning on mobile */
+        z-index: 1000; /* Ensure it remains on top */
+    }
+}
+
