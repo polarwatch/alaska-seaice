@@ -9,7 +9,7 @@ website:
     align: center
     tools: 
       - icon: github
-        href: https://github.com/polarwatch
+        href: https://github.com/polarwatch/alaska-seaice
         text: "PolarWatch Repository"
         target: _blank
       - icon: globe
