@@ -10,7 +10,7 @@
 
 
 
-.sidebar-toggler {
+.sidebar-toggle {
     position: absolute; /* Allows you to position it absolutely */
     top: 100px; /* Adjust this value to change the vertical position */
     right: 20px; /* Adjust this value to change the horizontal position */
@@ -18,7 +18,7 @@
 }
 
 @media (max-width: 768px) {
-    .sidebar-toggler {
+    .sidebar-toggle {
         top: 100px; /* Adjust as needed for mobile view */
         right: 20px; /* Adjust as needed for mobile view */
     }
