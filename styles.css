@@ -10,16 +10,3 @@
 
 
 
-.sidebar-toggle {
-    position: absolute; /* Allows you to position it absolutely */
-    top: 100px; /* Adjust this value to change the vertical position */
-    right: 20px; /* Adjust this value to change the horizontal position */
-    z-index: 1001; /* Ensure it is above other elements */
-}
-
-@media (max-width: 768px) {
-    .sidebar-toggle {
-        top: 100px; /* Adjust as needed for mobile view */
-        right: 20px; /* Adjust as needed for mobile view */
-    }
-}
