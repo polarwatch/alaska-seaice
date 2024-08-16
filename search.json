@@ -4,17 +4,17 @@
     "href": "nbering.html",
     "title": "Sea ice extent in Northern Bering",
     "section": "",
-    "text": "Updated on August 16, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "text": "Updated on August 16, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:",
     "crumbs": [
       "Northern Bering"
     ]
   },
   {
-    "objectID": "nbering.html#sea-ice-extent-daily-time-series",
-    "href": "nbering.html#sea-ice-extent-daily-time-series",
+    "objectID": "nbering.html#daily-sea-ice-extent-time-series",
+    "href": "nbering.html#daily-sea-ice-extent-time-series",
     "title": "Sea ice extent in Northern Bering",
-    "section": "Sea ice extent daily time series",
-    "text": "Sea ice extent daily time series",
+    "section": "Daily Sea ice extent time series",
+    "text": "Daily Sea ice extent time series",
     "crumbs": [
       "Northern Bering"
     ]
@@ -24,7 +24,7 @@
     "href": "nbering.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Northern Bering",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch",
+    "text": "Sea ice extent anomalies",
     "crumbs": [
       "Northern Bering"
     ]
@@ -173,7 +173,7 @@
     "href": "arctic.html",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "",
-    "text": "Updated on August 16, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "text": "Updated on August 16, 2024\nThe time series plot and data below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:",
     "crumbs": [
       "Alaskan Arctic"
     ]
@@ -223,17 +223,17 @@
     "href": "ebering.html",
     "title": "Sea ice extent in Eastern Bering",
     "section": "",
-    "text": "Updated on August 16, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "text": "Updated on August 16, 2024\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:",
     "crumbs": [
       "Eastern Bering"
     ]
   },
   {
-    "objectID": "ebering.html#sea-ice-extent-daily-time-series",
-    "href": "ebering.html#sea-ice-extent-daily-time-series",
+    "objectID": "ebering.html#daily-sea-ice-extent-time-series",
+    "href": "ebering.html#daily-sea-ice-extent-time-series",
     "title": "Sea ice extent in Eastern Bering",
-    "section": "Sea ice extent daily time series",
-    "text": "Sea ice extent daily time series",
+    "section": "Daily Sea ice extent time series",
+    "text": "Daily Sea ice extent time series",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -273,6 +273,9 @@
     "href": "index.html",
     "title": "Sea Ice in Alaska",
     "section": "",
-    "text": "This website offers daily time series of sea ice extent and its anomalies within the fisheries management regions of Alaskan waters. You can click on the links below or on the sidebar to view and download the daily time series for each region. The regional data are updated daily, with approximately a 2-day lag when new data become available.\nSea ice extent refers to the total area where snow or ice is present and is calculated using sea ice concentration data from NOAA PolarWatch.\nThe website features sea ice extent data for three regions defined by the Ecosystem Management Regions:\n\nthe Alaskan Arctic\nthe Eastern Bering Sea\nthe Northern Bering Sea (a subset of the Eastern Bering sea).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Arctic maps from the NSIDC display sea ice extent values (left) and sea ice concentration values (right). A grid cell in the sea ice extent map (left) is assigned a value of 1 when the sea ice concentration fraction (right) is greater than or equal to a threshold of 15%."
+    "text": "This website offers daily time series of sea ice extent and its anomalies within the fisheries management regions of Alaskan waters. You can click on the links below or on the sidebar to view and download the daily time series for each region. The regional data are updated daily, with approximately a 2-day lag when new data become available.\nSea ice extent refers to the total area where snow or ice is present and is calculated using sea ice concentration data from NOAA PolarWatch.\nThe website features sea ice extent data for three regions defined by the Ecosystem Management Regions:\n\nthe Alaskan Arctic\nthe Eastern Bering Sea\nthe Northern Bering Sea (a subset of the Eastern Bering sea).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Arctic maps from the NSIDC display sea ice extent values (left) and sea ice concentration values (right). A grid cell in the sea ice extent map (left) is assigned a value of 1 when the sea ice concentration fraction (right) is greater than or equal to a threshold of 15%.\nThe Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.",
+    "crumbs": [
+      "Main"
+    ]
   }
 ]
