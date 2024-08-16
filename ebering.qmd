@@ -17,9 +17,16 @@ computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 * Upper and Lower Bounds of Error Band (1985-2015): Reflect the uncertainty of the Mean (1985 to 2015).
 * Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
 
-The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
 
-## Sea ice extent daily time series
+:::{.callout-tip title="Plots are interactive!" }
+
+* __To zoom in and out, reset or download the plot__,  hover on the plot to see the option on the top right corner.
+* __To turn on and off data series__, click on the data series title in the legend located below each plot.
+:::
+
+
+
+## Daily Sea ice extent time series
 
 
 
@@ -101,24 +108,31 @@ fig <- plot_ly(baseline_df1, x = ~date, y = ~upper_extent, type = 'scatter',
                   showlegend = FALSE, name = 'Lower bound') %>%
       # Baseline
         add_trace(x = ~date, y = ~seaice_extent_mean, type = 'scatter', mode = 'lines',
-                  line = list(color=plot_colors[3], width  = 2),name = 'Baseline') %>%   
+                  line = list(color=plot_colors[3], width  = 2),name = 'Baseline', showlegend = TRUE) %>%   
 
       # Last year
       add_trace(data = dat_last, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
             line = list(
-            color = plot_colors[2], width = 2), name = lastyear) %>% 
+            color = plot_colors[2], width = 2), name = lastyear, showlegend = TRUE) %>% 
 
       # Current year
         add_trace(data = dat_this, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
-            line = list(color=plot_colors[1], width  = 3),name = lastyear + 1) %>%
+            line = list(color=plot_colors[1], width  = 3),name = lastyear + 1, showlegend = TRUE) %>%
 
       # Latest point
         add_trace( x= latest$date,  y = latest$seaice_extent, type='scatter', mode = 'markers',
-          marker = list(color=plot_colors[1], size=10), name = "Latest") 
+          marker = list(color=plot_colors[1], size=10), name = "Latest", showlegend = FALSE) 
       
       total_area = 891335.77
 # Add style to chart
-      fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
+      fig <- fig %>% layout(title = "Daily Sea Ice Extent", hovermode = "x unified", showlegend=TRUE,
+                        legend = list(
+                        orientation = 'h',    # Horizontal legend
+                        x = 0.5,              # Centered horizontally
+                        xanchor = 'center',   
+                        y = -0.2,             # Positioned below the chart
+                        yanchor = 'top'       # Align the top of the legend with this position
+                      ),
               xaxis = xaxis,
               yaxis = yaxis,
               shapes = list(hline(total_area)))%>%
@@ -195,7 +209,14 @@ fig1 <- fig1 %>% layout(showlegend = TRUE,
                       hovermode = "x unified",
                       yaxis = yaxis,
                       xaxis = xaxis,
-                      plot_bgcolor = '#ffffff'
+                      plot_bgcolor = '#ffffff',
+                        legend = list(
+                        orientation = 'h',    # Horizontal legend
+                        x = 0.5,              # Centered horizontally
+                        xanchor = 'center',   
+                        y = -0.2,             # Positioned below the chart
+                        yanchor = 'top'       # Align the top of the legend with this position
+                      )
                     )
 
 fig1

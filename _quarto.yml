@@ -18,6 +18,8 @@ website:
         target: _blank
 
     contents:
+      - href: index.qmd
+        text: "Main"
       - href: arctic.qmd
         text: "Alaskan Arctic"
       - href: ebering.qmd

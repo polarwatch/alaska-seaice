@@ -10,14 +10,19 @@ format:
 
 <img src="img/arctic.png" alt="Alaskan Arctic" style="float: right; width: 200px;"/>
 
-The time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea
+The time series plot and data below present statistics on sea ice extent within eastern Bering Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 * Mean (1985-2015): Represents the average sea ice extent from 1985 to 2015.
 * Upper and Lower Bounds of Error Band (1985-2015): Reflect the uncertainty of the Mean (1985 to 2015).
 * Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
 
-The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
+:::{.callout-tip title="Plots are interactive!" }
+
+* __To zoom in and out, reset or download the plot__,  hover on the plot to see the option on the top right corner.
+* __To turn on and off data series__, click on the data series title in the legend located below each plot.
+:::
+
 
 ## Sea ice extent daily time series
 
@@ -101,27 +106,34 @@ fig <- plot_ly(baseline_df1, x = ~date, y = ~upper_extent, type = 'scatter',
                   showlegend = FALSE, name = 'Lower bound') %>%
       # Baseline
         add_trace(x = ~date, y = ~seaice_extent_mean, type = 'scatter', mode = 'lines',
-                  line = list(color=plot_colors[3], width  = 2),name = 'Baseline') %>%   
+                  line = list(color=plot_colors[3], width  = 2),showlegend = TRUE, name = 'Baseline') %>%   
 
       # Last year
       add_trace(data = dat_last, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
             line = list(
-            color = plot_colors[2], width = 2), name = lastyear) %>% 
+            color = plot_colors[2], width = 2),showlegend = TRUE,  name = lastyear) %>% 
 
       # Current year
         add_trace(data = dat_this, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
-            line = list(color=plot_colors[1], width  = 3),name = lastyear + 1) %>%
+            line = list(color=plot_colors[1], width  = 3),showlegend = TRUE, name = lastyear + 1) %>%
 
       # Latest point
         add_trace( x= latest$date,  y = latest$seaice_extent, type='scatter', mode = 'markers',
-          marker = list(color=plot_colors[1], size=10), name = "Latest") 
+          marker = list(color=plot_colors[1], size=10),showlegend = FALSE, name = "Latest") 
       
 # Add style to chart
 total_area = 511126.86
 fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
          xaxis = xaxis,
          yaxis = yaxis,
-         shapes = list(hline(511126.856559928)))%>%
+         legend = list(
+                        orientation = 'h',    # Horizontal legend
+                        x = 0.5,              # Centered horizontally
+                        xanchor = 'center',   
+                        y = -0.2,             # Positioned below the chart
+                        yanchor = 'top'       # Align the top of the legend with this position
+                      ),
+         shapes = list(hline(total_area)))%>%
         add_text(showlegend = FALSE, x = c("11-20"), y = c(total_area*1.02),
         text = c("Total Area"))
 
@@ -195,6 +207,13 @@ fig1 <- fig1 %>% layout(showlegend = TRUE,
                       hovermode = "x unified",
                       yaxis = yaxis,
                       xaxis = xaxis,
+                      legend = list(
+                        orientation = 'h',    # Horizontal legend
+                        x = 0.5,              # Centered horizontally
+                        xanchor = 'center',   
+                        y = -0.2,             # Positioned below the chart
+                        yanchor = 'top'       # Align the top of the legend with this position
+                      ),
                       plot_bgcolor = '#ffffff'
                     )
 

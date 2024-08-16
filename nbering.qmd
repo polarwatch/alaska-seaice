@@ -18,9 +18,14 @@ computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 * Upper and Lower Bounds of Error Band (1985-2015): Reflect the uncertainty of the Mean (1985 to 2015).
 * Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
 
-The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
+:::{.callout-tip title="Plots are interactive!" }
 
-## Sea ice extent daily time series
+* __To zoom in and out, reset or download the plot__,  hover on the plot to see the option on the top right corner.
+* __To turn on and off data series__, click on the data series title in the legend located below each plot.
+:::
+
+
+## Daily Sea ice extent time series
 
 ```{r}
 #| echo: false
@@ -38,6 +43,7 @@ region_title <- "Northern Bering"
 lastyear <- as.numeric(format(Sys.Date(), '%Y'))-1
 plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc")
 ```
+
 
 
 
@@ -94,51 +100,54 @@ hline <- function(y = 0, color = "black") {
 
       # Upper extent 
 fig <- plot_ly(baseline_df1, x = ~date, y = ~upper_extent, type = 'scatter', 
-              mode = 'lines',line = list(color = 'transparent'),
+              mode = 'lines', line = list(color = 'transparent'),
               showlegend = FALSE, name = 'Upper bound') %>% 
       # Lower extent 
         add_trace(y = ~lower_extent, type = 'scatter', mode = 'lines',
-                  fill = 'tonexty', fillcolor='rgba(0,100,80,0.2)', line = list(color = 'transparent'),
+                  fill = 'tonexty', fillcolor = 'rgba(0,100,80,0.2)', line = list(color = 'transparent'),
                   showlegend = FALSE, name = 'Lower bound') %>%
       # Baseline
         add_trace(x = ~date, y = ~seaice_extent_mean, type = 'scatter', mode = 'lines',
-                  line = list(color=plot_colors[3], width  = 2),name = 'Baseline') %>%   
-
+                  line = list(color = plot_colors[3], width  = 2), name = 'Baseline', showlegend = TRUE) %>%   
       # Last year
-      add_trace(data = dat_last, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
-            line = list(
-            color = plot_colors[2], width = 2), name = lastyear) %>% 
-
+        add_trace(data = dat_last, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
+                  line = list(color = plot_colors[2], width = 2), name = lastyear, showlegend =TRUE) %>% 
       # Current year
         add_trace(data = dat_this, x = ~date, y = ~seaice_extent, type = 'scatter', mode = 'lines',
-            line = list(color=plot_colors[1], width  = 3),name = lastyear + 1) %>%
-
+                  line = list(color = plot_colors[1], width  = 3), name = lastyear + 1, showlegend =TRUE) %>%
       # Latest point
-        add_trace( x= latest$date,  y = latest$seaice_extent, type='scatter', mode = 'markers',
-          marker = list(color=plot_colors[1], size=10), name = "Latest") 
-      
+        add_trace(x = latest$date, y = latest$seaice_extent, type = 'scatter', mode = 'markers',
+                  marker = list(color = plot_colors[1], size = 10), name = "Latest") 
 
       
 total_area = 311729.44
 # Add style to chart
-      fig <- fig %>% layout(title = "Sea ice extent time series", hovermode = "x unified", showlegend=TRUE,
-              xaxis = xaxis,
-              yaxis = yaxis,
-              shapes = list(hline(total_area))) %>%
+# Add style to chart
+# Add style to chart
+fig <- fig %>% layout(title = "Daily Sea Ice Extent", 
+                      hovermode = "x unified", 
+                      showlegend = TRUE,
+                                              legend = list(
+                        orientation = 'h',    # Horizontal legend
+                        x = 0.5,              # Centered horizontally
+                        xanchor = 'center',   
+                        y = -0.2,             # Positioned below the chart
+                        yanchor = 'top'       # Align the top of the legend with this position
+                      ),
+                      xaxis = xaxis,
+                      yaxis = yaxis,
+                      shapes = list(hline(total_area))) %>%
               add_text(showlegend = FALSE, x = c("11-20"), y = c(total_area*1.02),
               text = c("Total Area"))
 
-
 fig
-
-
 ```
 
 
 
 ## Sea ice extent anomalies
 
-_Users can click on the data names in the legend to toggle it on and off._
+
 
 ```{r}
 #| echo: false
@@ -195,17 +204,26 @@ fig1 <- fig1 %>% add_trace(data = baseline_df1, x = ~date, y = ~-1*seaice_extent
            name = '-1 STDev') 
 
 # Add style to chart
-fig1 <- fig1 %>% layout(showlegend = TRUE,  
+fig1 <- fig1 %>% layout(title = "Daily Sea Ice Anomalies", 
+                      showlegend = TRUE,  
                       hovermode = "x unified",
                       yaxis = yaxis,
                       xaxis = xaxis,
-                      plot_bgcolor = '#ffffff'
+                      plot_bgcolor = '#ffffff',
+                        legend = list(
+                        orientation = 'h',    # Horizontal legend
+                        x = 0.5,              # Centered horizontally
+                        xanchor = 'center',   
+                        y = -0.2,             # Positioned below the chart
+                        yanchor = 'top'       # Align the top of the legend with this position
+                      )
                     )
+
+
+
 
 fig1
 ```
-Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
-Statistics/Figure Source : NOAA CoastWatch PolarWatch 
 
 
 ## Daily sea ice extent data downloads
