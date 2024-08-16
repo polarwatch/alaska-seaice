@@ -19,14 +19,15 @@ regions defined by the Ecosystem Management Regions:
 * [the Eastern Bering Sea](ebering.html)
 * [the Northern Bering Sea](nbering.html) (a subset of the Eastern Bering sea).
 
-::: {layout-ncol=2}
+::: {layout="[[1,1], [1]]"}
 
 [![](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_extent_hires.png)](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_extent_hires.png)
 
 [![](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_concentration_hires.png)](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_concentration_hires.png)
 
-:::
 The Arctic maps from the NSIDC display sea ice extent values (left) and sea ice concentration values (right). A grid cell in the sea ice extent map (left) is assigned a value of 1 when the sea ice concentration fraction (right) is greater than or equal to a threshold of 15%.
+
+:::
 
 
 The Alaska region is made up of distinct large marine ecosystems across: the Gulf of Alaska (GOA), Aleutian Islands (AI), eastern Bering Sea (EBS), northern Bering Sea (a subset of EBS), and Chukchi Sea and Beaufort Seas (referred to here as the Alaskan Arctic). Fishery management areas include the Gulf of Alaska and Bering Sea/Aleutian Islands. No federal fisheries currently occur in the Alaskan Arctic.
