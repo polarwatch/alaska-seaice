@@ -2,20 +2,30 @@
 title: "Sea Ice in Alaska"
 ---
 
-### What is Sea Ice?
+This website offers daily time series of sea ice extent and 
+its anomalies within the fisheries management regions of 
+Alaskan waters. You can click on the links below or on 
+the sidebar to view and download the daily time series for each region.
+The regional data are updated daily, with approximately a 2-day lag when new data become available.
 
-Sea ice is seawater that has frozen and floats in the ocean, forming exclusively within the ocean itself. Unlike sea ice, icebergs, glaciers, and ice shelves originate on land before breaking off and floating in the ocean. In the Arctic, sea ice accumulates in the fall and winter and diminishes in the spring and summer, though it does not vanish entirely.
+Sea ice extent refers to the total area where snow or ice is 
+present and is calculated using sea ice concentration data 
+from NOAA PolarWatch. 
 
-### Why is Sea Ice Important?
+The website features sea ice extent data for three 
+regions defined by the Ecosystem Management Regions:
 
-Sea ice plays profound roles in polar ecosystems, environment, climate and weather.Sea ice is crucial in polar ecosystems, environmental balance and climate, and weather patterns.
+* [the Alaskan Arctic](arctic.html) 
+* [the Eastern Bering Sea](ebering.html)
+* [the Northern Bering Sea](nbering.html) (a subset of the Eastern Bering sea).
 
+::: {layout-ncol=2}
 
-### More Info on Sea Ice
+[![](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_extent_hires.png)](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_extent_hires.png)
 
--   [Sea Ice on NOAA/NESDIS](https://www.nesdis.noaa.gov/our-environment/ice-snow/sea-ice)
--   [SeaIce on NASA Earth Observatory](https://earthobservatory.nasa.gov/features/SeaIce)
--   [Quick Facts about Sea Ice from NSIDC](https://nsidc.org/learn/parts-cryosphere/sea-ice/quick-facts-about-sea-ice)
--   [Sea Ice Data Catalog (NOAA PolarWatch)](https://polarwatch.noaa.gov/)
--   [Tutorial and code for Satellite data](https://polarwatch.noaa.gov/tools-training/code-gallery/)
+[![](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_concentration_hires.png)](https://nsidc.org/data/seaice_index/images/daily_images/N_daily_concentration_hires.png)
+
+:::
+The Arctic maps from the NSIDC display sea ice extent values (left) and sea ice concentration values (right). A grid cell in the sea ice extent map (left) is assigned a value of 1 when the sea ice concentration fraction (right) is greater than or equal to a threshold of 15%.
+
 
