@@ -34,7 +34,7 @@
     "href": "nbering.html#daily-sea-ice-extent-data-downloads",
     "title": "Sea ice extent in Northern Bering",
     "section": "Daily sea ice extent data downloads",
-    "text": "Daily sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata",
+    "text": "Daily sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata [.csv format]\nDaily sea ice extent time series (current, last year), metadata [.csv format]\nDaily sea ice concentration satellite data (CDR), metadata [link to data portal]\nDaily sea ice concentration satellite data (Near-Real-Time), metadata [link to data portal]",
     "crumbs": [
       "Northern Bering"
     ]
@@ -203,7 +203,7 @@
     "href": "arctic.html#daily-sea-ice-extent-data-downloads",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "Daily Sea ice extent data downloads",
-    "text": "Daily Sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata",
+    "text": "Daily Sea ice extent data downloads\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page.\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata [.csv format]\nDaily sea ice extent time series (current, last year), metadata [.csv format]\nDaily sea ice concentration satellite data (CDR), metadata [link to data portal]\nDaily sea ice concentration satellite data (Near-Real-Time), metadata [link to data portal]",
     "crumbs": [
       "Alaskan Arctic"
     ]
@@ -253,7 +253,7 @@
     "href": "ebering.html#data-access-and-method-description",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Data access and method description",
-    "text": "Data access and method description\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page:\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata\nDaily sea ice extent time series (current, last year), metadata\nDaily sea ice concentration satellite data (CDR), metadata\nDaily sea ice concentration satellite data (Near-Real-Time), metadata",
+    "text": "Data access and method description\nThe chart data is available for download, and the data sources and calculation methods can be found on the methods page:\n\nMethods\nDaily sea ice extent baseline time series (1985-2015), metadata [.csv format]\nDaily sea ice extent time series (current, last year), metadata [.csv format]\nDaily sea ice concentration satellite data (CDR), metadata [link to data portal]\nDaily sea ice concentration satellite data (Near-Real-Time), metadata [link to data portal]",
     "crumbs": [
       "Eastern Bering"
     ]
