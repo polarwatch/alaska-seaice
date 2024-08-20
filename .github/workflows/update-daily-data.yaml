@@ -7,7 +7,7 @@ on:
     - cron: '0 4 * * *'
 jobs:
   update-daily-data:
-    name: Install Python
+    name: Run Python to update data
     runs-on: "ubuntu-latest"
     defaults:
       run:
@@ -35,16 +35,6 @@ jobs:
           git add data/*.csv
           git commit -m "Update CSV data" || echo "No changes to commit"
           git push
-
-      # - name: Copy data folder
-      #   run: |
-      #     git config --global user.name 'github-actions'
-      #     git config --global user.email 'github-actions@github.com'
-      #     git checkout gh-pages
-      #     git checkout main -- data
-      #     git add data
-      #     git commit -m "Update data folder from main branch"
-      #     git push origin gh-pages
 
 
          
