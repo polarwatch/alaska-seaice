@@ -1,1 +1,1 @@
-Sitemap: git@github.com-shospital:polarwatch/alaska-seaice.git/sitemap.xml
+Sitemap: https://polarwatch.github.io/alaska-seaice/sitemap.xml
