@@ -229,10 +229,10 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 The chart data is available for download, and the data sources and calculation methods can be found on the methods page:
 
 - [Methods](methods.html)
-- [Daily sea ice extent baseline time series (1985-2015)](data/bs_EasternBering.csv), [metadata](data/bs_README.txt)
-- [Daily sea ice extent time series (current, last year)](data/ext_recent_EasternBering.csv), [metadata](data/ext_README.txt)
-- [Daily sea ice concentration satellite data (CDR), metadata](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)
-- [Daily sea ice concentration satellite data (Near-Real-Time), metadata](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)
+- [Daily sea ice extent baseline time series (1985-2015)](data/bs_EasternBering.csv), [metadata](data/bs_README.txt)  [.csv format]
+- [Daily sea ice extent time series (current, last year)](data/ext_recent_EasternBering.csv), [metadata](data/ext_README.txt)  [.csv format]
+- [Daily sea ice concentration satellite data (CDR), metadata](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|) [link to data portal]
+- [Daily sea ice concentration satellite data (Near-Real-Time), metadata](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|) [link to data portal]
 
 
 ## More resources
