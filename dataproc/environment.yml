@@ -3,16 +3,16 @@ channels:
   - conda-forge
 dependencies:
   - python=3.9
-  # - cartopy
-  # - cmocean
-  # - jupyter
-  # - netCDF4
+  - cartopy
+  - cmocean
+  - jupyter
+  - netCDF4
   - pandas
   - pyproj 
-  # - requests
+  - requests
   - xarray
   - numpy
   - requests
-  # - seaborn
-  # - matplotlib
+  - seaborn
+  - matplotlib
   - xarray
