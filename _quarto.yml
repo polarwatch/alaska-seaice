@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!dataproc/"
 
 website:
   title: "Sea Ice @ Alaska"

@@ -1,0 +1,18 @@
+name: seaice
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - cartopy
+  - cmocean
+  - jupyter
+  - netCDF4
+  - pandas
+  - pyproj 
+  - requests
+  - xarray
+  - numpy
+  - requests
+  - seaborn
+  - matplotlib
+  - xarray
