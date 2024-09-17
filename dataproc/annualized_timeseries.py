@@ -54,7 +54,7 @@ def main():
         alaska_shp_proj = alaska_shp.to_crs(crs)  # Reproject the shapefile to match the dataset CRS
 
         # Loop over each year from 1995 to 2010, computing sea ice extent for each September 1 to August 31 period
-        for year in range(1995, 2010):
+        for year in range(1985, 2024):
             # Subset the dataset by time (September 1 to August 31) and region (clip to the shapefile)
             ds, area = sic_m.subset_dim([f'{year}-09-01', f'{year+1}-08-31'], alaska_shp_proj)
 
@@ -72,7 +72,7 @@ def main():
             
         # Convert the list of extents into a pandas DataFrame and export it to a CSV file
         df = pd.DataFrame(extents)
-        df.to_csv(f'{name}_annual_extent_85_95.csv', index=False)  # Save the results for each region
+        df.to_csv(f'{name}_annual_extent.csv', index=False)  # Save the results for each region
 
         # Clean up memory after processing each region
         del alaska_shp_proj

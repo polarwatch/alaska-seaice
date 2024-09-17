@@ -222,13 +222,46 @@ fig1
 Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
 Statistics/Figure Source : NOAA CoastWatch PolarWatch 
 
+## Annualized Sea ice extent time series
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+annual <- read.csv("data/AlaskanArctic_annual_extent.csv")
+fig <- plot_ly(annual, type = 'scatter', mode = 'lines+markers')%>%
+  add_trace(x = ~year, y = ~extent, 
+            line=list(color='lightblue'),
+            marker = list(color='blue', size =8))%>%
+  layout(showlegend = F, title='Time Series with Sea Ice Extent (1985-2024)',
+         xaxis = list(rangeslider = list(visible = T)))
+fig <- fig %>%
+  layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         #autosize = TRUE,
+         width = 800,
+         plot_bgcolor='#e5ecf6', width = 900) %>%
+  config(responsive = TRUE)
+
+
+fig
+
+```
+
 ## Daily Sea ice extent data downloads
 
 The chart data is available for download, and the data sources and calculation methods can be found on the methods page.
 
 - [Methods](methods.html)
-- [Daily sea ice extent baseline time series (1985-2015)](data/bs_AlaskanArctic.csv), [metadata](data/bs_README.txt) [.csv format]
+- [Daily sea ice extent baseline time series (average over 1985-2015)](data/bs_AlaskanArctic.csv), [metadata](data/bs_README.txt) [.csv format]
 - [Daily sea ice extent time series (current, last year)](data/ext_recent_AlaskanArctic.csv), [metadata](data/ext_README.txt) [.csv format]
+- [Annual Average Sea Ice Extent time series (1985-2024)](data/AlaskanArctic_annual_extent.csv), [metadata](data/annual_README.txt) [.csv format]
 - [Daily sea ice concentration satellite data (CDR), metadata](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|) [link to data portal]
 - [Daily sea ice concentration satellite data (Near-Real-Time), metadata](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|) [link to data portal]
 
