@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!dataproc/"
 
 website:
   title: "Sea Ice @ Alaska"
@@ -46,6 +49,8 @@ format:
 
 
 exclude:
-  - "_scripts/"
+  - "scripts/"
+  - "dataproc/"
 
 editor: visual
+
