@@ -7,7 +7,6 @@ import numpy as np  # For numerical operations
 import pandas as pd  # For working with DataFrames and exporting data
 import geopandas as gpd  # For handling geospatial data (e.g., shapefiles)
 from dask.distributed import Client  # Dask for distributed computing
-import gc
 
 def main():
     """
@@ -28,17 +27,17 @@ def main():
     print(f"Dashboard is running on: {client.dashboard_link}")  # Print Dask dashboard link for monitoring
 
     # Define dataset and variable information
-    erddap_id = 'nsidcG02202v4nh1day'  # ERDDAP ID for daily sea ice concentration data
+    erddap_id = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) ERDDAP ID for daily sea ice concentration data
+    #erddap_id = 'nsidcG10016v2nh1day' # NRT (Near-real-time data)
     area_id = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
     crs = 'epsg:3413'  # EPSG code for the polar stereographic projection
     var_name = 'cdr_seaice_conc'  # The variable name in the dataset
 
     # Define regions and corresponding shapefiles for spatial subsetting
     regions = dict([
-     #   ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
-     #   ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
-     #   ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
-        ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
+        ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
+        ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+        ('EasternBering', 'ebering_sf.shp')  # Eastern Bering Sea region
     ])
     # regions = dict([('AlaskanArctic', 'arctic_sf.shp')])  # Uncomment if only analyzing one region
 
@@ -54,12 +53,11 @@ def main():
         # Load the shapefile for the region and transform it to the dataset's CRS
         alaska_shp = gpd.read_file(f'resources/akmarineeco/{shp}')  # Read shapefile
         alaska_shp_proj = alaska_shp.to_crs(crs)  # Reproject the shapefile to match the dataset CRS
-        
-        # Loop over each year from 1985-09-01 to 2023-08-31, 
-        # computing sea ice extent for each September 1 to August 31 period
-        for year in range(1985, 2024):
+
+        # Loop over each year from 1995 to 2010, computing sea ice extent for each September 1 to August 31 period
+        for year in range(1985, 1986):
             # Subset the dataset by time (September 1 to August 31) and region (clip to the shapefile)
-            ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
+            ds, area = sic_m.subset_dim([f'{year}-09-01', f'{year+1}-08-31'], alaska_shp_proj)
 
             # Format the sea ice concentration data to binary (0 or 1) using a threshold of 0.15
             sic = sic_m.format_sic(ds, 0.15)  # Sea ice concentration thresholding
@@ -72,30 +70,14 @@ def main():
 
             # Clean up memory after each iteration to avoid excessive memory usage
             del ds, sic, ext
-
-        # Get the latest from NRT dataset (2023-09-01 to 2024-08-31)
-        year = 2024
-        sic_latest = SIC25k('nsidcG10016v2nh1day', var_name, crs)  # Initialize SIC25k with ERDDAP data
-        ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
-        sic = sic_latest.format_sic(ds, 0.15)  # Sea ice concentration thresholding
-
-        # Compute the sea ice extent in square kilometers for the subset data
-        ext = sic_latest.compute_extent_km(sic, area)
-
-        # Store the computed extent along with the region name and year in the list
-        extents.append({'region': name, 'year': year, 'extent': np.mean(ext.values)})
-
-        # Clean up memory after each iteration to avoid excessive memory usage
-        del ds, sic, ext
-        gc.collect()
-
+            
         # Convert the list of extents into a pandas DataFrame and export it to a CSV file
         df = pd.DataFrame(extents)
         df.to_csv(f'{name}_annual_extent.csv', index=False)  # Save the results for each region
 
         # Clean up memory after processing each region
         del alaska_shp_proj
-        
+
 # Entry point of the script
 if __name__ == "__main__":
     main()  # Run the main function
