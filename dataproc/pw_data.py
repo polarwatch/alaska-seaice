@@ -86,7 +86,7 @@ class cwData:
         if year_range[0] < start_year or year_range[1] > end_year:
             raise ValueError("Year range provided must be within the dataset's date range.")
       
-        ds_selected = self.ds.sel(time=slice(f"{year_range[0]}-01-01", f"{year_range[1]}-12-31"))
+        ds_selected = self.ds.sel(time=slice(f"{year_range[0]}-01-01", f"{year_range[1]}-12-31")).chunk({'xgrid': 'auto', 'ygrid': 'auto'})
 
         if frequency == "15D":
             ds_clim = ds_selected.groupby(custom_15day_interval(ds_selected.time)).mean("time")
@@ -165,7 +165,7 @@ class SIC25k(cwData):
             tuple: A tuple of (subset dataset, subset area).
         """
         ds = self.ds.sel(time=slice(dates[0], dates[1]))
-        if shp is not None and not shp.empty:
+        if shp is not None and not shp.empty and self.area is not None:
             ds, area = clip_data(ds, shp), clip_data(self.area, shp)
             return (ds, area)
         else:
@@ -182,10 +182,10 @@ class SIC25k(cwData):
         Returns:
             xr.Dataset: Binary sea ice concentration dataset (0 for below threshold, 1 for above).
         """
-        ds_binary = xr.where(ds >= threshold, 1, 0)
-        ds_transformed = xr.where(ds_binary.isnull(), np.nan, ds_binary)           
-        
-        return ds_transformed
+        ds_transformed = xr.where(ds.isnull(), np.nan, xr.where(ds >= threshold, 1, 0))
+
+        return ds_transformed         
+
 
     def compute_extent_km(self, ds: xr.Dataset, area: xr.Dataset)->float:
         """ Computes sea ice extent in square kilometers.
@@ -254,16 +254,12 @@ def clip_data(ds: xr.Dataset, shape:gpd.GeoDataFrame)-> xr.Dataset:
     Args:
         shape (gpd.GeoDataFrame): crs transformed shape geometry in GeoDataFrame 
     """
-    
-    # Check if CRS match, if not transform the shape geometry to match data CRS
 
     if shape.crs != ds.rio.crs:
         print("Shape CRS does not match data CRS. Performing CRS transformation")
         shape = shape.to_crs(ds.rio.crs)
 
-    # Perform the clipping operation
     clipped_ds = ds.rio.clip(shape.geometry.apply(mapping), shape.crs)
-    
     return clipped_ds
 
 

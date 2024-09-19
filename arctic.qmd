@@ -177,7 +177,16 @@ yaxis <- list(title = "Square km",
             showticklabels = TRUE,
             autorange = TRUE)
 
+library(lubridate)
 
+# Adjust date column for September to August range
+
+# Apply the function to each dataframe
+# anom_last$date_adj <- adjust_date(anom_last$date)
+# anom_current$date_adj <- adjust_date(anom_current$date)
+# baseline_df1$date_adj <- adjust_date(baseline_df1$date)
+
+print(class(baseline_df1$date))
 # Create Plotly figure
 fig1 <- plot_ly(anom_last, x = ~date, y = ~anom, type = 'scatter', mode = 'lines',
                fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=paste0("Anomaly: ", lastyear ))
