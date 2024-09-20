@@ -29,7 +29,9 @@ website:
         text: "Eastern Bering"
       - href: nbering.qmd
         text: "Northern Bering"
-      - href: https://shinyfin.psmfc.org/ak-sst-mhw/
+      - href: sebering.qmd
+        text: "Southeastern Bering"
+      - href: https://shinyfin.psmfc.org/ak-sst-mhw/      
         text: "ShinyFIN (SST)"
         target: _blank
       - href: https://polarwatch.noaa.gov

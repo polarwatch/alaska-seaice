@@ -1,5 +1,5 @@
 ---
-title: "Sea ice extent in Northern Bering"
+title: "Sea ice extent in Southeastern Bering"
 format: 
   html:
     code-fold: true
@@ -8,10 +8,10 @@ format:
 
 > Updated on `r format(Sys.Date(), '%B %d, %Y')`
 
-<img src="img/nbering.png" alt="Northern Bering" style="float: right; width: 200px;"/>
+<img src="img/sebering.png" alt="Southeastern Bering" style="float: right; width: 200px;"/>
 
 
-The time series plot and data summary below present statistics on sea ice extent within northern Bering Sea
+The time series plot and data summary below present statistics on sea ice extent within southeastern Bering Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 * Mean (1985-2015): Represents the average sea ice extent from 1985 to 2015.
@@ -39,7 +39,7 @@ library(reshape2)
 library(plotly)
 library(magrittr)
 
-region_title <- "Northern Bering"
+region_title <- "Southeastern Bering"
 lastyear <- as.numeric(format(Sys.Date(), '%Y'))-1
 plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc")
 ```
