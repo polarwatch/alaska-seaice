@@ -52,8 +52,8 @@ plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc"
 #| warning: false
 #| message: false
 
-baseline_df1 = read.csv("data/bs_NorthernBering.csv")
-recent_df1 = read.csv("data/ext_recent_NorthernBering.csv")
+baseline_df1 = read.csv("data/bs_extent_NorthernBering.csv")
+recent_df1 = read.csv("data/nrt_extent_NorthernBering.csv")
 
 # Get upper and lower bound of sea ice extent using standard dev
 baseline_df1$upper_extent <- baseline_df1$seaice_extent_mean + baseline_df1$seaice_extent_std
@@ -231,7 +231,7 @@ fig1
 The chart data is available for download, and the data sources and calculation methods can be found on the methods page.
 
 - [Methods](methods.html)
-- [Daily sea ice extent baseline time series (1985-2015)](data/bs_NorthernBering.csv), [metadata](data/bs_README.txt)  [.csv format]
+- [Daily sea ice extent baseline time series (1985-2015)](data/bs_extent_NorthernBering.csv), [metadata](data/bs_extent_README.txt)  [.csv format]
 - [Daily sea ice extent time series (current, last year)](data/ext_recent_NorthernBering.csv), [metadata](data/ext_README.txt)  [.csv format]
 - [Daily sea ice concentration satellite data (CDR), metadata](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|) [link to data portal]
 - [Daily sea ice concentration satellite data (Near-Real-Time), metadata](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|) [link to data portal]
