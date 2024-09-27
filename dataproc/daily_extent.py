@@ -27,38 +27,39 @@ def main():
     print(f"Dashboard is running on: {client.dashboard_link}")  # Print Dask dashboard link for monitoring
 
     # Define dataset and variable information
-    erddap_id = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) ERDDAP ID for daily sea ice concentration data
-    #erddap_id = 'nsidcG10016v2nh1day' # NRT (Near-real-time data)
-    area_id = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
-    crs = 'epsg:3413'  # EPSG code for the polar stereographic projection
-    var_name = 'cdr_seaice_conc'  # The variable name in the dataset
+    CDR_DAILY_ID = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) ERDDAP ID for daily sea ice concentration data
+    NRT_DAILY_ID = 'nsidcG10016v2nh1day' # NRT (Near-real-time data)
+    GRID_AREA_ID = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
+    CRS = 'epsg:3413'  # EPSG code for the polar stereographic projection
+    VAR_NAME = 'cdr_seaice_conc'  # The variable name in the dataset
 
     # Define regions and corresponding shapefiles for spatial subsetting
-    regions = dict([
+    REGIONS = dict([
         ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
         ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
         ('EasternBering', 'ebering_sf.shp')  # Eastern Bering Sea region
     ])
-    # regions = dict([('AlaskanArctic', 'arctic_sf.shp')])  # Uncomment if only analyzing one region
+    # REGIONS = dict([('AlaskanArctic', 'arctic_sf.shp')])  # Uncomment if only analyzing one region
 
     # Instantiate an SIC25k object and load sea ice concentration and grid data
-    sic_m = SIC25k(erddap_id, var_name, crs)  # Initialize SIC25k with ERDDAP data
-    sic_m.load_area(area_id)  # Load the corresponding grid cell area data
+    sic_m = SIC25k(CDR_DAILY_ID, VAR_NAME, CRS)  # Initialize SIC25k with ERDDAP data
+    sic_m.load_area(GRID_AREA_ID)  # Load the corresponding grid cell area data
 
     # List to store annual sea ice extent for each region and year
     extents = []
 
     # Loop over each region and its corresponding shapefile
-    for name, shp in regions.items():
+    for name, shp in REGIONS.items():
         # Load the shapefile for the region and transform it to the dataset's CRS
         alaska_shp = gpd.read_file(f'resources/akmarineeco/{shp}')  # Read shapefile
-        alaska_shp_proj = alaska_shp.to_crs(crs)  # Reproject the shapefile to match the dataset CRS
+        alaska_shp_proj = alaska_shp.to_crs(CRS)  # Reproject the shapefile to match the dataset CRS
 
         # Loop over each year from 1995 to 2010, computing sea ice extent for each September 1 to August 31 period
         for year in range(1985, 1986):
             # Subset the dataset by time (September 1 to August 31) and region (clip to the shapefile)
             ds, area = sic_m.subset_dim([f'{year}-09-01', f'{year+1}-08-31'], alaska_shp_proj)
 
+        # Process to compute sea ice extent
             # Format the sea ice concentration data to binary (0 or 1) using a threshold of 0.15
             sic = sic_m.format_sic(ds, 0.15)  # Sea ice concentration thresholding
 
