@@ -8,7 +8,10 @@ import pandas as pd  # For working with DataFrames and exporting data
 import geopandas as gpd  # For handling geospatial data (e.g., shapefiles)
 from dask.distributed import Client  # Dask for distributed computing
 import gc
+<<<<<<< HEAD
 from datetime import datetime 
+=======
+>>>>>>> main
 
 def main():
     """
@@ -33,6 +36,7 @@ def main():
     area_id = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
     crs = 'epsg:3413'  # EPSG code for the polar stereographic projection
     var_name = 'cdr_seaice_conc'  # The variable name in the dataset
+<<<<<<< HEAD
     thisyear = datetime.now().year
     
     # Define regions and corresponding shapefiles for spatial subsetting
@@ -42,6 +46,17 @@ def main():
        ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
         ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
     ])
+=======
+
+    # Define regions and corresponding shapefiles for spatial subsetting
+    regions = dict([
+     #   ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
+     #   ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+     #   ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
+        ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
+    ])
+    # regions = dict([('AlaskanArctic', 'arctic_sf.shp')])  # Uncomment if only analyzing one region
+>>>>>>> main
 
     # Instantiate an SIC25k object and load sea ice concentration and grid data
     sic_m = SIC25k(erddap_id, var_name, crs)  # Initialize SIC25k with ERDDAP data
@@ -58,7 +73,11 @@ def main():
         
         # Loop over each year from 1985-09-01 to 2023-08-31, 
         # computing sea ice extent for each September 1 to August 31 period
+<<<<<<< HEAD
         for year in range(1985, thisyear):
+=======
+        for year in range(1985, 2024):
+>>>>>>> main
             # Subset the dataset by time (September 1 to August 31) and region (clip to the shapefile)
             ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
 
@@ -74,11 +93,19 @@ def main():
             # Clean up memory after each iteration to avoid excessive memory usage
             del ds, sic, ext
 
+<<<<<<< HEAD
         # Get the latest from NRT dataset (e.g. Year 2024 refers to 2023-09-01 to 2024-08-31)
         year = thisyear
         sic_latest = SIC25k('nsidcG10016v2nh1day', var_name, crs)  # Initialize SIC25k with ERDDAP data
         ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
         sic = sic_latest.format_sic(ds, 0.15)  # convert values to be 0 or 1 based on threshold
+=======
+        # Get the latest from NRT dataset (2023-09-01 to 2024-08-31)
+        year = 2024
+        sic_latest = SIC25k('nsidcG10016v2nh1day', var_name, crs)  # Initialize SIC25k with ERDDAP data
+        ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
+        sic = sic_latest.format_sic(ds, 0.15)  # Sea ice concentration thresholding
+>>>>>>> main
 
         # Compute the sea ice extent in square kilometers for the subset data
         ext = sic_latest.compute_extent_km(sic, area)

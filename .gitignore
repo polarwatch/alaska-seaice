@@ -2,8 +2,8 @@
 /.quarto/
 /_scripts/
 /.Rproj.user/
-**/.DS_Store
-**/.RData
-**/.Rhistory
+.DS_Store
+.RData
+.Rhistory
 **/*.ini
-**/.Rapp.history
+.vscode

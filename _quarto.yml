@@ -56,5 +56,3 @@ exclude:
 
 editor: visual
 
-execute:
-  freeze: auto

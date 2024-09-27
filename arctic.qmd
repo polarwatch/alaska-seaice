@@ -190,6 +190,7 @@ yaxis <- list(title = "Square km",
             showticklabels = TRUE,
             autorange = TRUE)
 
+library(lubridate)
 
 # Adjust date column for September to August range
 
@@ -286,6 +287,38 @@ The extent values for this year are computed using near real-time data, while th
 Data may be missing or corrupted in the event of technical failures with sensors or ground stations. 
 
 Please check the [data log](https://polarwatch.github.io/datamanagement/datasets/nsidcG10016v2nh1day/logs.html) or contact us at sun&#46;bak-hospital&#64;noaa&#46;gov for further information.
+
+## Annualized Sea ice extent time series
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+annual <- read.csv("data/AlaskanArctic_annual_extent.csv")
+fig <- plot_ly(annual, type = 'scatter', mode = 'lines+markers')%>%
+  add_trace(x = ~year, y = ~extent, 
+            line=list(color='lightblue'),
+            marker = list(color='blue', size =8))%>%
+  layout(showlegend = F, title='Time Series with Sea Ice Extent (1985-2024)',
+         xaxis = list(rangeslider = list(visible = T)))
+fig <- fig %>%
+  layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         #autosize = TRUE,
+         width = 800,
+         plot_bgcolor='#e5ecf6', width = 900) %>%
+  config(responsive = TRUE)
+
+
+fig
+
+```
 
 ## Daily Sea ice extent data downloads
 

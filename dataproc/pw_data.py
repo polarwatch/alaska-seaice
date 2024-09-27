@@ -129,6 +129,7 @@ class SIC25k(cwData):
             return 0
         return 1
 
+<<<<<<< HEAD
     def get_total_area_km(self, shp):
         """ Computes the total area (in square kilometers) of the grid cells in the dataset.
          The area does not include grid cells flagged as Northern Hemisphere pole hole, 
@@ -136,12 +137,18 @@ class SIC25k(cwData):
 
         Args:
             shape: shape geometries
+=======
+    def get_total_area_km(self):
+        """ Computes the total area (in square kilometers) of the grid cells in the dataset.
+
+>>>>>>> main
         Raises:
             ValueError: If the grid cell area is not loaded.
 
         Returns:
             float: Total area in square kilometers.
         """
+<<<<<<< HEAD
 
         # If if area is loaded
         if self.area is None:
@@ -165,6 +172,19 @@ class SIC25k(cwData):
         
             # Convert total area from m^2 to km^2
             return tot_area / 1e6           
+=======
+        if self.area is None:
+            raise ValueError("Grid cell area is not loaded")
+        try:    
+            ds = self.ds.isel(time=0)
+            
+            ds1 = xr.where(ds.isnull(), np.nan, 1)
+            ice_ext = ds1 * self.area
+            ice_ext.name = 'extent'
+            ice_area = ice_ext.sum(dim=["xgrid", "ygrid"], skipna = True).values 
+        
+            return ice_area / 1e6           
+>>>>>>> main
             
         except Exception as e:
             print(f'Failed to load grid area and compute total area {e}')
@@ -187,7 +207,11 @@ class SIC25k(cwData):
         else:
             return (ds, self.area)
         
+<<<<<<< HEAD
     def format_sic(self, ds: xr.DataArray, threshold=0.15)-> xr.DataArray:
+=======
+    def format_sic(self, ds: xr.Dataset, threshold=0.15)-> xr.Dataset:
+>>>>>>> main
         """
         Transforms sea ice concentration data to binary (0 and 1) based on the threshold value.
 
@@ -203,7 +227,11 @@ class SIC25k(cwData):
         return ds_transformed         
 
 
+<<<<<<< HEAD
     def compute_extent_km(self, ds: xr.DataArray, area: xr.DataArray)-> xr.DataArray:
+=======
+    def compute_extent_km(self, ds: xr.Dataset, area: xr.Dataset)->float:
+>>>>>>> main
         """ Computes sea ice extent in square kilometers.
 
         Args:
@@ -221,7 +249,11 @@ class SIC25k(cwData):
                 raise TypeError(f"Input `ds` is a multi-variable xarray. Provide a DataArray or single variable dataset")
 
         # Multiply sea ice concentration data by grid cell area to compute extent
+<<<<<<< HEAD
         ice_cell = ds * area / 1e6 # Convert area to square km
+=======
+        ice_cell = ds * area / 1e6 # Convert area to square m
+>>>>>>> main
         if isinstance(ice_cell, xr.DataArray):
             # Sum sea ice extent overxgrid and ygrid, group by time
             ice_cell.name = 'seaice_extent'  
