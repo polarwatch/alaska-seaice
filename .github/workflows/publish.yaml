@@ -37,6 +37,7 @@ jobs:
             any::reshape2
             any::DT
             any::plotly
+            any::lubridate
 
 
       - name: Render and Publish
