@@ -71,7 +71,7 @@ def main():
             
         # Convert the list of extents into a pandas DataFrame and export it to a CSV file
         df = pd.DataFrame(extents)
-        df.to_csv(f'{name}_annual_extent.csv', index=False)  # Save the results for each region
+        df.to_csv(f'annualized_extent_{name}.csv', index=False)  # Save the results for each region
 
         # Clean up memory after processing each region
         del alaska_shp_proj

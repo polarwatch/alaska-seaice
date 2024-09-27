@@ -1,35 +1,30 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import xarray as xr
-import matplotlib.pyplot as plt
-import os, sys
-import geopandas as gpd
-import rasterio
-import pandas as pd
-import rioxarray
-from shapely.geometry import mapping
-
-# Import the utils module from parent directory
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, '../..'))
-sys.path.insert(0, parent_dir)
-
-from utils.pw_data import pwData
-
-#from utils.clm import CLM
+# Import necessary libraries
+from pw_data import SIC25k  # Custom class to handle sea ice concentration data (NSIDC 25k)
+import numpy as np  # For numerical operations
+import pandas as pd  # For working with DataFrames and exporting data
+import geopandas as gpd  # For handling geospatial data (e.g., shapefiles)
+from dask.distributed import Client  # Dask for distributed computing
 
 def main():
-    # server and data set info
-    
-    crs = 'epsg:3413'
-    cdr_id = 'nsidcG02202v4nh1day'
-    var_name = 'cdr_seaice_conc'
+ 
+    # Define dataset and variable information
+    CDR_DAILY_ID = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) daily sea ice conc
+    NRT_DAILY_ID = 'nsidcG10016v2nh1day' # NRT (Near-real-time data) daily sea ice conc
+    GRID_AREA_ID = 'pstere_gridcell_N25k'  # Grid cell area
+    CRS = 'epsg:3413'  # EPSG code for the polar stereographic (north) projection
+    VAR_NAME = 'cdr_seaice_conc'  # The variable name in the dataset
 
-    #regions = dict([('AlaskanArctic', 'arctic_sf.shp'), ('NorthernBering', 'nbering_sf.shp'), ('EasternBering', 'ebering_sf.shp')])
-    regions = dict([('AlaskanArctic', 'arctic_sf.shp')])
-    crs = 'epsg:3413'
-    for name, shp in regions.items():
+    # Define regions and corresponding shapefiles for spatial subsetting
+    REGIONS = dict([
+        ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
+        ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+        ('EasternBering', 'ebering_sf.shp')  # Eastern Bering Sea region
+    ])
+  
+    for name, shp in REGIONS.items():
         print(f'name is {name}, and shape file is {shp}')
 
     #     print("reading shapefile : ")
