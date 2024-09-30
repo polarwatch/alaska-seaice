@@ -6,14 +6,12 @@ from pw_data import SIC25k  # Custom class to handle sea ice concentration data 
 import numpy as np  # For numerical operations
 import pandas as pd  # For working with DataFrames and exporting data
 import geopandas as gpd
-import configparser
 from pathlib import Path
 
-from dask.distributed import Client  # Dask for distributed computing
+#from dask.distributed import Client  # Dask for distributed computing
 
 def main():
  
-    config = configparser.ConfigParser()
     regions = dict(config.items('regions'))
     print(regions)
 
@@ -42,14 +40,15 @@ def main():
         alaska_shp_proj = alaska_shp.to_crs(crs)
 
         sic_m = pwSIC25k(crs, cdr_id, var_name, alaska_shp_proj)
-        ext = sic_m.compute_extent_km(['1985-01-01', '2015-12-31'])
+        ext = sic_m.compute_extent_km(['1991-01-01', '1992-12-31'])
         ext_df = (ext
                 .to_dataframe()
                 .reset_index()
                 .drop(['spatial_ref'], axis='columns'))
         ext_df.to_csv(f'ext_{name}.csv', index=False)
 
-        df = pd.read_csv(f'ext_{name}.csv')
+        df = pd.read_csv(f'ext_all{name}.csv')
+
     # Create new columns for month and day
         df['time'] = pd.to_datetime(df['time'])
    

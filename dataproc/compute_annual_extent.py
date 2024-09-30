@@ -44,7 +44,6 @@ def main():
     sic_m.load_area(area_id)  # Load the corresponding grid cell area data
 
 
-
     # Loop over each region and its corresponding shapefile
     for name, shp in regions.items():
         # List to store annual sea ice extent for each region and year
