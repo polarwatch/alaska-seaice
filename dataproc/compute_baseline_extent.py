@@ -12,8 +12,6 @@ from pathlib import Path
 
 def main():
  
-    regions = dict(config.items('regions'))
-    print(regions)
 
 
     # Define dataset and variable information
@@ -39,10 +37,10 @@ def main():
         print(f'name is {name}, and shape file is {shp}')
 
         print("reading shapefile : ")
-        alaska_shp = gpd.read_file(RESOURCE_DIR / shp)
+        alaska_shp = gpd.read_file(f'{RESOURCE_DIR}/{shp}')
 
     # Transform projection to Polar Stereographic Projection
-        alaska_shp_proj = alaska_shp.to_crs(crs)
+        alaska_shp_proj = alaska_shp.to_crs(CRS)
 
         sic_m = PIC(crs, cdr_id, var_name, alaska_shp_proj)
         ext = sic_m.compute_extent_km(['1991-01-01', '1993-12-31'])
