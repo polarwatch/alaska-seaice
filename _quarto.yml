@@ -31,6 +31,8 @@ website:
         text: "Northern Bering"
       - href: sebering.qmd
         text: "Southeastern Bering"
+      - href: methods.qmd
+        text: "Data and Methods"
       - href: https://shinyfin.psmfc.org/ak-sst-mhw/      
         text: "ShinyFIN (SST)"
         target: _blank
