@@ -27,8 +27,8 @@ def main():
     ])
 
     # Get the latest date from recently updated file
-    recent_dat = pd.read_csv("data/nrt_extent_NorthernBering.csv", parse_dates=['time'])
-    start_date = (recent_dat['time'].max() + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
+    recent_dat = pd.read_csv("data/nrt_extent_NorthernBering.csv", parse_dates=['date'])
+    start_date = (recent_dat['date'].max() + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
     end_date = date.today().strftime('%Y-%m-%d')
 
     # Get most recent sea ice data

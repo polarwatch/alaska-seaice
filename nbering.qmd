@@ -14,8 +14,8 @@ format:
 The time series plot and data summary below present statistics on sea ice extent within northern Bering Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
-* Mean (1985-2015): Represents the average sea ice extent from 1985 to 2015.
-* Upper and Lower Bounds of Error Band (1985-2015): Reflect the uncertainty of the Mean (1985 to 2015).
+* Mean (1991-2020): Represents the average sea ice extent from 1991-2020.
+* Upper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.
 * Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
 
 :::{.callout-tip title="Plots are interactive!" }
@@ -319,7 +319,7 @@ Please check the [data log](https://polarwatch.github.io/datamanagement/datasets
 
 ## Daily Sea ice extent data downloads
 
-- Baseline daily extent time series (1985-2015) [Data](data/bs_extent_NorthernBering.csv) - [Metadata](data/bs_extent_README.md)
+- Baseline daily extent time series (1991-2020) [Data](data/bs_extent_NorthernBering.csv) - [Metadata](data/bs_extent_README.md)
 - Near-real-time daily extent of two recent years [Data](data/ext_recent_NorthernBering.csv) - [Metadata](data/nrt_extent_README.md) 
 - Annual mean extent time series (1985-2024) [Data](data/NorthernBering_annual_extent.csv) - [Metadata](data/annualized_extent_README.md)  
 - Daily sea ice concentration from near-real-time (NRT) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)  

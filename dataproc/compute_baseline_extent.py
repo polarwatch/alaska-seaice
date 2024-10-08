@@ -18,7 +18,7 @@ def main():
     CDR_DAILY_ID = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) daily sea ice conc
     GRID_AREA_ID = 'pstere_gridcell_N25k'  # Grid cell area
     CRS = 'epsg:3413'  # EPSG code for the polar stereographic (north) projection
-    VAR_NAME = 'cdr_seaice_conc'  # The variable name in the dataset
+    VAR_NAME = 'cdr_seaice_conc'  # The variable name in the daily dataset
     RESOURCE_DIR = "resources/akmarineeco"
 
     # Define regions and corresponding shapefiles
