@@ -18,11 +18,16 @@ def main():
     crs = 'epsg:3413'
     var_name = 'cdr_seaice_conc'
 
-    # Dictionaries of names and associated shape files
-    regions = dict([('AlaskanArctic', 'arctic_sf.shp'), ('NorthernBering', 'nbering_sf.shp'), ('EasternBering', 'ebering_sf.shp')])
+    # Define regions and corresponding shapefiles for spatial subsetting
+    regions = dict([
+       ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
+       ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+       ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
+        ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
+    ])
 
     # Get the latest date from recently updated file
-    recent_dat = pd.read_csv("data/ext_recent_NorthernBering.csv", parse_dates=['time'])
+    recent_dat = pd.read_csv("data/nrt_extent_NorthernBering.csv", parse_dates=['time'])
     start_date = (recent_dat['time'].max() + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
     end_date = date.today().strftime('%Y-%m-%d')
 
@@ -53,11 +58,12 @@ def main():
 
             # Format the dataset and append to csv file
             ext_df = (ext
-            .to_dataframe()
-            .reset_index()
-            .drop(['spatial_ref'], axis='columns'))
+                    .to_dataframe()
+                    .reset_index()
+                    .drop(['spatial_ref'], axis='columns')
+                    .rename(columns={'time': 'date'}))
             try:
-                ext_df.to_csv(f'data/ext_recent_{name}.csv', mode='a', index=False, header=False)
+                ext_df.to_csv(f'data/nrt_extent_{name}.csv', mode='a', index=False, header=False)
                 print('Successfully updated ext_recent files')
             except : 
                 print(f'Failed to update the ext_recent files for {name}')
