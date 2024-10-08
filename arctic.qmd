@@ -53,17 +53,21 @@ total_area = 511126.86
 #| message: false
 
 
-# Load near real time data for this year and last year
-nrt_df = read.csv("data/nrt_extent_AlaskanArctic.csv")
 
-# Remove data from 09-15 to 09-18 in 2024
-nrt_df = subset(nrt_df, !(date >= as.Date("2024-09-15") & date <= as.Date("2024-09-18")))
+
 
 # Load annualized extent
 annual = read.csv("data/annualized_extent_AlaskanArctic.csv")
 
 # Load baseline data
 baseline_df = read.csv("data/bs_extent_AlaskanArctic.csv")
+
+# Load near real time data for this year and last year
+nrt_df = read.csv("data/nrt_extent_AlaskanArctic.csv")
+
+# # Remove data from 09-15 to 09-18 in 2024
+# nrt_df = subset(nrt_df, !(date >= as.Date("2024-09-15") & date <= as.Date("2024-09-18")))
+
 
 ```
 
