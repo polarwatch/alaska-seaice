@@ -1,0 +1,130 @@
+---
+title: "seaice-alaska"
+author: "Sunny Hospital"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The script exports the shape geometries of Alaska fisheries management ecosystem regions using akmarineareas2 package.
+
+devtools::install_github("MattCallahan-NOAA/AKmarineareas")
+devtools::install_github("MattCallahan-NOAA/akmarineareas2")
+
+Few code blocks show examples from the readme of the package `akmarinearea2`
+
+```{r readme-akmarinearea2}
+
+## plot NMFS areas
+library(akmarineareas2)
+library(tidyverse)
+library(sf)
+## plot NMFS areas and AK
+ggplot()+
+  geom_sf(data=nmfs, color="red", fill=NA)+
+  geom_sf(data=ak)+
+  theme_void()
+
+## without dateline removed
+my_esr<-esr_dd%>%
+  st_shift_longitude()
+
+ggplot()+
+  geom_sf(data=my_esr, color="red", fill=NA)+
+  theme_void()
+
+## remove dateline
+my_esr2<-esr_dd%>%
+  remove_dateline()%>%
+    st_shift_longitude()
+#> Spherical geometry (s2) switched off
+  
+ggplot()+
+  geom_sf(data=my_esr2, color="red", fill=NA)+
+  theme_void()
+
+## plot ADFG areas in Southeast AK
+#set extent
+ext<-data.frame(x=c(-140,-127), y=c(53, 58))%>%
+  st_as_sf(coords=c("x", "y"), crs=4326)%>%
+  st_transform(crs=3338)%>%
+  st_bbox()
+#plot adfg areas with canada and ak basemaps
+ggplot()+
+  geom_sf(data=ak)+
+  geom_sf(data=canada)+
+  geom_sf(data=adfg, color="black", fill=NA)+
+  coord_sf(xlim=c(ext[1], ext[3]), ylim=c(ext[2], ext[4]))+
+  theme_bw()
+```
+
+Few code blocks show examples from the readme of the package `AKmarineareas`
+
+```{r readme-AKmarineareas}
+
+library(AKmarineareas)
+
+## plot NMFS areas
+AK_marine_area()%>%
+  st_shift_longitude()%>% #centers on the Pacific
+  ggplot()+
+  geom_sf()+
+  geom_sf_label(aes(label=NMFS_REP_AREA))+
+  theme_void()
+
+ 
+##plot ecosystem subregions, projected version
+AK_marine_area(area="Ecosystem Subarea", prj="prj")%>%
+  ggplot()+
+  geom_sf(aes(fill=Ecosystem_Subarea))+
+  theme_void()
+
+
+```
+
+This code is to map only the Southeastern Bering Sea with a specific color (green)
+
+```{r}
+# Create is_se_bering variable 
+data <- AK_marine_area(area = "Ecosystem Subarea", prj = "prj") %>%
+  mutate(is_se_bering = ifelse(Area_Name == "Southeastern Bering Sea", "Southeastern Bering Sea", "Other"))
+
+# Plot southeastern bering see with green and others grey
+ggplot(data) +
+  geom_sf(aes(fill = is_se_bering)) +
+  scale_fill_manual(values = c("Southeastern Bering Sea" = "#b2cf79", "Other" = "#7f7f7f")) +  
+  theme_void()
+```
+
+This code exports the shape geometry of the ecosystem subarea "Southeastern Bering Sea"
+```{r}
+
+# Examine the object
+names(AK_marine_area())
+names(AK_marine_area(area="Ecosystem Subarea"))
+AK_marine_area(area="Ecosystem Subarea")$Ecosystem_Subarea
+
+# Assign the projected data with epsg: 6393
+projected.df <- AK_marine_area(area="Ecosystem Subarea", prj="prj")  
+
+# Assign the data with epsg 4325
+dd.df <- AK_marine_area(area="Ecosystem Subarea", prj="dd")  
+
+# Assign the southeastern bering sea 
+se_bering <- projected.df[projected.df$Area_Name=="Southeastern Bering Sea",]
+
+# Check the data type
+class(se_bering$Shape)
+
+# Check the crs
+st_crs(se_bering$Shape) 
+
+# Export the shape to shape file
+st_write(se_bering$Shape, "se_bering_sf.shp")
+
+ 
+```
+
