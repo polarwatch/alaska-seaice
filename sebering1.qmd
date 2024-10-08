@@ -1,0 +1,30 @@
+---
+title: "Sea ice extent in Southeastern Bering"
+format: 
+  html:
+    code-fold: true
+---
+
+
+> Updated on `r format(Sys.Date(), '%B %d, %Y')`
+
+<img src="img/sebering.png" alt="Southeastern Bering" style="float: right; width: 200px;"/>
+
+
+The time series plot and data summary below present statistics on sea ice extent within northern Bering Sea
+computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
+
+* Mean (1991-2020): Represents the average sea ice extent from 1991-2020.
+* Upper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.
+* Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
+
+:::{.callout-tip title="Plots are interactive!" }
+
+* __To zoom in and out, reset or download the plot__,  hover on the plot to see the option on the top right corner.
+* __To turn on and off data series__, click on the data series title in the legend located below each plot.
+:::
+
+```{r}
+df = read.csv("data/annualized_extent_AlaskanArctic.csv")
+df2 = read.csv("data/annualized_extent_SoutheasternBering.csv")
+```
