@@ -108,9 +108,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Sea Ice @ Alaska
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods.html">Data and Methods</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,6 +163,18 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./sebering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Southeastern Bering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data and Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="https://shinyfin.psmfc.org/ak-sst-mhw/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">ShinyFIN (SST)</span></a>
   </div>
@@ -190,12 +200,12 @@ window.Quarto = {
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
-  <li><a href="#daily-sea-ice-extent" id="toc-daily-sea-ice-extent" class="nav-link" data-scroll-target="#daily-sea-ice-extent">Daily sea ice extent</a></li>
+  <li><a href="#sea-ice-extent" id="toc-sea-ice-extent" class="nav-link" data-scroll-target="#sea-ice-extent">Sea ice extent</a></li>
   <li><a href="#daily-sea-ice-extent-baseline" id="toc-daily-sea-ice-extent-baseline" class="nav-link" data-scroll-target="#daily-sea-ice-extent-baseline">Daily sea ice extent baseline</a></li>
   <li><a href="#daily-sea-ice-extent-anomaly" id="toc-daily-sea-ice-extent-anomaly" class="nav-link" data-scroll-target="#daily-sea-ice-extent-anomaly">Daily sea ice extent anomaly</a></li>
+  <li><a href="#annualized-sea-ice-extent" id="toc-annualized-sea-ice-extent" class="nav-link" data-scroll-target="#annualized-sea-ice-extent">Annualized sea ice extent</a></li>
   <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
   </ul></li>
-  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   <li><a href="#intended-use" id="toc-intended-use" class="nav-link" data-scroll-target="#intended-use">Intended Use</a></li>
   <li><a href="#contact-us" id="toc-contact-us" class="nav-link" data-scroll-target="#contact-us">Contact us</a></li>
   <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
@@ -219,33 +229,33 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>Sea ice concentration represents the fraction (between 0 and 1) of the grid cell covered by sea ice. This can be estimated using satellite microwave radiometers. To compute the sea ice extent baseline (i.e., the 30-year climatology), satellite Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 were pulled from <a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">PolarWatch</a>. The sea ice extent values of the two most recent years were computed using the Near-real-time Sea Ice Concentration data.</p>
 <p><strong>Climate Data Record (CDR) of Passive Microwave Sea Ice Concentration</strong></p>
-<p>This data set provides a CDR of sea ice concentration at 25 km resolution. Daily and monthly versions are available from 1978 to the most recent annual processing. The data are deemed of science quality. The product name is NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4 (G02202), doi:10.7265/EFMZ-2T65.</p>
+<p>This data set provides a CDR of sea ice concentration at 25 km resolution. Daily and monthly versions are available from 1978 to the most recent annual processing. The data are deemed of science quality. The product name is NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4 (G02202), doi:10.7265/EFMZ-2T65. <a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">Link to Data</a></p>
 <p><strong>Near-real-time Sea Ice Concentration</strong></p>
-<p>The NRT CDR of sea ice concentration at 25 km is updated daily and used while waiting for the annual processing of the science quality CDR described above. Daily and monthly versions are available. The product name is Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record, Version 2 (G10016), doi:10.7265/TGAM-YV28.</p>
+<p>The NRT CDR of sea ice concentration at 25 km is updated daily and used while waiting for the annual processing of the science quality CDR described above. Daily and monthly versions are available. The product name is Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record, Version 2 (G10016), doi:10.7265/TGAM-YV28. <a href="https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2024-09-01T00:00:00Z&amp;time_max=2024-09-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">Link to Data</a></p>
 <p><strong>Polar Stereographic Grid Cell Area</strong></p>
-<p>This dataset includes grid cell area values for the 25-km polar stereographic grid used for the sea ice concentration data.</p>
+<p>This dataset includes grid cell area values for the 25-km polar stereographic grid used for the sea ice concentration data. <a href="https://polarwatch.noaa.gov/erddap/griddap/pstere_gridcell_N25k.html">Link to Data</a></p>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
 <p>Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice. Typically, that threshold is 0.15 (i.e.&nbsp;when the sea ice concentration estimated in that grid cell is 15% of greater, the area of the entire grid cell is used to calculate the sea ice extent). Alternatively, one can also calculate the sea ice area, in which case the grid cell area is multiplied by the sea ice concentration. Here, we work with sea ice extent.</p>
-<section id="daily-sea-ice-extent" class="level3">
-<h3 class="anchored" data-anchor-id="daily-sea-ice-extent">Daily sea ice extent</h3>
+<section id="sea-ice-extent" class="level3">
+<h3 class="anchored" data-anchor-id="sea-ice-extent">Sea ice extent</h3>
 <p>Let <span class="math inline">\(sic_{ij}\)</span> be the satellite estimated sea ice concentration (i.e., fraction) of the <span class="math inline">\(ij^{th}\)</span> grid cell covered by sea ice.</p>
 <p>Sea ice extent of a <span class="math inline">\({region}\)</span> is defined as follows:</p>
 <p><span class="math display">\[
-\text{Sea Ice Extent}_{\text{region, day}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region, day}} \cdot \text{cellarea}_{ij, \text{region}}
+\text{Sea Ice Extent}_{\text{region, time}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region, time}} \cdot \text{cellarea}_{ij, \text{region}}
 \]</span></p>
 <p><span class="math display">\[
 \text {where}
-\ seaice_{ij, region, day} =
+\ seaice_{ij, region, time} =
 \begin{cases}
-1 &amp; \text{if } sic_{ij,\text{region, day}} \geq 0.15, \\
+1 &amp; \text{if } sic_{ij,\text{region, time}} \geq 0.15, \\
 0 &amp; \text{otherwise.}
 \end{cases}
 \]</span></p>
 <p><strong>Workflow of Data Processing and Computation:</strong></p>
 <ol type="1">
-<li><p><strong>Data Import for Baseline</strong> Import Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 within the specified regional boundaries to compute daily baseline.</p></li>
+<li><p><strong>Data Import for Baseline</strong> Import Climate Data Record (CDR) sea ice concentration data from 1991 to 2020 within the specified regional boundaries to compute daily baseline.</p></li>
 <li><p><strong>Data Import for most recent years</strong> Import Near-Real-Time sea ice concentration data to the CDR time series.</p></li>
 <li><p><strong>Data Cleaning</strong> Remove all flag values (non-sea ice concentration values) from the dataset.</p></li>
 <li><p><strong>Data Conversion</strong> Convert sea ice concentration values from fractions to binary values using a threshold of 0.15 (0 indicates no ice, 1 indicates ice presence).</p></li>
@@ -254,16 +264,23 @@ window.Quarto = {
 </section>
 <section id="daily-sea-ice-extent-baseline" class="level3">
 <h3 class="anchored" data-anchor-id="daily-sea-ice-extent-baseline">Daily sea ice extent baseline</h3>
-<p>The daily sea ice extent baseline for a given region was computed using sea ice extent from 1985 to 2015, and defined as follows:</p>
+<p>The daily sea ice extent baseline for a given region was computed using sea ice extent from 1991 to 2020 based on the NOAA’s <a href="https://www.noaa.gov/explainers/understanding-climate-normals">recommendadtions</a>, and defined as follows:</p>
 <p><span class="math display">\[
-\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea Ice Extent}_{\text{region, day, year} \in [1985, 2015]})
+\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea ice extent}_{\text{region, day, year} \in [1985, 2015]})
 \]</span></p>
 </section>
 <section id="daily-sea-ice-extent-anomaly" class="level3">
 <h3 class="anchored" data-anchor-id="daily-sea-ice-extent-anomaly">Daily sea ice extent anomaly</h3>
 <p>The daily sea ice extent anomaly for a given region was computed using sea ice extent baseline:</p>
 <p><span class="math display">\[
-\text{Sea ice extent anomaly}_{\text{region, day, year}} = \text{Sea Ice Extent}_{\text{region, day, year}} - \text{Sea ice extent baseline}_{\text{region, day}}
+\text{Sea ice extent anomaly}_{\text{region, day, year}} = \text{Sea ice extent}_{\text{region, day, year}} - \text{Sea ice extent baseline}_{\text{region, day}}
+\]</span></p>
+</section>
+<section id="annualized-sea-ice-extent" class="level3">
+<h3 class="anchored" data-anchor-id="annualized-sea-ice-extent">Annualized sea ice extent</h3>
+<p>The annualized sea ice extent for a given region was computed by averaging monthly sea ice extent values.</p>
+<p><span class="math display">\[
+\text{Annualized sea ice extent}_{\text{region, year}} = \text{Mean} \left( \text{Sea ice extent}_{\text{region, date in [September (year-1), August (year)]}} \right)
 \]</span></p>
 </section>
 <section id="data-processing" class="level3">
@@ -271,17 +288,13 @@ window.Quarto = {
 <p>The data processing was performed using Python code and the additional computation and data visualization were done using R to be consistent with prior work done on sea surface temperature.</p>
 </section>
 </section>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<p>Metadata follows the Climate and Forecast (CF) metadata conventions and can be downloaded <a href="https://cfconventions.org/Data/cf-conventions/cf-conventions-1.11/cf-conventions.html">here</a>.</p>
-</section>
 <section id="intended-use" class="level2">
 <h2 class="anchored" data-anchor-id="intended-use">Intended Use</h2>
 <p>The intended use of the data summaries, which include sea ice extent baselines and anomalies, is to compare the recent year’s sea ice extent against the 30-year baseline of sea ice extent. It is important to note that no additional data cleaning has been performed beyond what is described here. Users are advised to conduct further evaluations of the data and analysis themselves.</p>
 </section>
 <section id="contact-us" class="level2">
 <h2 class="anchored" data-anchor-id="contact-us">Contact us</h2>
-<p>For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page <a href="">here</a>.</p>
+<p>For any questions, comments, or feedback, email us at polar.watch@noaa.gov or create a Github <a href="https://github.com/polarwatch/alaska-seaice/issues/new">Issue</a>.</p>
 </section>
 <section id="contributors" class="level2">
 <h2 class="anchored" data-anchor-id="contributors">Contributors</h2>

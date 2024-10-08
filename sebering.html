@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sea Ice Extent Calculation – Sea Ice @ Alaska</title>
+<title>Sea ice extent in Southeastern Bering – Sea Ice @ Alaska</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,9 +65,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -82,9 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Sea Ice @ Alaska
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sebering.html">Southeastern Bering</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -139,6 +134,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./sebering.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Southeastern Bering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data and Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="https://shinyfin.psmfc.org/ak-sst-mhw/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">ShinyFIN (SST)</span></a>
   </div>
@@ -159,9 +166,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
-  <li><a href="#sea-ice-extent-calculation" id="toc-sea-ice-extent-calculation" class="nav-link" data-scroll-target="#sea-ice-extent-calculation">Sea Ice Extent Calculation</a></li>
-  <li><a href="#sea-ice-extent-code" id="toc-sea-ice-extent-code" class="nav-link" data-scroll-target="#sea-ice-extent-code">Sea Ice Extent Code</a></li>
+  <li><a href="#daily-sea-ice-extent-time-series" id="toc-daily-sea-ice-extent-time-series" class="nav-link active" data-scroll-target="#daily-sea-ice-extent-time-series">Daily Sea ice extent time series</a></li>
   </ul>
 </nav>
     </div>
@@ -170,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sea Ice Extent Calculation</h1>
+<h1 class="title">Sea ice extent in Southeastern Bering</h1>
 </div>
 
 
@@ -187,70 +192,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The sea ice extent is derived from the sea ice concentration remote sensing data.</p>
-<section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
-<p><strong>The NOAA/NSIDC Climate Data Record (CDR) Sea Ice Concentration data product</strong></p>
-<p>The NOAA/NSIDC 25-km sea ice concentration data product provides daily and monthly datasets available in two versions: science quality (SQ) and near real-time (NRT). The science quality dataset has been available since 1978.</p>
-<p>Sea ice extent calculations primarily utilize the science quality version. However, to ensure the time series is as current as possible, near-real-time data are initially used. Once the science quality (SQ) data become available, they replace the near-real-time data in the calculations.</p>
+<blockquote class="blockquote">
+<p>Updated on <code>r format(Sys.Date(), '%B %d, %Y')</code></p>
+</blockquote>
+<p><img src="img/sebering.png" alt="Southeastern Bering" style="float: right; width: 200px;"></p>
+<p>The time series plot and data summary below present statistics on sea ice extent within southeastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:</p>
 <ul>
-<li><a href="https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2023-12-01T00:00:00Z&amp;time_max=2023-12-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">NOAA/NSIDC. (n.d.). Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4</a></li>
-<li><a href="https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=monthly&amp;var=cdr_seaice_conc_monthly&amp;time_min=2024-03-01T00:00:00Z&amp;time_max=2024-03-01T00:00:00Z&amp;proj=epsg3413&amp;colorBar=KT_ice,,,0,1,">NOAA/NSIDC. (n.d.). Climate Data Record of Near-Real-Time Passive Microwave Sea Ice Concentration, Version 2</a></li>
+<li>Mean (1991-2020): Represents the average sea ice extent from 1991-2020.</li>
+<li>Upper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.</li>
+<li>Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.</li>
 </ul>
-</section>
-<section id="sea-ice-extent-calculation" class="level3">
-<h3 class="anchored" data-anchor-id="sea-ice-extent-calculation">Sea Ice Extent Calculation</h3>
-<p>The sea ice extent is calculated as the total area, measured in square kilometers (km2), where each grid cell exhibits a sea ice concentration of 15% or more.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A("Get SQ Data") --&gt;  B("Append NRT Data")
-  B --&gt; C("Subset Data for Region") 
-  C --&gt; D("Compute Sea Ice Extent")
-</pre>
+<div class="callout callout-style-default callout-tip callout-titled" title="Plots are interactive!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p></p></figure><p></p>
+<div class="callout-title-container flex-fill">
+Plots are interactive!
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>To zoom in and out, reset or download the plot</strong>, hover on the plot to see the option on the top right corner.</li>
+<li><strong>To turn on and off data series</strong>, click on the data series title in the legend located below each plot.</li>
+</ul>
 </div>
-<table class="caption-top table">
-<caption>Workflow to compute sea ice extent</caption>
-<colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Action</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Get SQ Data</td>
-<td style="text-align: left;">Get the Monthly Science Quality Sea ice concentration data from 1985 to the latest data</td>
-</tr>
-<tr class="even">
-<td>Append NRT Data</td>
-<td style="text-align: left;">Get the monthly Near-Real Time sea ice concentration data to extend the time series to the latest data available</td>
-</tr>
-<tr class="odd">
-<td>Subset Data for Region</td>
-<td style="text-align: left;">Subset the sea ice concentration data to only include the region of interest using shapefiles provided by AKFIN</td>
-</tr>
-<tr class="even">
-<td>Compute Sea Ice Extent</td>
-<td style="text-align: left;">Compute sea ice extent time series</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="sea-ice-extent-code" class="level3">
-<h3 class="anchored" data-anchor-id="sea-ice-extent-code">Sea Ice Extent Code</h3>
-<p>The sea ice extent code used to compute statistics is available on Github. Please check zenodo for citations.</p>
+</div>
+<section id="daily-sea-ice-extent-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="daily-sea-ice-extent-time-series">Daily Sea ice extent time series</h2>
 
 
 </section>
