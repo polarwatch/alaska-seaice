@@ -11,7 +11,7 @@ format:
 <img src="img/sebering.png" alt="Southeastern Bering" style="float: right; width: 200px;"/>
 
 
-The time series plot and data summary below present statistics on sea ice extent within northern Bering Sea
+The time series plot and data summary below present statistics on sea ice extent within southeastern Bering Sea
 computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 * Mean (1991-2020): Represents the average sea ice extent from 1991-2020.
@@ -27,7 +27,7 @@ computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 ## Daily Sea ice extent time series
 
-```{r northern bering}
+```{r}
 #| echo: false
 #| warning: false
 #| message: false
@@ -39,7 +39,8 @@ library(reshape2)
 library(plotly)
 library(magrittr)
 library(lubridate)
-library(lubridate)
+
+## REGION SPECIFIC INFO ##
 
 # Set region title
 region_title <- "Southeastern Bering"
@@ -47,30 +48,29 @@ region_title <- "Southeastern Bering"
 # Total area
 total_area = 311729.44
 
-
-# Load near real time data for this year and last year
-nrt_df = read.csv("data/nrt_extent_SouthEasternBering.csv")
-
 # Load baseline data
-baseline_df = read.csv("data/bs_extent_SouthEasternBering.csv")
+baseline_df = read.csv("data/bs_extent_SoutheasternBering.csv")
 
 # Load annualized extent
-annual = read.csv("data/annualized_extent_SouthEasternBering.csv")
+annual = read.csv("data/annualized_extent_SoutheasternBering.csv")
+
+# Load near real time data for this year and last year
+nrt_df = read.csv("data/nrt_extent_SoutheasternBering.csv")
 
 ```
-
 
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
+# add month_day column
 
 ## Format two recent year data
+
 # Set last year based on 09-01 to 08-31
 today <- Sys.Date()
 lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
-
 
 # add month_day column
 nrt_df$month_day <- format(as.Date(nrt_df$date), "%m-%d")
@@ -101,7 +101,9 @@ dat_this = dat_this[order(dat_this$month_day), ]
 baseline_df = baseline_df[order(baseline_df$month_day), ]
 
 ```
- 
+
+
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -113,8 +115,8 @@ plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc"
 
 
 month_day_order <- c(
-  format(seq(as.Date("2023-09-01"), as.Date("2023-12-31"), by = "day"), "%m-%d"),
-  format(seq(as.Date("2024-01-01"), as.Date("2024-08-31"), by = "day"), "%m-%d")
+  format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d"),
+  format(seq(as.Date(this_start), as.Date(this_end), by = "day"), "%m-%d")
 )
 
 xaxis <- list(title = "Dates (MM-DD)",
@@ -149,6 +151,9 @@ hline <- function(y = 0, color = "black") {
 }
 
 ```
+
+
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -156,6 +161,12 @@ hline <- function(y = 0, color = "black") {
 # Set Axis specs
 
 ## BASELINE PLOT ##
+
+## Data processing
+
+# Get upper and lower bound of sea ice extent using standard dev
+baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_extent_std
+baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std >= 0, baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std, 0)
 
 ## Draw plot
  
@@ -315,9 +326,9 @@ Please check the [data log](https://polarwatch.github.io/datamanagement/datasets
 
 ## Daily Sea ice extent data downloads
 
-- Baseline daily extent time series (1991-2020) [Data](data/bs_extent_NorthernBering.csv) - [Metadata](data/bs_extent_README.md)
-- Near-real-time daily extent of two recent years [Data](data/ext_recent_NorthernBering.csv) - [Metadata](data/nrt_extent_README.md) 
-- Annual mean extent time series (1985-2024) [Data](data/NorthernBering_annual_extent.csv) - [Metadata](data/annualized_extent_README.md)  
+- Baseline daily extent time series (1991-2020) [Data](data/bs_extent_SoutheasternBering.csv) - [Metadata](data/bs_extent_README.md)
+- Near-real-time daily extent of two recent years [Data](data/ext_recent_SoutheasternBering.csv) - [Metadata](data/nrt_extent_README.md) 
+- Annual mean extent time series (1985-2024) [Data](data/SoutheasternBering_annual_extent.csv) - [Metadata](data/annualized_extent_README.md)  
 - Daily sea ice concentration from near-real-time (NRT) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)  
 - Daily sea ice concentration from Climate Data Record (CDR) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)
 
