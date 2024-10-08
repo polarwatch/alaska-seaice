@@ -6,7 +6,7 @@
 .RData
 .Rhistory
 **/*.ini
-.vscode
+.vscode/
 **/__pycache__
 **/*. pyc
 **/.mypy_cache
