@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/arctic.html</loc>
-    <lastmod>2024-10-08T23:19:44.553Z</lastmod>
+    <lastmod>2024-10-08T23:32:44.003Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/ebering.html</loc>
-    <lastmod>2024-10-08T23:19:44.778Z</lastmod>
+    <lastmod>2024-10-08T23:32:44.229Z</lastmod>
   </url>
   <url>
-    <loc>https://polarwatch.github.io/alaska-seaice/index.html</loc>
-    <lastmod>2024-10-08T23:19:44.780Z</lastmod>
+    <loc>https://polarwatch.github.io/alaska-seaice/sebering1.html</loc>
+    <lastmod>2024-10-08T23:32:44.243Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/methods.html</loc>
-    <lastmod>2024-10-08T23:19:44.780Z</lastmod>
+    <lastmod>2024-10-08T23:32:44.232Z</lastmod>
+  </url>
+  <url>
+    <loc>https://polarwatch.github.io/alaska-seaice/index.html</loc>
+    <lastmod>2024-10-08T23:32:44.232Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/sebering.html</loc>
-    <lastmod>2024-10-08T23:19:44.791Z</lastmod>
+    <lastmod>2024-10-08T23:32:44.243Z</lastmod>
   </url>
   <url>
     <loc>https://polarwatch.github.io/alaska-seaice/nbering.html</loc>
-    <lastmod>2024-10-08T23:19:44.781Z</lastmod>
+    <lastmod>2024-10-08T23:32:44.232Z</lastmod>
   </url>
 </urlset>
