@@ -7,3 +7,7 @@
 .Rhistory
 **/*.ini
 .vscode
+**/__pycache__
+**/*. pyc
+**/.mypy_cache
+**/.Rapp.history

@@ -1,4 +1,27 @@
-# pw_data.py
+"""
+Title: Sea Ice Concentration Data Analysis with PolarWatch
+Author: Sunny Bak Hospital
+Date: 2024-10-08
+Description: This script provides tools for analyzing and processing sea ice concentration data from PolarWatch.
+It includes classes for data loading, preprocessing, and computing statistics such as climatology and sea ice extent
+over time, using ERDDAP server access and geospatial clipping based on provided region shapes.
+
+Modules used:
+- pandas (for handling time series and tabular data)
+- rioxarray (for raster handling in xarray)
+- shapely and geopandas (for geographic data and geometry operations)
+- numpy (for array operations)
+- xarray (for multi-dimensional data handling)
+- dask (for parallelized computation)
+- rasterio (for reading raster data and CRS management)
+
+Main Classes and Functions:
+- cwData: Base class for loading and manipulating data from ERDDAP.
+- SIC25k: Derived class for processing sea ice concentration data at 25 km resolution.
+- Helper Functions: Utility functions like `clip_data` to perform spatial clipping.
+"""
+
+
 import pandas as pd
 import rioxarray
 from shapely.geometry import mapping
@@ -129,34 +152,51 @@ class SIC25k(cwData):
             return 0
         return 1
 
-    def get_total_area_km(self):
+    def get_total_area_km(self, shp):
         """ Computes the total area (in square kilometers) of the grid cells in the dataset.
+         The area does not include grid cells flagged as Northern Hemisphere pole hole, 
+        (the region around the pole not imaged by the sensor), lakes, Coast/Land adjacent to ocean, and land.
 
+        Args:
+            shape: shape geometries
         Raises:
             ValueError: If the grid cell area is not loaded.
 
         Returns:
             float: Total area in square kilometers.
         """
+
+        # If if area is loaded
         if self.area is None:
             raise ValueError("Grid cell area is not loaded")
         try:    
+            # Select the first timestep
             ds = self.ds.isel(time=0)
-            
-            ds1 = xr.where(ds.isnull(), np.nan, 1)
-            ice_ext = ds1 * self.area
-            ice_ext.name = 'extent'
-            ice_area = ice_ext.sum(dim=["xgrid", "ygrid"], skipna = True).values 
+
+            # Clip the dataset and area
+            ds, area = clip_data(ds, shp), clip_data(self.area, shp)
+
+            # Mask dataset where ds is valid (1 otherwise NaN)
+            ds = xr.where(ds.notnull(), 1, np.nan)
+
+            # Perform element-wise multiplication
+            ice_ext = ds * self.area
+            ice_ext.name = 'area_km2'
+
+            # Sum over xgrid and ygrid, skipping Nan values
+            tot_area = ice_ext.sum(dim=["xgrid", "ygrid"], skipna = True).values 
         
-            return ice_area / 1e6           
+            # Convert total area from m^2 to km^2
+            return tot_area / 1e6           
             
         except Exception as e:
             print(f'Failed to load grid area and compute total area {e}')
 
 
     def subset_dim(self, dates: list, shp: gpd.GeoDataFrame)-> Tuple[xr.Dataset, ...]:
-        """Subsets the dataset by time range and optional shape geometry.
-
+        """Subsets the dataset by time range and optional shape geometry
+        and returns tuple of datasets (sea ice conc, grid cell area)
+        
         Args:
             dates (list): List of two dates (start and end) in 'YYYY-MM-DD' format.
             shp (gpd.GeoDataFrame): Shape geometries for spatial subset.
@@ -171,7 +211,7 @@ class SIC25k(cwData):
         else:
             return (ds, self.area)
         
-    def format_sic(self, ds: xr.Dataset, threshold=0.15)-> xr.Dataset:
+    def format_sic(self, ds: xr.DataArray, threshold=0.15)-> xr.DataArray:
         """
         Transforms sea ice concentration data to binary (0 and 1) based on the threshold value.
 
@@ -187,7 +227,7 @@ class SIC25k(cwData):
         return ds_transformed         
 
 
-    def compute_extent_km(self, ds: xr.Dataset, area: xr.Dataset)->float:
+    def compute_extent_km(self, ds: xr.DataArray, area: xr.DataArray)-> xr.DataArray:
         """ Computes sea ice extent in square kilometers.
 
         Args:
@@ -205,7 +245,7 @@ class SIC25k(cwData):
                 raise TypeError(f"Input `ds` is a multi-variable xarray. Provide a DataArray or single variable dataset")
 
         # Multiply sea ice concentration data by grid cell area to compute extent
-        ice_cell = ds * area / 1e6 # Convert area to square m
+        ice_cell = ds * area / 1e6 # Convert area to square km
         if isinstance(ice_cell, xr.DataArray):
             # Sum sea ice extent overxgrid and ygrid, group by time
             ice_cell.name = 'seaice_extent'  
@@ -248,7 +288,7 @@ class SIC25k(cwData):
 
 ## Helper Functions
 
-def clip_data(ds: xr.Dataset, shape:gpd.GeoDataFrame)-> xr.Dataset:
+def clip_data(ds: xr.DataArray, shape:gpd.GeoDataFrame)-> xr.Dataset:
     """clips data using the shape geometry and returned clipped data
 
     Args:
