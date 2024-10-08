@@ -49,13 +49,13 @@ total_area = 311729.44
 
 
 # Load near real time data for this year and last year
-nrt_df = read.csv("data/nrt_extent_SouthEasternBering.csv")
+nrt_df = read.csv("data/nrt_extent_SoutheasternBering.csv")
 
 # Load baseline data
-baseline_df = read.csv("data/bs_extent_SouthEasternBering.csv")
+baseline_df = read.csv("data/bs_extent_SoutheasternBering.csv")
 
 # Load annualized extent
-annual = read.csv("data/annualized_extent_SouthEasternBering.csv")
+annual = read.csv("data/annualized_extent_SoutheasternBering.csv")
 
 ```
 

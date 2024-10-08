@@ -20,6 +20,7 @@ regions defined by the Ecosystem Management Regions:
 * [the Alaskan Arctic](arctic.html) 
 * [the Eastern Bering Sea](ebering.html)
 * [the Northern Bering Sea](nbering.html) (a subset of the Eastern Bering sea).
+* [the Southeastern Bering Sea](sebering.html) (a subset of the Eastern Bering sea).
 
 ::: {layout="[[1,1], [1]]"}
 
