@@ -29,10 +29,10 @@ def main():
     print(f"Dashboard is running on: {client.dashboard_link}")  # Print Dask dashboard link for monitoring
 
     # Define dataset and variable information
-    erddap_id = 'nsidcG02202v4nhmday'  # ERDDAP ID for monthly sea ice concentration data
+    erddap_id = 'nsidcG02202v4nh1day'  # ERDDAP ID for daily sea ice concentration data
     area_id = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
     crs = 'epsg:3413'  # EPSG code for the polar stereographic projection
-    var_name = 'cdr_seaice_conc_monthly'  # The variable name in the dataset
+    var_name = 'cdr_seaice_conc'  # The variable name in the dataset
     thisyear = datetime.now().year
     
     # Define regions and corresponding shapefiles for spatial subsetting
@@ -76,7 +76,7 @@ def main():
 
         # Get the latest from NRT dataset (e.g. Year 2024 refers to 2023-09-01 to 2024-08-31)
         year = thisyear
-        sic_latest = SIC25k('nsidcG10016v2nhmday', var_name, crs)  # Initialize SIC25k with ERDDAP data
+        sic_latest = SIC25k('nsidcG10016v2nh1day', var_name, crs)  # Initialize SIC25k with ERDDAP data
         ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
         sic = sic_latest.format_sic(ds, 0.15)  # convert values to be 0 or 1 based on threshold
 
