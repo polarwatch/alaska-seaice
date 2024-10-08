@@ -59,9 +59,6 @@ nrt_df = subset(nrt_df, !(date >= as.Date("2024-09-15") & date <= as.Date("2024-
 # Load annualized extent
 annual <- read.csv("data/annualized_extent_NorthernBering.csv")
 
-# Set last year based on 09-01 to 08-31
-today <- Sys.Date()
-lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
 
 ```
 
@@ -73,6 +70,10 @@ lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today,
 #| message: false
 
 ## Format two recent year data
+# Set last year based on 09-01 to 08-31
+today <- Sys.Date()
+lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
+
 
 # add month_day column
 nrt_df$month_day <- format(as.Date(nrt_df$date), "%m-%d")
@@ -93,9 +94,7 @@ baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_
 baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std >= 0, baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std, 0)
 
 # Reorder date
-start_date = "2023-09-01"
-end_date = "2024-08-31"
-all_dates = format(seq(as.Date(start_date), as.Date(end_date), by = "day"), "%m-%d")
+all_dates = format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d")
 dat_last$month_day = factor(dat_last$month_day, levels = all_dates)
 dat_this$month_day = factor(dat_this$month_day, levels = all_dates)
 baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)

@@ -45,6 +45,10 @@ library(lubridate)
 # Set region title
 region_title <- "Southeastern Bering"
 
+# Total area
+total_area = 311729.44
+
+
 # Load annualized extent
 annual <- read.csv("data/annualized_extent_SoutheasternBering.csv")
 
@@ -54,8 +58,9 @@ baseline_df = read.csv("data/bs_extent_SoutheasternBering.csv")
 # Load near real time data for this year and last year
 nrt_df = read.csv("data/nrt_extent_SoutheasternBering.csv")
 
-# Total area
-total_area = 891335.77
+
+
+
 
 ```
 
@@ -66,15 +71,16 @@ total_area = 891335.77
 #| message: false
 # add month_day column
 
-## PROCESS DATES ##
+## Format two recent year data
 
-# last year based on 09-01 to 08-31
+# Set last year based on 09-01 to 08-31
 today <- Sys.Date()
 lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
 
+# add month_day column
 nrt_df$month_day <- format(as.Date(nrt_df$date), "%m-%d")
 
-# Set data based on dates for subsetting data
+# Subset
 last_start = paste0(lastyear-1, "-09-01")
 last_end = paste0(lastyear, "-08-31")
 this_start = paste0(lastyear, "-09-01")
@@ -85,30 +91,44 @@ dat_last <- nrt_df[nrt_df$date >= as.Date(last_start) & nrt_df$date <= as.Date(l
 dat_this <- nrt_df[nrt_df$date >= as.Date(this_start) & nrt_df$date <= as.Date(this_end), ]
 latest = dat_this[dat_this$date == max(dat_this$date),]
 
-# Create month_day order
-month_day_order <- c(
-  format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d"),
-  format(seq(as.Date(this_start), as.Date(this_end), by = "day"), "%m-%d")
-)
+# Get upper and lower bound of sea ice extent using standard dev
+baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_extent_std
+baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std >= 0, baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std, 0)
+
+# Reorder date
+all_dates = format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d")
+dat_last$month_day = factor(dat_last$month_day, levels = all_dates)
+dat_this$month_day = factor(dat_this$month_day, levels = all_dates)
+baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)
+
+dat_last = dat_last[order(dat_last$month_day), ]
+dat_this = dat_this[order(dat_this$month_day), ]
+baseline_df = baseline_df[order(baseline_df$month_day), ]
 
 ```
 
 
 
 ```{r}
-
-## PLOT SPECS ##
-
+#| echo: false
+#| warning: false
+#| message: false
+# Set Axis specs
+ 
 # Set plot colors
 plot_colors = c("#318CE7", "#F08080", "#94C973", "#cccccc", "#cccccc", "#cccccc")
 
-# Style axis
-xaxis <- list(title = "Dates (MM-DD)",
-            type = 'category',  # for ordering
-            categoryorder = "array",  # Order type
-            categoryarray = month_day_order,  # Order by custom month_day
-            tickformat = "%m-%d",  # ticks in mm-dd format
 
+month_day_order <- c(
+  format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d"),
+  format(seq(as.Date(this_start), as.Date(this_end), by = "day"), "%m-%d")
+)
+
+xaxis <- list(title = "Dates (MM-DD)",
+            type = 'category',  # Ensures correct ordering without converting to full date format
+            tickformat = "%m-%d",  # Display ticks in mm-dd format
+            categoryorder = "array",  # Custom order for the x-axis
+            categoryarray = month_day_order,  # Sort month_day as a category
             showline = TRUE,
             showgrid = FALSE,
             tickwidth = 1,

@@ -72,12 +72,14 @@ nrt_df = read.csv("data/nrt_extent_AlaskanArctic.csv")
 #| echo: false
 #| warning: false
 #| message: false
+# add month_day column
 
 ## Format two recent year data
 
 # Set last year based on 09-01 to 08-31
 today <- Sys.Date()
 lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
+
 
 # add month_day column
 nrt_df$month_day <- format(as.Date(nrt_df$date), "%m-%d")
@@ -97,17 +99,8 @@ latest = dat_this[dat_this$date == max(dat_this$date),]
 baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_extent_std
 baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std >= 0, baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std, 0)
 
-#### This is for "plotly"
-# # Break point
-# dat_this = dat_this %>% mutate(date = as.Date(date, format = "%Y-%m-%d"))
-# next_time = max(dat_this$date) + 0.5
-# next_date = format(next_time, "%m-%d")
-# dat_this = dat_this %>% bind_rows(data.frame(date = next_time, seaice_extent = NA, month_day = next_date))
-
 # Reorder date
-start_date = "2023-09-01"
-end_date = "2024-08-31"
-all_dates = format(seq(as.Date(start_date), as.Date(end_date), by = "day"), "%m-%d")
+all_dates = format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d")
 dat_last$month_day = factor(dat_last$month_day, levels = all_dates)
 dat_this$month_day = factor(dat_this$month_day, levels = all_dates)
 baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)

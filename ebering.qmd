@@ -55,9 +55,6 @@ annual <- read.csv("data/annualized_extent_EasternBering.csv")
 # Total area
 total_area = 891335.77
 
-# Set last year based on 09-01 to 08-31
-today <- Sys.Date()
-lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
 
 ```
 
@@ -70,6 +67,11 @@ lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today,
 #| message: false
 
 ## Format two recent year data
+
+# Set last year based on 09-01 to 08-31
+today <- Sys.Date()
+lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
+
 
 # add month_day column
 nrt_df$month_day <- format(as.Date(nrt_df$date), "%m-%d")

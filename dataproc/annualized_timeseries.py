@@ -47,15 +47,16 @@ def main():
     sic_m = SIC25k(erddap_id, var_name, crs)  # Initialize SIC25k with ERDDAP data
     sic_m.load_area(area_id)  # Load the corresponding grid cell area data
 
-    # List to store annual sea ice extent for each region and year
-    extents = []
+
 
     # Loop over each region and its corresponding shapefile
     for name, shp in regions.items():
         # Load the shapefile for the region and transform it to the dataset's CRS
         alaska_shp = gpd.read_file(f'resources/akmarineeco/{shp}')  # Read shapefile
         alaska_shp_proj = alaska_shp.to_crs(crs)  # Reproject the shapefile to match the dataset CRS
-        
+
+        # List to store annual sea ice extent for each region and year
+        extents = [] 
         # Loop over each year from 1985-09-01 to 2023-08-31, 
         # computing sea ice extent for each September 1 to August 31 period
         for year in range(1985, thisyear):
