@@ -53,6 +53,9 @@ baseline_df = read.csv("data/bs_extent_NorthernBering.csv")
 # Load near real time data for this year and last year
 nrt_df = read.csv("data/nrt_extent_NorthernBering.csv")
 
+# Remove data from 09-15 to 09-18 in 2024
+nrt_df = subset(nrt_df, !(date >= as.Date("2024-09-15") & date <= as.Date("2024-09-18")))
+
 # Load annualized extent
 annual <- read.csv("data/annualized_extent_NorthernBering.csv")
 
@@ -85,12 +88,21 @@ dat_last <- nrt_df[nrt_df$date >= as.Date(last_start) & nrt_df$date <= as.Date(l
 dat_this <- nrt_df[nrt_df$date >= as.Date(this_start) & nrt_df$date <= as.Date(this_end), ]
 latest = dat_this[dat_this$date == max(dat_this$date),]
 
+# Get upper and lower bound of sea ice extent using standard dev
+baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_extent_std
+baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std >= 0, baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std, 0)
 
-# Create month_day order
-month_day_order <- c(
-  format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d"),
-  format(seq(as.Date(this_start), as.Date(this_end), by = "day"), "%m-%d")
-)
+# Reorder date
+start_date = "2023-09-01"
+end_date = "2024-08-31"
+all_dates = format(seq(as.Date(start_date), as.Date(end_date), by = "day"), "%m-%d")
+dat_last$month_day = factor(dat_last$month_day, levels = all_dates)
+dat_this$month_day = factor(dat_this$month_day, levels = all_dates)
+baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)
+
+dat_last = dat_last[order(dat_last$month_day), ]
+dat_this = dat_this[order(dat_this$month_day), ]
+baseline_df = baseline_df[order(baseline_df$month_day), ]
 
 ```
  
@@ -148,12 +160,6 @@ hline <- function(y = 0, color = "black") {
 # Set Axis specs
 
 ## BASELINE PLOT ##
-
-## Data processing
-
-# Get upper and lower bound of sea ice extent using standard dev
-baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_extent_std
-baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std >= 0, baseline_df$seaice_extent_mean - baseline_df$seaice_extent_std, 0)
 
 ## Draw plot
  

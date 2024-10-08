@@ -7,12 +7,12 @@ import numpy as np  # For numerical operations
 import pandas as pd  # For working with DataFrames and exporting data
 import geopandas as gpd
 from pathlib import Path
+import xarray as xr
 
 #from dask.distributed import Client  # Dask for distributed computing
 
 def main():
  
-
 
     # Define dataset and variable information
     CDR_DAILY_ID = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) daily sea ice conc
@@ -34,42 +34,63 @@ def main():
 
     # Loop over each region and its corresponding shapefile
     for name, shp in REGIONS.items():
-        print(f'name is {name}, and shape file is {shp}')
+        print(f'Processing: name is {name}')
 
-        print("reading shapefile : ")
         alaska_shp = gpd.read_file(f'{RESOURCE_DIR}/{shp}')
 
     # Transform projection to Polar Stereographic Projection
         alaska_shp_proj = alaska_shp.to_crs(CRS)
+        extents = []
+        for year in range(1991, 2011):
+            # Subset the dataset by time (Jan 1 to Dec 31) and region (clip to the shapefile)
+            ds, area = sic_m.subset_dim([f'{year}-01-01', f'{year}-12-31'], alaska_shp_proj)
 
-        sic_m = PIC(crs, cdr_id, var_name, alaska_shp_proj)
-        ext = sic_m.compute_extent_km(['1991-01-01', '1993-12-31'])
-        ext_df = (ext
-                .to_dataframe()
-                .reset_index()
-                .drop(['spatial_ref'], axis='columns'))
-        ext_df.to_csv(f'ext_{name}.csv', index=False)
+            # Format the sea ice concentration data to binary (0 or 1) using a threshold of 0.15
+            sic = sic_m.format_sic(ds, 0.15)  # Sea ice concentration thresholding
 
-        # SAVE THE DATA
-        df = pd.read_csv(f'ext_all{name}.csv')
+            del ds
 
-    # Create new columns for month and day
-        df['time'] = pd.to_datetime(df['time'])
+            # Compute the sea ice extent in square kilometers for the subset data
+            ext = sic_m.compute_extent_km(sic, area)
+
+            # append computed data
+            extents.append(ext)
+
+        # Combine ext data along time dimension
+        ext_xr = xr.concat(extents, dim="time")
+        ext_df = (ext_xr
+            .to_dataframe()
+            .reset_index()
+            .drop(['spatial_ref'], axis='columns'))
+              
+        ext_df.to_csv(f'ext_{name}.csv', index=False) 
+        del sic, ext, area
+
+
+    # # Create new columns for month and day
+        ext_df['time'] = pd.to_datetime(ext_df['time'])
    
-        df['month'] = df['time'].dt.month
-        df['day'] = df['time'].dt.day
+        ext_df['month'] = ext_df['time'].dt.month
+        ext_df['day'] = ext_df['time'].dt.day
 
         # Drop the original time column
-        df = df.drop(columns=['time'])
+        ext_df = ext_df.drop(columns=['time'])
 
-        # Group by month and day, then compute the mean for each group
-        # mean_values = df.groupby(['month', 'day']).mean().reset_index()
-        stats = df.groupby(['month', 'day']).agg(['mean', 'std']).reset_index()
-        stats.columns = ['_'.join(col).strip() if col[1] else col[0] for col in stats.columns.values]     
-        stats.round(2)   
-        stats['date'] = stats.apply(lambda row: f"{row['month'].astype(int):02d}-{row['day'].astype(int):02d}", axis=1)
-        stats.reset_index().to_csv(f'bs_{name}.csv', index=False)
-        
+        # Group by 'month' and 'day', then calculate mean and std, and reset the index
+        stats = ext_df.groupby(['month', 'day']).agg(['mean', 'std']).reset_index()
+
+        # Flatten the MultiIndex columns
+        stats.columns = ['_'.join(col).strip() if col[1] else col[0] for col in stats.columns.values]
+
+        # Round the values
+        stats = stats.round(2)
+
+        # Create a 'date' column from 'month' and 'day'
+        stats['month_day'] = stats.apply(lambda row: f"{int(row['month']):02d}-{int(row['day']):02d}", axis=1)
+
+        # Save to CSV without the index
+        stats.to_csv(f'bs_extent_{name}.csv', index=False)
+
 
 if __name__ == "__main__":
     main()  

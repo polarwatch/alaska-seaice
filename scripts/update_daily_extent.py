@@ -19,8 +19,13 @@ def main():
     var_name = 'cdr_seaice_conc'
 
     # Dictionaries of names and associated shape files
-    regions = dict([('AlaskanArctic', 'arctic_sf.shp'), ('NorthernBering', 'nbering_sf.shp'), ('EasternBering', 'ebering_sf.shp')])
-
+    regions = dict([
+       ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
+       ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+       ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
+        ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
+    ])
+    
     # Get the latest date from recently updated file
     recent_dat = pd.read_csv("data/ext_recent_NorthernBering.csv", parse_dates=['time'])
     start_date = (recent_dat['time'].max() + pd.Timedelta(days=1)).strftime('%Y-%m-%d')

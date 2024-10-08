@@ -26,7 +26,7 @@ def main():
     print(f"Dashboard is running on: {client.dashboard_link}")  # Print Dask dashboard link for monitoring
 
     # Define dataset and variable information
-    erddap_id = 'nsidcG10016v2nh1day'  # ERDDAP ID for NRT daily sea ice concentration data
+    erddap_id = 'nsidcG02202v4nhmday'  # ERDDAP ID for CDR monthly sea ice concentration data
     area_id = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
     crs = 'epsg:3413'  # EPSG code for the polar stereographic projection
     var_name = 'cdr_seaice_conc'  # The variable name in the dataset
