@@ -1,4 +1,27 @@
-# pw_data.py
+"""
+Title: Sea Ice Concentration Data Analysis with PolarWatch
+Author: Sunny Bak Hospital
+Date: 2024-10-08
+Description: This script provides tools for analyzing and processing sea ice concentration data from PolarWatch.
+It includes classes for data loading, preprocessing, and computing statistics such as climatology and sea ice extent
+over time, using ERDDAP server access and geospatial clipping based on provided region shapes.
+
+Modules used:
+- pandas (for handling time series and tabular data)
+- rioxarray (for raster handling in xarray)
+- shapely and geopandas (for geographic data and geometry operations)
+- numpy (for array operations)
+- xarray (for multi-dimensional data handling)
+- dask (for parallelized computation)
+- rasterio (for reading raster data and CRS management)
+
+Main Classes and Functions:
+- cwData: Base class for loading and manipulating data from ERDDAP.
+- SIC25k: Derived class for processing sea ice concentration data at 25 km resolution.
+- Helper Functions: Utility functions like `clip_data` to perform spatial clipping.
+"""
+
+
 import pandas as pd
 import rioxarray
 from shapely.geometry import mapping
@@ -265,7 +288,7 @@ class SIC25k(cwData):
 
 ## Helper Functions
 
-def clip_data(ds: xr.Dataset, shape:gpd.GeoDataFrame)-> xr.Dataset:
+def clip_data(ds: xr.DataArray, shape:gpd.GeoDataFrame)-> xr.Dataset:
     """clips data using the shape geometry and returned clipped data
 
     Args:

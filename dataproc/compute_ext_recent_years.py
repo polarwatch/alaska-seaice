@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 """
 This script computes sea ice extent for multiple regions in the Alaskan Arctic and Bering Sea
 using the SIC25k class from the `pw_data` module. It reads region-specific shapefiles, 
@@ -32,14 +29,8 @@ from pw_data import SIC25k
 
 def main():
     """
-    Main function to process sea ice extent for multiple Alaskan and Bering Sea regions.
-    
-    1. Instantiates the SIC25k class for sea ice concentration data.
-    2. Loads grid cell area data for sea ice extent computation.
-    3. Iterates over each region and shapefile, transforming the shapefiles into the appropriate CRS.
-    4. Subsets the sea ice dataset to the region and time period of interest.
-    5. Thresholds sea ice concentration data and computes the sea ice extent in square kilometers.
-    6. Saves the results as CSV files.
+    Main function to process sea ice extent for multiple regions in Alaska.
+
     """
 
     # Define constants

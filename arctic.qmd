@@ -53,14 +53,11 @@ total_area = 511126.86
 #| message: false
 
 
-
-
+# Load baseline data
+baseline_df = read.csv("data/bs_extent_AlaskanArctic.csv")
 
 # Load annualized extent
 annual = read.csv("data/annualized_extent_AlaskanArctic.csv")
-
-# Load baseline data
-baseline_df = read.csv("data/bs_extent_AlaskanArctic.csv")
 
 # Load near real time data for this year and last year
 nrt_df = read.csv("data/nrt_extent_AlaskanArctic.csv")
@@ -78,13 +75,14 @@ nrt_df = read.csv("data/nrt_extent_AlaskanArctic.csv")
 
 # Set last year based on 09-01 to 08-31
 today <- Sys.Date()
-lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
 
+# last year for 2024 is 2023-09 to 2024-10
+lastyear <- ifelse(as.integer(format(today, "%m")) > 8, as.integer(format(today, "%Y")), as.integer(format(today, "%Y")) -1)
 
 # add month_day column
 nrt_df$month_day <- format(as.Date(nrt_df$date), "%m-%d")
 
-# Subset
+# Define date range
 last_start = paste0(lastyear-1, "-09-01")
 last_end = paste0(lastyear, "-08-31")
 this_start = paste0(lastyear, "-09-01")
@@ -93,7 +91,7 @@ this_end = paste0(lastyear+1, "-08-31")
 # Filter the dataframe for the desired date range
 dat_last <- nrt_df[nrt_df$date >= as.Date(last_start) & nrt_df$date <= as.Date(last_end), ]
 dat_this <- nrt_df[nrt_df$date >= as.Date(this_start) & nrt_df$date <= as.Date(this_end), ]
-latest = dat_this[dat_this$date == max(dat_this$date),]
+latest <- dat_this[dat_this$date == max(dat_this$date),]
 
 # Get upper and lower bound of sea ice extent using standard dev
 baseline_df$upper_extent <- baseline_df$seaice_extent_mean + baseline_df$seaice_extent_std
@@ -101,6 +99,7 @@ baseline_df$lower_extent <- ifelse(baseline_df$seaice_extent_mean - baseline_df$
 
 # Reorder date
 all_dates = format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d")
+
 dat_last$month_day = factor(dat_last$month_day, levels = all_dates)
 dat_this$month_day = factor(dat_this$month_day, levels = all_dates)
 baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)
@@ -108,6 +107,7 @@ baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)
 dat_last = dat_last[order(dat_last$month_day), ]
 dat_this = dat_this[order(dat_this$month_day), ]
 baseline_df = baseline_df[order(baseline_df$month_day), ]
+
 
 ```
 

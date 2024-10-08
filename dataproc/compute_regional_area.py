@@ -1,6 +1,37 @@
-#!/usr/bin/env python
-# coding: utf-8
+"""
+Title: Compute total area in square km for Alaska Ecosystem Regions
 
+Description: 
+    For each defined region, it calculates the total sea ice extent in square kilometers
+    based on 25K polar stereographic projection and the regional shapefiles.
+    The results are printed for each region.
+
+Regions:
+- Alaskan Arctic
+- Northern Bering Sea
+- Eastern Bering Sea
+- Southeastern Bering Sea
+
+Dependencies:
+- os
+- sys
+- geopandas
+- datetime
+- matplotlib
+- pw_data (specifically, the pwSIC25k class)
+
+Parameters:
+- CRS: EPSG:3413 (Polar Stereographic)
+- NRT_DAILY_ID: 'nsidcG10016v2nh1day'
+- GRID_CELL_AREA_ID: 'pstere_gridcell_N25k'
+- VAR_NAME: 'cdr_seaice_conc'
+
+Usage:
+    Run this script to compute and display total sea ice extent for each region.
+
+Author: Sunny Bak Hospital
+Date: October 8, 2024
+"""
 # import matplotlib.pyplot as plt
 import os, sys
 import geopandas as gpd
@@ -19,11 +50,15 @@ def main():
     
     CRS = 'epsg:3413'
     NRT_DAILY_ID = 'nsidcG10016v2nh1day'
-    GRID_CELL_AREA_ID = 'pstere_gridcell_N25k' 
     VAR_NAME = 'cdr_seaice_conc'
 
-    REGIONS = dict([('AlaskanArctic', 'arctic_sf.shp'),('NorthernBering', 'nbering_sf.shp'), ('EasternBering', 'ebering_sf.shp')])
-    
+    # Define regions and corresponding shapefiles for spatial subsetting
+    REGIONS = dict([
+       ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
+       ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+       ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
+        ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
+    ])
 
     for name, shp in REGIONS.items():
         # print(f'name is {name}, and shape file is {shp}')
@@ -38,15 +73,6 @@ def main():
         sic_m = pwSIC25k(CRS, NRT_DAILY_ID, VAR_NAME, alaska_shp_proj)
         total_area = sic_m.get_total_area_km()
         print(f'total area for {name}: {total_area}')
-
-        # thisyear = datetime.date.today().year
-        # lastyear = thisyear - 1
-        # ext = sic_m.compute_extent_km([f'{lastyear}-01-01', f'{thisyear}-12-31'])
-        # ext_df = (ext
-        #         .to_dataframe()
-        #         .reset_index()
-        #         .drop(['spatial_ref'], axis='columns'))
-        # ext_df.to_csv(f'nrt_extent_{name}.csv', index=False)
 
 
 if __name__ == "__main__":

@@ -48,19 +48,14 @@ region_title <- "Southeastern Bering"
 # Total area
 total_area = 311729.44
 
-
-# Load annualized extent
-annual <- read.csv("data/annualized_extent_SoutheasternBering.csv")
-
 # Load baseline data
 baseline_df = read.csv("data/bs_extent_SoutheasternBering.csv")
 
+# Load annualized extent
+annual = read.csv("data/annualized_extent_SoutheasternBering.csv")
+
 # Load near real time data for this year and last year
 nrt_df = read.csv("data/nrt_extent_SoutheasternBering.csv")
-
-
-
-
 
 ```
 

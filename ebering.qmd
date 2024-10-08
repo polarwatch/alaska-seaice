@@ -50,7 +50,7 @@ nrt_df = read.csv("data/nrt_extent_EasternBering.csv")
 baseline_df = read.csv("data/bs_extent_EasternBering.csv")
 
 # Load annualized extent
-annual <- read.csv("data/annualized_extent_EasternBering.csv")
+annual = read.csv("data/annualized_extent_EasternBering.csv")
 
 # Total area
 total_area = 891335.77
@@ -89,18 +89,21 @@ latest = dat_this[dat_this$date == max(dat_this$date),]
 
 # Create month_day order
 month_day_order <- c(
-  format(seq(as.Date(last_start), as.Date("2023-12-31"), by = "day"), "%m-%d"),
-  format(seq(as.Date("2024-01-01"), as.Date("2024-08-31"), by = "day"), "%m-%d")
-)
-
-
-# Create month_day order
-month_day_order <- c(
   format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d"),
   format(seq(as.Date(this_start), as.Date(this_end), by = "day"), "%m-%d")
 )
 
 
+# Reorder date
+all_dates = format(seq(as.Date(last_start), as.Date(last_end), by = "day"), "%m-%d")
+
+dat_last$month_day = factor(dat_last$month_day, levels = all_dates)
+dat_this$month_day = factor(dat_this$month_day, levels = all_dates)
+baseline_df$month_day = factor(baseline_df$month_day, levels = all_dates)
+
+dat_last = dat_last[order(dat_last$month_day), ]
+dat_this = dat_this[order(dat_this$month_day), ]
+baseline_df = baseline_df[order(baseline_df$month_day), ]
 ```
 
 

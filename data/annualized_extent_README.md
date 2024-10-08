@@ -6,8 +6,10 @@ Annual sea ice extent was calculated using NSIDC monthly sea ice concentration (
 Due to the lag of the most recent data availability, the most current year extent was computed using the near real time data sea ice concentration while the extent of the previous years were computed using the Climate Data Record (CDR).
 
 ## Data source
-The Climate Data Record SIC data access at https://polarwatch.noaa.gov/erddap/griddap/nsidcG02202v4nh1day.html
-The Near-real-time SIC data access at https://polarwatch.noaa.gov/erddap/griddap/nsidcG10016v2nh1day.html
+The Climate Data Record monthly SIC data access at https://polarwatch.noaa.gov/erddap/griddap/nsidcG02202v4nhmday
+.html
+The Near-real-time monthly SIC data access at https://polarwatch.noaa.gov/erddap/griddap/nsidcG10016v2nhmday
+.html
 
 For more detailed methods and the Python code used, 
 please refer to the methods section and the GitHub repository.

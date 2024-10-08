@@ -13,43 +13,45 @@ Sea ice concentration represents the fraction (between 0 and 1) of the grid cell
 __Climate Data Record (CDR) of Passive Microwave Sea Ice Concentration__
 
 This data set provides a CDR of sea ice concentration at 25 km resolution. Daily and monthly versions are available from 1978 to the most recent annual processing. The data are deemed of science quality. The product name is NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration, Version 4 (G02202), doi:10.7265/EFMZ-2T65.
+[Link to Data](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2023-12-01T00:00:00Z&time_max=2023-12-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,)
 
 
 __Near-real-time Sea Ice Concentration__
 
 The NRT CDR of sea ice concentration at 25 km is updated daily and used while waiting for the annual processing of the science quality CDR described above. Daily and monthly versions are available. The product name is Near Real-Time NOAA/NSIDC Sea Ice Concentration Climate Data Record, Version 2 (G10016), doi:10.7265/TGAM-YV28.
-
+[Link to Data](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=monthly&var=cdr_seaice_conc_monthly&time_min=2024-09-01T00:00:00Z&time_max=2024-09-01T00:00:00Z&proj=epsg3413&colorBar=KT_ice,,,0,1,)
 
 __Polar Stereographic Grid Cell Area__
 
 This dataset includes grid cell area values for the 25-km polar stereographic grid used for the sea ice concentration data.
+[Link to Data](https://polarwatch.noaa.gov/erddap/griddap/pstere_gridcell_N25k.html)
 
 ## Methods
 
 Sea ice extent is calculated as the sum of the areas of each grid cell where the sea ice concentration meets or exceeds a specified threshold, indicating the presence of sea ice. Typically, that threshold is 0.15 (i.e. when the sea ice concentration estimated in that grid cell is 15% of greater, the area of the entire grid cell is used to calculate the sea ice extent). Alternatively, one can also calculate the sea ice area, in which case the grid cell area is multiplied by the sea ice concentration. Here, we work with sea ice extent.
 
-### Daily sea ice extent
+### Sea ice extent
 
 Let $sic_{ij}$ be the satellite estimated sea ice concentration (i.e., fraction) of the $ij^{th}$ grid cell covered by sea ice.
 
 Sea ice extent of a ${region}$ is defined as follows:
 
 $$
-\text{Sea Ice Extent}_{\text{region, day}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region, day}} \cdot \text{cellarea}_{ij, \text{region}}
+\text{Sea Ice Extent}_{\text{region, time}} = \sum_{i \in \text{xgrid}, j \in \text{ygrid}} seaice_{ij,\text{region, time}} \cdot \text{cellarea}_{ij, \text{region}}
 $$
 
 $$ 
 \text {where} 
-\ seaice_{ij, region, day} =
+\ seaice_{ij, region, time} =
 \begin{cases} 
-1 & \text{if } sic_{ij,\text{region, day}} \geq 0.15, \\
+1 & \text{if } sic_{ij,\text{region, time}} \geq 0.15, \\
 0 & \text{otherwise.}
 \end{cases}
 $$
 
 __Workflow of Data Processing and Computation:__
 
-1.  __Data Import for Baseline__ Import Climate Data Record (CDR) sea ice concentration data from 1985 to 2015 within the specified regional boundaries to compute daily baseline.
+1.  __Data Import for Baseline__ Import Climate Data Record (CDR) sea ice concentration data from 1991 to 2020 within the specified regional boundaries to compute daily baseline. 
 
 2. __Data Import for most recent years__ Import Near-Real-Time sea ice concentration data to the CDR time series.
 
@@ -62,10 +64,10 @@ __Workflow of Data Processing and Computation:__
 
 ### Daily sea ice extent baseline
 
-The daily sea ice extent baseline for a given region was computed using sea ice extent from 1985 to 2015, and defined as follows:
+The daily sea ice extent baseline for a given region was computed using sea ice extent from 1991 to 2020 based on the NOAA's [recommendadtions](https://www.noaa.gov/explainers/understanding-climate-normals), and defined as follows:
 
 $$
-\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea Ice Extent}_{\text{region, day, year} \in [1985, 2015]})
+\text{Sea ice extent baseline}_{\text{region, day}} = Mean (\text{Sea ice extent}_{\text{region, day, year} \in [1985, 2015]})
 $$ 
 
 ### Daily sea ice extent anomaly
@@ -73,17 +75,23 @@ $$
 The daily sea ice extent anomaly for a given region was computed using sea ice extent baseline:
 
 $$
-\text{Sea ice extent anomaly}_{\text{region, day, year}} = \text{Sea Ice Extent}_{\text{region, day, year}} - \text{Sea ice extent baseline}_{\text{region, day}} 
+\text{Sea ice extent anomaly}_{\text{region, day, year}} = \text{Sea ice extent}_{\text{region, day, year}} - \text{Sea ice extent baseline}_{\text{region, day}} 
 $$ 
+
+### Annualized sea ice extent
+
+The annualized sea ice extent for a given region was computed by averaging monthly sea ice extent values. 
+
+
+$$
+\text{Annualized sea ice extent}_{\text{region, year}} = \text{Mean} \left( \text{Sea ice extent}_{\text{region, date in [September (year-1), August (year)]}} \right)
+$$
 
 
 ### Data Processing
 
 The data processing was performed using Python code and the additional computation and data visualization were done using R to be consistent with prior work done on sea surface temperature.
 
-## Metadata
-
-Metadata follows the Climate and Forecast (CF) metadata conventions and can be downloaded [here](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.11/cf-conventions.html).
 
 ## Intended Use
 
@@ -91,7 +99,7 @@ The intended use of the data summaries, which include sea ice extent baselines a
 
 ## Contact us
 
-For any questions, comments, or feedback, please feel free to email us at polar.watch@noaa.gov or create an issue on our GitHub page [here]().
+For any questions, comments, or feedback, email us at polar.watch@noaa.gov or create a Github [Issue](https://github.com/polarwatch/alaska-seaice/issues/new).
 
 ## Contributors
 

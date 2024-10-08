@@ -1,5 +1,47 @@
-#!/usr/bin/env python
-# coding: utf-8
+"""
+Title: Annualized Sea Ice Extent Computation for Alaska Regions
+Author: Sunny Bak Hospital
+Date: October 8, 2024
+Description:
+    This script computes the 'annualized' sea ice extent for multiple regions in Alaska from 1985 to the 
+    most current year, using the SIC25k class from the `pw_data` module. Region-specific shapefiles for 
+    Alaska Fisheries Ecosystem Management Regions are read, reprojected to the Polar Stereographic 
+    coordinate system (EPSG:3413), and used to subset and process sea ice concentration data from the NSIDC dataset.
+
+    The annual sea ice extent is calculated over the period from September 1 of each year to August 31 of the following 
+    year (e.g., September 2023 to August 2024 for Year 2024). Monthly sea ice extent values are averaged 
+    to produce an annualized sea ice extent value. The results are saved in CSV format for each defined region.
+
+    The sea ice extent values for all years, except the most recent, were computed using the CDR 
+    sea ice concentration data. Values for the most recent year were calculated using Near-Real-Time data.
+
+
+Regions:
+- Alaskan Arctic
+- Northern Bering Sea
+- Eastern Bering Sea
+- Southeastern Bering Sea
+
+Dependencies:
+- pw_data (specifically, SIC25k class for sea ice concentration data handling)
+- numpy (numerical operations)
+- pandas (data handling and CSV export)
+- geopandas (geospatial data processing)
+- dask (for parallel computing) 
+- gc (garbage collection)
+- datetime (for managing date ranges)
+
+Parameters:
+- CRS: EPSG:3413 (Polar Stereographic)
+- NRT_DAILY_ID: 'nsidcG10016v2nh1day' for near-real-time daily data
+- GRID_CELL_AREA_ID: 'pstere_gridcell_N25k'
+- VAR_NAME: 'cdr_seaice_conc'
+
+Usage:
+    Run this script to compute and export the annual sea ice extent for each defined Alaska region to CSV files.
+
+"""
+
 
 # Import necessary libraries
 from pw_data import SIC25k  # Custom class to handle sea ice concentration data (NSIDC 25k)
@@ -17,8 +59,8 @@ def main():
 
     The data used is sea ice concentration from PolarWatch ERDDAP (https://polarwatch.noaa.gov/).
     For data information: 
-    - Monthly data: 'nsidcG02202v4nhmday' (cdr_seaice_conc_monthly)
-    - Daily data: 'nsidcG02202v4nh1day' (cdr_seaice_conc)
+    - Monthly Near-real-time data: 'nsidcG10016v2nhmday' (variable name: cdr_seaice_conc_monthly)
+    - Monthly CDR data: 'nsidcG02202v4nhmday'(variable name: cdr_seaice_conc_monthly)
     
     The output will be CSV files containing annual sea ice extent for the specified regions.
     """
@@ -29,10 +71,11 @@ def main():
     print(f"Dashboard is running on: {client.dashboard_link}")  # Print Dask dashboard link for monitoring
 
     # Define dataset and variable information
-    erddap_id = 'nsidcG02202v4nh1day'  # ERDDAP ID for daily sea ice concentration data
-    area_id = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
-    crs = 'epsg:3413'  # EPSG code for the polar stereographic projection
-    var_name = 'cdr_seaice_conc'  # The variable name in the dataset
+    CDR_DATA_ID = 'nsidcG02202v4nhmday'  # ERDDAP ID for CDR monthly sea ice conc data
+    NRT_DATA_ID = 'nsidcG10016v2nhmday' # ERDDAP ID for NRT monthly sea ice conc data
+    AREA_ID = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
+    CRS = 'epsg:3413'  # EPSG code for the polar stereographic projection
+    VAR_NAME = 'cdr_seaice_conc_monthly'  # The variable name in the dataset
     thisyear = datetime.now().year
     
     # Define regions and corresponding shapefiles for spatial subsetting
@@ -44,16 +87,15 @@ def main():
     ])
 
     # Instantiate an SIC25k object and load sea ice concentration and grid data
-    sic_m = SIC25k(erddap_id, var_name, crs)  # Initialize SIC25k with ERDDAP data
-    sic_m.load_area(area_id)  # Load the corresponding grid cell area data
-
+    sic_m = SIC25k(CDR_DATA_ID, VAR_NAME, CRS)  # Initialize SIC25k with ERDDAP data
+    sic_m.load_area(AREA_ID)  # Load the corresponding grid cell area data
 
 
     # Loop over each region and its corresponding shapefile
     for name, shp in regions.items():
         # Load the shapefile for the region and transform it to the dataset's CRS
         alaska_shp = gpd.read_file(f'resources/akmarineeco/{shp}')  # Read shapefile
-        alaska_shp_proj = alaska_shp.to_crs(crs)  # Reproject the shapefile to match the dataset CRS
+        alaska_shp_proj = alaska_shp.to_crs(CRS)  # Reproject the shapefile to match the dataset CRS
 
         # List to store annual sea ice extent for each region and year
         extents = [] 
@@ -77,7 +119,7 @@ def main():
 
         # Get the latest from NRT dataset (e.g. Year 2024 refers to 2023-09-01 to 2024-08-31)
         year = thisyear
-        sic_latest = SIC25k('nsidcG10016v2nh1day', var_name, crs)  # Initialize SIC25k with ERDDAP data
+        sic_latest = SIC25k(NRT_DATA_ID, VAR_NAME, CRS)  # Initialize SIC25k with ERDDAP data
         ds, area = sic_m.subset_dim([f'{year-1}-09-01', f'{year}-08-31'], alaska_shp_proj)
         sic = sic_latest.format_sic(ds, 0.15)  # convert values to be 0 or 1 based on threshold
 
@@ -93,7 +135,7 @@ def main():
 
         # Convert the list of extents into a pandas DataFrame and export it to a CSV file
         df = pd.DataFrame(extents)
-        df.to_csv(f'{name}_annual_extent.csv', index=False)  # Save the results for each region
+        df.to_csv(f'annualized_extent_{name}.csv', index=False)  # Save the results for each region
 
         # Clean up memory after processing each region
         del alaska_shp_proj
