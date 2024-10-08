@@ -26,5 +26,6 @@ computed from the remote sensing data from NOAA/NSIDC on PolarWatch:
 
 ```{r}
 df = read.csv("data/annualized_extent_AlaskanArctic.csv")
+baseline_df = read.csv("data/bs_extent_SoutheasternBering.csv")
 df2 = read.csv("data/annualized_extent_SoutheasternBering.csv")
 ```
