@@ -13,7 +13,7 @@ For more detailed methods and the Python code used,
 please refer to the methods section and the GitHub repository.
 
 ## Data
-* time: Date (format: yyyy-mm-dd)
+* date: Date (format: yyyy-mm-dd)
 * seaice_extent: Daily sea ice extent  (unit: square km)
 
 ## Resource
