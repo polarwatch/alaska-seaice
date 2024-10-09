@@ -72,9 +72,9 @@ Please check the [data log](https://polarwatch.github.io/datamanagement/datasets
 
 ## Daily Sea ice extent data downloads
 
-- Baseline daily extent time series (1991-2020) [Data](data/bs_extent_NorthernBering.csv) - [Metadata](data/bs_extent_README.md)
-- Near-real-time daily extent of two recent years [Data](data/ext_recent_NorthernBering.csv) - [Metadata](data/nrt_extent_README.md) 
-- Annual mean extent time series (1985-2024) [Data](data/NorthernBering_annual_extent.csv) - [Metadata](data/annualized_extent_README.md)  
+- Baseline daily extent time series (1991-2020) [Data](data/bs_extent_Southeastern.csv) - [Metadata](data/bs_extent_README.md)
+- Near-real-time daily extent of two recent years [Data](data/nrt_extent_Southeastern.csv) - [Metadata](data/nrt_extent_README.md) 
+- Annual mean extent time series (1985-2024) [Data](data/annualized_extent_Southeastern.csv) - [Metadata](data/annualized_extent_README.md)  
 - Daily sea ice concentration from near-real-time (NRT) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)  
 - Daily sea ice concentration from Climate Data Record (CDR) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)
 
