@@ -23,8 +23,8 @@ jobs:
       - run: |
           conda info
           conda list
-      - name: Install Dask
-        run: conda install -c conda-forge dask
+      # - name: Install Dask
+      #   run: conda install -c conda-forge dask
       - name: Run Python script
         run: |
             python scripts/update_daily_extent.py  # This script updates CSV files in data/
