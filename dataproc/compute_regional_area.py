@@ -43,16 +43,17 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '../..'))
 sys.path.insert(0, parent_dir)
 
-from pw_data import pwSIC25k
+from pw_data import SIC25k
 
 def main():
     # server and data set info
     
     CRS = 'epsg:3413'
     NRT_DAILY_ID = 'nsidcG10016v2nh1day'
+    AREA_ID = 'pstere_gridcell_N25k'  # ID for the corresponding area grid
     VAR_NAME = 'cdr_seaice_conc'
 
-    # Define regions and corresponding shapefiles for spatial subsetting
+    Define regions and corresponding shapefiles for spatial subsetting
     REGIONS = dict([
        ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
        ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
@@ -60,6 +61,10 @@ def main():
         ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
     ])
 
+
+    sic = SIC25k(NRT_DAILY_ID, VAR_NAME, CRS)  # Initialize SIC25k with ERDDAP data
+    sic.load_area(AREA_ID)  # Load the corresponding grid cell area data
+    
     for name, shp in REGIONS.items():
         # print(f'name is {name}, and shape file is {shp}')
 
@@ -69,11 +74,14 @@ def main():
     # Transform projection to Polar Stereographic Projection
         alaska_shp_proj = alaska_shp.to_crs(CRS)
 
-    # Get SIC data
-        sic_m = pwSIC25k(CRS, NRT_DAILY_ID, VAR_NAME, alaska_shp_proj)
-        total_area = sic_m.get_total_area_km()
+        _, area = sic.subset_dim([f'2023-09-01', f'2023-09-01'], alaska_shp_proj) # Get one time step
+        total_area = sic.get_total_area_km(alaska_shp_proj)
         print(f'total area for {name}: {total_area}')
 
+    # Get Area data
+        area.plot()
+        plt.show()
+        area.to_netcdf(f'area_{name}.nc')
 
 if __name__ == "__main__":
     main()

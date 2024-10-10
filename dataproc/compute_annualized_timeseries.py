@@ -80,11 +80,13 @@ def main():
     
     # Define regions and corresponding shapefiles for spatial subsetting
     regions = dict([
-       ('AlaskanArctic', 'arctic_sf.shp'),  # Alaskan Arctic region
-       ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
-       ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
-        ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
-    ])
+       ('AlaskanArctic', 'arctic_sf.shp')  ])
+    
+      # Alaskan Arctic region
+    #    ('NorthernBering', 'nbering_sf.shp'),  # Northern Bering Sea region
+    #    ('EasternBering', 'ebering_sf.shp'),  # Eastern Bering Sea region
+    #     ('SoutheasternBering', 'se_bering_sf.shp') # Southeastern Bering Sea region
+    # ])
 
     # Instantiate an SIC25k object and load sea ice concentration and grid data
     sic_m = SIC25k(CDR_DATA_ID, VAR_NAME, CRS)  # Initialize SIC25k with ERDDAP data

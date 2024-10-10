@@ -1,5 +1,5 @@
 ---
-title: "Sea Ice in Alaska"
+title: "Sea Ice in Alaska (under development)"
 ---
 
 This website offers daily time series of sea ice extent and 

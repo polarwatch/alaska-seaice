@@ -285,6 +285,11 @@ class SIC25k(cwData):
         except Exception as e:
             print(f"Error loading grid area data: {e}")
             raise 
+    
+    def get_area(self):
+        if self.has_area():
+            return self.area()
+        
 
 ## Helper Functions
 
