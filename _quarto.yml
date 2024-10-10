@@ -1,6 +1,9 @@
 project:
   type: website
   render:
+    - *.qmd
+    - resources/
+    - data/
     - "!dataproc/"
 
 website:
