@@ -1,9 +1,9 @@
 project:
   type: website
+  resources: 
+    - "data/*.csv"
   render:
-    - *.qmd
-    - resources/
-    - data/
+    - "*.qmd"
     - "!dataproc/"
 
 website:
@@ -59,4 +59,3 @@ exclude:
   - "dataproc/"
 
 editor: visual
-
