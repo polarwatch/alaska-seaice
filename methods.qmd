@@ -88,9 +88,10 @@ $$
 $$
 
 
-### Data Processing
+### Codes
 
-The data processing was performed using Python code and the additional computation and data visualization were done using R to be consistent with prior work done on sea surface temperature.
+The data processing and computation was performed using Python and the webpage generation and visualization were done using Quartot and R. 
+The codes are available in `dataproc/` directory of the [github repository](https://github.com/polarwatch/alaska-seaice).
 
 
 ## Intended Use

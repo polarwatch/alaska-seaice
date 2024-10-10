@@ -8,6 +8,6 @@
 **/*.ini
 .vscode/
 **/__pycache__
-**/*. pyc
+**/*.pyc
 **/.mypy_cache
 **/.Rapp.history
