@@ -153,6 +153,11 @@ hline <- function(y = 0, color = "black") {
   )
 }
 
+
+thisyear_label = paste(lastyear,"/", lastyear+1)
+lastyear_label = paste(lastyear-1, "/", lastyear)
+anom_lastyear_label = paste("Anomaly: ", substr(lastyear-1,3, 4), "/", substr(lastyear, 3,4))
+anom_thisyear_label = paste("Anomaly: ", substr(lastyear,3, 4), "/", substr(lastyear+1, 3,4))
 ```
 
 ```{r}
@@ -164,7 +169,8 @@ hline <- function(y = 0, color = "black") {
 ## BASELINE PLOT ##
 
 ## Draw plot
- 
+
+
   # Upper extent 
 fig_bs <- plot_ly(baseline_df, x = ~month_day, y = ~upper_extent, type = 'scatter', 
               mode = 'lines',line = list(color = 'transparent'),
@@ -180,11 +186,11 @@ fig_bs <- plot_ly(baseline_df, x = ~month_day, y = ~upper_extent, type = 'scatte
   # Last year
       add_trace(data = dat_last, x = ~month_day, y = ~seaice_extent, type = 'scatter', mode = 'lines',
             line = list(
-            color = plot_colors[2], width = 2),showlegend = TRUE,  name = lastyear) %>%
+            color = plot_colors[2], width = 2),showlegend = TRUE,  name = lastyear_label) %>%
 
   # Current year
         add_trace(data = dat_this, x = ~month_day, y = ~seaice_extent, type = 'scatter', mode = 'lines',
-            line = list(color=plot_colors[1], width  = 3),showlegend = TRUE, name = lastyear + 1) %>%
+            line = list(color=plot_colors[1], width  = 3),showlegend = TRUE, name = thisyear_label) %>%
 
   # Latest point
         add_trace( x= latest$month_day,  y = latest$seaice_extent, type='scatter', mode = 'markers',
@@ -234,12 +240,13 @@ anom_current$anom = anom_current$seaice_extent - anom_current$seaice_extent_mean
 anom_last$anom = anom_last$seaice_extent - anom_last$seaice_extent_mean
 
 
+
 ## Draw plot 
 fig_anom <- plot_ly(anom_last, x = ~month_day, y = ~anom, type = 'scatter', mode = 'lines',
-               fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=paste0("Anomaly: ", lastyear )) %>%
+               fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=anom_lastyear_label) %>%
         # Recent year
             add_trace(data = anom_current, x = ~month_day, y = ~anom, type = 'scatter', mode = 'lines', 
-                                        fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=paste0("Anomaly: ", lastyear + 1 ))  %>%
+                                        fill = 'tozeroy', line = list(color = "088F8F" , fillcolor = "#A2D9CE"), name=anom_thisyear_label)  %>%
         # +2STDEV
             add_trace(data = baseline_df, x = ~month_day, y = ~2*seaice_extent_std, type = 'scatter', mode = 'lines',
                         line = list(color = '#FC4100'), fill='transparent',
