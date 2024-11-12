@@ -14,6 +14,8 @@ jobs:
         shell: bash -el {0}
     steps:
       - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ secrets.DATA_UPDATE_TOKEN }}
       - uses: conda-incubator/setup-miniconda@v3
         with:
           activate-environment: seaice
