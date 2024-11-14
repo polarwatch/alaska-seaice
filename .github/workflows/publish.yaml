@@ -1,6 +1,10 @@
 # .github/worflows/publish.yaml
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [Update daily data]
+    types:
+      - completed
   push:
     branches: main
 
