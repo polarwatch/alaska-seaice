@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/802543780.svg)](https://doi.org/10.5281/zenodo.14226835)
+
 # Visualization of Sea Ice Data in Alaskan Fisheries Management Regions
 
 This repository contains scripts for creating a data visualization webpage 
