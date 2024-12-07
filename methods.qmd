@@ -104,10 +104,12 @@ For any questions, comments, or feedback, email us at polar.watch@noaa.gov or cr
 
 ## Contributors
 
-* Sun Hospital, PolarWatch Coordinator at PolarWatch, NOAA CoastWatch, UCSC Fisheries Cooperative Program
+* [PolarWatch Team](https://polarwatch.noaa.gov/about/contact/), NOAA CoastWatch, UCSC Fisheries Cooperative Program
 * Elizabeth Siddon, NOAA Alaska Fisheries Science Center
 * Ludovic Brucker, NOAA NESDIS Center for Satellite Applications & Research
-* Matt Calahan, Alaska Fisheries Information Network 
+
+## Acknowledgments
+We thank Matt Calahan from the Alaska Fisheries Information Network (AKFIN) for his valuable insights, R package, and resources. We also appreciate Andy Teucher from OpenScapes for his contributions to the GitHub workflow. Their input was instrumental in the development of this work.
 
 ## References
 
