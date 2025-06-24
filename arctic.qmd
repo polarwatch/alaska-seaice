@@ -9,21 +9,20 @@ format:
 
 <img src="img/arctic.png" alt="Alaskan Arctic" style="float: right; width: 200px;"/>
 
+## Under Development
+
 The time series plot and data below present statistics on sea ice extent within Alaskan Arctic.
 
-* Mean (1991-2020): Represents the average sea ice extent from 1991-2020.
-* Upper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.
-* Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
+-   Mean (1991-2020): Represents the average sea ice extent from 1991-2020.
+-   Upper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.
+-   Current and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.
 
-:::{.callout-tip title="Plots are interactive!" }
-
-* __To zoom in and out, reset or download the plot__,  hover on the plot to see the option on the top right corner.
-* __To turn on and off data series__, click on the data series title in the legend located below each plot.
+::: {.callout-tip title="Plots are interactive!"}
+-   **To zoom in and out, reset or download the plot**, hover on the plot to see the option on the top right corner.
+-   **To turn on and off data series**, click on the data series title in the legend located below each plot.
 :::
 
-
 ## Sea ice extent daily time series
-
 
 ```{r}
 #| echo: false
@@ -46,7 +45,6 @@ total_area = 511126.86
 
 ```
 
-
 ```{r}
 #| echo: false
 #| warning: false
@@ -63,7 +61,6 @@ annual = read.csv("data/annualized_extent_AlaskanArctic.csv")
 nrt_df = read.csv("data/nrt_extent_AlaskanArctic.csv")
 
 ```
-
 
 ```{r}
 #| echo: false
@@ -110,8 +107,6 @@ baseline_df = baseline_df[order(baseline_df$month_day), ]
 
 
 ```
-
- 
 
 ```{r}
 #| echo: false
@@ -217,10 +212,9 @@ fig_bs
 
 Data: Sea ice extent was computed by PolarWatch using NOAA/NSIDC daily sea ice concentration data at a 25km resolution
 
-
 ## Sea ice extent anomalies
 
-_Users can click on the data names in the legend to toggle it on and off._
+*Users can click on the data names in the legend to toggle it on and off.*
 
 ```{r}
 #| echo: false
@@ -284,6 +278,7 @@ fig_anom
 Data: Sea ice extent anomalies were computed by PolarWatch using NOAA/NSIDC daily sea ice concentration data at a 25km resolution
 
 ## Annualized Sea ice extent time series (1985-2024)
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -314,29 +309,32 @@ fig_annual <- plot_ly(annual, type = 'scatter', mode = 'lines+markers')%>%
 # Display
 fig_annual
 ```
+
 Data: Sea ice extent anomalies were computed by PolarWatch using NOAA/NSIDC monthly sea ice concentration data at a 25km resolution
 
 ## Data and Methods
-The data sources and calculation methods can be found on the methods page. ([Methods](methods.html)).  
+
+The data sources and calculation methods can be found on the methods page. ([Methods](methods.html)).
 
 ## Data Disclaimer
+
 The extent values for this year are computed using near real-time data, while the science-quality data (Climate Data Record, or CDR) is still being processed and will be available at a later time.
 
-Data may be missing or corrupted in the event of technical failures with sensors or ground stations. 
+Data may be missing or corrupted in the event of technical failures with sensors or ground stations.
 
-Please check the [data log](https://polarwatch.github.io/datamanagement/datasets/nsidcG10016v2nh1day/logs.html) or contact us at sun&#46;bak-hospital&#64;noaa&#46;gov for further information.
+Please check the [data log](https://polarwatch.github.io/datamanagement/datasets/nsidcG10016v2nh1day/logs.html) or contact us at sun.bak-hospital\@noaa.gov for further information.
 
 ## Daily Sea ice extent data downloads
 
-- Baseline daily extent time series (1991-2020) [Data](data/bs_extent_AlaskanArctic.csv) - [Metadata](data/bs_extent_README.md)
-- Near-real-time daily extent of two recent years [Data](data/nrt_recent_AlaskanArctic.csv) - [Metadata](data/nrt_extent_README.md) 
-- Annual mean extent time series (1985-2024) [Data](data/annualized_extent_AlaskanArctic.csv) - [Metadata](data/annualized_extent_README.md)  
-- Daily sea ice concentration from near-real-time (NRT) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)  
-- Daily sea ice concentration from Climate Data Record (CDR) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice|||0|1|)
+-   Baseline daily extent time series (1991-2020) [Data](data/bs_extent_AlaskanArctic.csv) - [Metadata](data/bs_extent_README.md)
+-   Near-real-time daily extent of two recent years [Data](data/nrt_recent_AlaskanArctic.csv) - [Metadata](data/nrt_extent_README.md)
+-   Annual mean extent time series (1985-2024) [Data](data/annualized_extent_AlaskanArctic.csv) - [Metadata](data/annualized_extent_README.md)\
+-   Daily sea ice concentration from near-real-time (NRT) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-nrt-nh-nsidc-cdr-v2/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2024-06-25T00:00:00Z&time_max=2024-06-25T00:00:00Z&proj=epsg3413&colorBar=KT_ice%7C%7C%7C0%7C1%7C)\
+-   Daily sea ice concentration from Climate Data Record (CDR) [Link to Portal](https://polarwatch.noaa.gov/catalog/ice-sq-nh-nsidc-cdr-v4/preview/?dataset=daily&var=cdr_seaice_conc&time_min=2023-12-31T00:00:00Z&time_max=2023-12-31T00:00:00Z&proj=epsg3413&colorBar=KT_ice%7C%7C%7C0%7C1%7C)
 
 ## More resources
 
 NOAA's Annual Arctic Report Card
 
-  * [Official Arctic Report Card Page](https://arctic.noaa.gov/report-card/report-card-2023/videos-and-animations-2023/)
-  * [2-Pager Fact sheet](https://docs.google.com/presentation/d/1TaKzJqPx-OeYcCZZLVqcPx0n4ilq7NKBaG1Qfwp-anE/edit#slide=id.g192e9543f73_0_16)
+-   [Official Arctic Report Card Page](https://arctic.noaa.gov/report-card/report-card-2023/videos-and-animations-2023/)
+-   [2-Pager Fact sheet](https://docs.google.com/presentation/d/1TaKzJqPx-OeYcCZZLVqcPx0n4ilq7NKBaG1Qfwp-anE/edit#slide=id.g192e9543f73_0_16)
