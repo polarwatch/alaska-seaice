@@ -12,7 +12,7 @@ def main():
         
     # PolarWatch dataset ID of the NSIDC near real time 
     # sea ice conc in the northern hemisphere (nh)
-    nrt_id = 'nsidcG10016v2nh1day'
+    nrt_id = 'nsidcG10016v3nh1day'
 
     # EPSG code used for polar stereographic projection (nh)
     crs = 'epsg:3413'
