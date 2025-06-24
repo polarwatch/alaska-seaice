@@ -276,7 +276,24 @@ fig_anom <- plot_ly(anom_last, x = ~month_day, y = ~anom, type = 'scatter', mode
 fig_anom
 ```
 
-Data: Sea ice extent anomalies were computed by PolarWatch using NOAA/NSIDC daily sea ice concentration data at a 25km resolution
+Data Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic <br/>
+Statistics/Figure Source : NOAA CoastWatch PolarWatch 
+
+
+## Data and plot downloads
+:::{layout-ncol="4"}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+download_this(
+  ice_ext_plot,
+  button_label = "Download Plot",
+  button_type = "success",
+  )
+```
+>>>>>>> 2ca6695 (fixing bug)
 
 ## Annualized Sea ice extent time series (1985-2024)
 ```{r}
