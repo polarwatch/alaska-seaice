@@ -207,21 +207,11 @@
     ]
   },
   {
-    "objectID": "ebering.html#data-and-plot-downloads",
-    "href": "ebering.html#data-and-plot-downloads",
-    "title": "Sea ice extent in Eastern Bering",
-    "section": "Data and plot downloads",
-    "text": "Data and plot downloads",
-    "crumbs": [
-      "Eastern Bering"
-    ]
-  },
-  {
     "objectID": "ebering.html#annualized-sea-ice-extent-time-series-1985-2024",
     "href": "ebering.html#annualized-sea-ice-extent-time-series-1985-2024",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Annualized Sea ice extent time series (1985-2024)",
-    "text": "Annualized Sea ice extent time series (1985-2024)",
+    "text": "Annualized Sea ice extent time series (1985-2024)\n\n\n\n\n\n\nData: Sea ice extent anomalies were computed by PolarWatch using NOAA/NSIDC monthly sea ice concentration data at a 25km resolution",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -241,7 +231,7 @@
     "href": "ebering.html#data-disclaimer",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Data Disclaimer",
-    "text": "Data Disclaimer\nThe extent values for this year are computed using near real-time data, while the science-quality data (Climate Data Record, or CDR) is still being processed and will be available at a later time.",
+    "text": "Data Disclaimer\nThe extent values for this year are computed using near real-time data, while the science-quality data (Climate Data Record, or CDR) is still being processed and will be available at a later time.\nData may be missing or corrupted in the event of technical failures with sensors or ground stations.\nPlease check the data log or contact us at sun.bak-hospital@noaa.gov for further information.",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -261,7 +251,7 @@
     "href": "ebering.html#more-resources",
     "title": "Sea ice extent in Eastern Bering",
     "section": "More resources",
-    "text": "More resources\nNOAA’s Annual Arctic Report Card",
+    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet",
     "crumbs": [
       "Eastern Bering"
     ]
