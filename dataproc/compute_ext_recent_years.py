@@ -35,7 +35,7 @@ def main():
 
     # Define constants
     CRS = 'epsg:3413'  # Polar Stereographic North projection
-    NRT_DAILY_ID = 'nsidcG10016v2nh1day'  # Dataset ID for near real-time sea ice data
+    NRT_DAILY_ID = 'nsidcG10016v3nh1day'  # Dataset ID for near real-time sea ice data
     VAR_NAME = 'cdr_seaice_conc'  # Variable name for sea ice concentration
     GRID_CELL_AREA_ID = 'pstere_gridcell_N25k'  # Grid cell area ID for sea ice extent calculations
 

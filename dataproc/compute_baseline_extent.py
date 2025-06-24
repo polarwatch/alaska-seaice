@@ -15,7 +15,7 @@ def main():
  
 
     # Define dataset and variable information
-    CDR_DAILY_ID = 'nsidcG02202v4nh1day'  # CDR (Climate Data Record) daily sea ice conc
+    CDR_DAILY_ID = 'nsidcG02202v5nh1day'  # CDR (Climate Data Record) daily sea ice conc
     GRID_AREA_ID = 'pstere_gridcell_N25k'  # Grid cell area
     CRS = 'epsg:3413'  # EPSG code for the polar stereographic (north) projection
     VAR_NAME = 'cdr_seaice_conc'  # The variable name in the daily dataset

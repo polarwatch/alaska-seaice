@@ -138,7 +138,8 @@ class SIC25k(cwData):
             shape (gpd.GeoDataFrame, optional): Shape geometries projected to the data's CRS. Defaults to None.
         """
         super().__init__(id, varname, crs, server)
-        self.grids = {'x': 'xgrid', 'y':'ygrid'}
+        # self.grids = {'x': 'xgrid', 'y':'ygrid'}
+        self.grids = {'x': 'x', 'y':'y'}
         self.area = None
 
         if shape is not None:
