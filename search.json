@@ -11,7 +11,17 @@
     "href": "nbering.html",
     "title": "Sea ice extent in Northern Bering",
     "section": "",
-    "text": "Updated on June 24, 2025\nThe time series plot and data summary below present statistics on sea ice extent within northern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:",
+    "text": "Updated on June 24, 2025",
+    "crumbs": [
+      "Northern Bering"
+    ]
+  },
+  {
+    "objectID": "nbering.html#under-development",
+    "href": "nbering.html#under-development",
+    "title": "Sea ice extent in Northern Bering",
+    "section": "Under Development",
+    "text": "Under Development\nThe time series plot and data summary below present statistics on sea ice extent within northern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\n\nMean (1991-2020): Represents the average sea ice extent from 1991-2020.\nUpper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.\nCurrent and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.\n\n\n\n\n\n\n\nPlots are interactive!\n\n\n\n\nTo zoom in and out, reset or download the plot, hover on the plot to see the option on the top right corner.\nTo turn on and off data series, click on the data series title in the legend located below each plot.",
     "crumbs": [
       "Northern Bering"
     ]
@@ -101,7 +111,17 @@
     "href": "arctic.html",
     "title": "Sea ice extent in Alaskan Arctic",
     "section": "",
-    "text": "Updated on June 24, 2025\nThe time series plot and data below present statistics on sea ice extent within Alaskan Arctic.",
+    "text": "Updated on June 24, 2025",
+    "crumbs": [
+      "Alaskan Arctic"
+    ]
+  },
+  {
+    "objectID": "arctic.html#under-development",
+    "href": "arctic.html#under-development",
+    "title": "Sea ice extent in Alaskan Arctic",
+    "section": "Under Development",
+    "text": "Under Development\nThe time series plot and data below present statistics on sea ice extent within Alaskan Arctic.\n\nMean (1991-2020): Represents the average sea ice extent from 1991-2020.\nUpper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.\nCurrent and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.\n\n\n\n\n\n\n\nPlots are interactive!\n\n\n\n\nTo zoom in and out, reset or download the plot, hover on the plot to see the option on the top right corner.\nTo turn on and off data series, click on the data series title in the legend located below each plot.",
     "crumbs": [
       "Alaskan Arctic"
     ]
@@ -181,7 +201,17 @@
     "href": "ebering.html",
     "title": "Sea ice extent in Eastern Bering",
     "section": "",
-    "text": "Updated on June 24, 2025\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:",
+    "text": "Updated on June 24, 2025",
+    "crumbs": [
+      "Eastern Bering"
+    ]
+  },
+  {
+    "objectID": "ebering.html#under-development",
+    "href": "ebering.html#under-development",
+    "title": "Sea ice extent in Eastern Bering",
+    "section": "Under Development",
+    "text": "Under Development\nThe time series plot and data summary below present statistics on sea ice extent within eastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\n\nMean (1991-2020): Represents the average sea ice extent from 1991-2020.\nUpper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.\nCurrent and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.\n\n\n\n\n\n\n\nPlots are interactive!\n\n\n\n\nTo zoom in and out, reset or download the plot, hover on the plot to see the option on the top right corner.\nTo turn on and off data series, click on the data series title in the legend located below each plot.",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -341,7 +371,17 @@
     "href": "sebering.html",
     "title": "Sea ice extent in Southeastern Bering",
     "section": "",
-    "text": "Updated on June 24, 2025\nThe time series plot and data summary below present statistics on sea ice extent within southeastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:",
+    "text": "Updated on June 24, 2025",
+    "crumbs": [
+      "Southeastern Bering"
+    ]
+  },
+  {
+    "objectID": "sebering.html#under-development",
+    "href": "sebering.html#under-development",
+    "title": "Sea ice extent in Southeastern Bering",
+    "section": "Under Development",
+    "text": "Under Development\nThe time series plot and data summary below present statistics on sea ice extent within southeastern Bering Sea computed from the remote sensing data from NOAA/NSIDC on PolarWatch:\n\nMean (1991-2020): Represents the average sea ice extent from 1991-2020.\nUpper and Lower Bounds of Error Band (1991-2020): Reflect the uncertainty of the Mean.\nCurrent and Previous Year: Show the daily sea ice extent values for the current and previous year within the area.\n\n\n\n\n\n\n\nPlots are interactive!\n\n\n\n\nTo zoom in and out, reset or download the plot, hover on the plot to see the option on the top right corner.\nTo turn on and off data series, click on the data series title in the legend located below each plot.",
     "crumbs": [
       "Southeastern Bering"
     ]
