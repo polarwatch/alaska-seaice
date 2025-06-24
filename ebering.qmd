@@ -283,17 +283,6 @@ Statistics/Figure Source : NOAA CoastWatch PolarWatch
 ## Data and plot downloads
 :::{layout-ncol="4"}
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-download_this(
-  ice_ext_plot,
-  button_label = "Download Plot",
-  button_type = "success",
-  )
-```
->>>>>>> 2ca6695 (fixing bug)
 
 ## Annualized Sea ice extent time series (1985-2024)
 ```{r}
