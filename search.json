@@ -201,7 +201,17 @@
     "href": "ebering.html#sea-ice-extent-anomalies",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Sea ice extent anomalies",
-    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData: Sea ice extent anomalies were computed by PolarWatch using NOAA/NSIDC daily sea ice concentration data at a 25km resolution",
+    "text": "Sea ice extent anomalies\nUsers can click on the data names in the legend to toggle it on and off.\n\n\n\n\n\n\nData Source: NOAA/NSIDC Sea Ice Concentration NSIDC Climate Data Record V4 and Near-Real-Time V2, Arctic  Statistics/Figure Source : NOAA CoastWatch PolarWatch",
+    "crumbs": [
+      "Eastern Bering"
+    ]
+  },
+  {
+    "objectID": "ebering.html#data-and-plot-downloads",
+    "href": "ebering.html#data-and-plot-downloads",
+    "title": "Sea ice extent in Eastern Bering",
+    "section": "Data and plot downloads",
+    "text": "Data and plot downloads",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -211,7 +221,7 @@
     "href": "ebering.html#annualized-sea-ice-extent-time-series-1985-2024",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Annualized Sea ice extent time series (1985-2024)",
-    "text": "Annualized Sea ice extent time series (1985-2024)\n\n\n\n\n\n\nData: Sea ice extent anomalies were computed by PolarWatch using NOAA/NSIDC monthly sea ice concentration data at a 25km resolution",
+    "text": "Annualized Sea ice extent time series (1985-2024)",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -231,7 +241,7 @@
     "href": "ebering.html#data-disclaimer",
     "title": "Sea ice extent in Eastern Bering",
     "section": "Data Disclaimer",
-    "text": "Data Disclaimer\nThe extent values for this year are computed using near real-time data, while the science-quality data (Climate Data Record, or CDR) is still being processed and will be available at a later time.\nData may be missing or corrupted in the event of technical failures with sensors or ground stations.\nPlease check the data log or contact us at sun.bak-hospital@noaa.gov for further information.",
+    "text": "Data Disclaimer\nThe extent values for this year are computed using near real-time data, while the science-quality data (Climate Data Record, or CDR) is still being processed and will be available at a later time.",
     "crumbs": [
       "Eastern Bering"
     ]
@@ -251,7 +261,7 @@
     "href": "ebering.html#more-resources",
     "title": "Sea ice extent in Eastern Bering",
     "section": "More resources",
-    "text": "More resources\nNOAA’s Annual Arctic Report Card\n\nOfficial Arctic Report Card Page\n2-Pager Fact sheet",
+    "text": "More resources\nNOAA’s Annual Arctic Report Card",
     "crumbs": [
       "Eastern Bering"
     ]
