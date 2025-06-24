@@ -72,6 +72,7 @@ def main():
         # Clean up memory to avoid excessive usage
         del alaska_shp, alaska_shp_proj, ds, sic 
 
+        print(ext)
         # Convert xarray object to a dataframe, reformat, and save as CSV
         ext_df = (ext
                   .to_dataframe()

@@ -84,10 +84,14 @@ class cwData:
         full_URL = '/'.join([self.server,self.id])
 
         ds = xr.open_dataset(full_URL, chunks={"time":"auto"})
+        if ds is None:
+            raise ValueError(f"Failed to load dataset from {full_URL}")
+        
         ds = ds[self.varname]
         ds.rio.set_spatial_dims(x_dim=self.grids['x'], y_dim=self.grids['y'], inplace=True)
         ds.rio.write_crs(self.crs, inplace=True)
         ds = ds.clip(min=0, max=1)
+        
         return ds
  
     def compute_clim(self, year_range: list, frequency: str)-> xr.Dataset:
@@ -252,7 +256,7 @@ class SIC25k(cwData):
             ice_cell.name = 'seaice_extent'  
             ice_ext = (ice_cell
                     .groupby("time")
-                    .sum(dim=["xgrid", "ygrid"])) 
+                    .sum(dim=["x", "y"])) 
             return ice_ext
         
         else:
@@ -274,7 +278,7 @@ class SIC25k(cwData):
             ds = xr.open_dataset(full_URL, chunks={"time":"auto"})
             da = ds['cell_area']
             da.rio.set_spatial_dims(x_dim="x", y_dim="y", inplace=True)
-            da = da.rename({'x': 'xgrid', 'y': 'ygrid'})
+            # da = da.rename({'x': 'xgrid', 'y': 'ygrid'}) #v3 of sic now use x and y instead of xgrid
             da.rio.write_crs(self.crs, inplace=True)
 
             if self.shape is None:

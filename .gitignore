@@ -11,3 +11,4 @@
 **/*.pyc
 **/.mypy_cache
 **/.Rapp.history
+__pycache__
