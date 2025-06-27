@@ -30,7 +30,7 @@ def get_var_data(server, id, crs, varname, dates):
 
     da = xr.open_dataset(full_URL, chunks={"time":"auto"})
     da = da[varname]
-    da.rio.set_spatial_dims(x_dim="xgrid", y_dim="ygrid", inplace=True)
+    da.rio.set_spatial_dims(x_dim="x", y_dim="y", inplace=True)
     da.rio.write_crs(crs, inplace=True)
     da = da.clip(min=0, max=1).sel(time=slice(start_date, end_date))
     return da
@@ -104,7 +104,7 @@ def compute_extent_km(ds, area_ds):
 
         ice_ext_yearly_ts = (ice_ext_yearly
                             .groupby("time")
-                            .sum(dim=["xgrid", "ygrid"])) 
+                            .sum(dim=["x", "y"])) 
         
         # Add year-month 
         # ice_ext_yearly['time_ymd'] = ice_ext_yearly['time'].dt.strftime('%Y-%m-%d')
