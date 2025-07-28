@@ -11,8 +11,10 @@ jobs:
     runs-on: "ubuntu-latest"
     defaults:
       run:
+      # -e: exit immediately when fails; -l: load full env; {0} placeholder for command
         shell: bash -el {0}
     steps:
+    # checkout loads the repo to the runner (vm)
       - uses: actions/checkout@v4
       - uses: conda-incubator/setup-miniconda@v3
         with:
